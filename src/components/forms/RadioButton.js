@@ -25,8 +25,9 @@ function RadioButton(props) {
               name={`radio-${props.qIdex}`}
               id={`radio-${props.qIndex}-${index}`}
             />
-            <Form.Control type="text" value={item} placeholder="Enter selection" onChange={(e) => {
+            <Form.Control value={props.q.item[index]} placeholder="Enter selection" onChange={(e) => {
               props.q.item[index] = e.target.value;
+              props.setQuestions([ ...props.questions ]);
             }} />
           </InputGroup>
         </div>

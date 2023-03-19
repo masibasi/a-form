@@ -11,21 +11,21 @@ function CreateSurvey() {
   const [questions, setQuestions] = useState([]); //index, state(어떤 타입의 질문인지)
 
   // TODO : X 표시를 누르면 해당 문제의 정보가 삭제된다.
-  function delQuestions(index) {
+  function delQuestion(index) {
     questions.splice(index, 1);
     setQuestions([...questions]);
   }
 
-  function addingQuestions(input) {
+  function addQuestion(input) {
     if (questions == null) {
       questions.push({
-        questiontype: input,
+        questionType: input,
         questionTitle: "",
         item: [],
       });
     } else {
       questions.push({
-        questiontype: input,
+        questionType: input,
         questionTitle: "",
         item: [],
       });
@@ -44,13 +44,13 @@ function CreateSurvey() {
         <Row>
           <Col>
             <h1>Create Survey</h1>
-            <AddingOption addingQuestions={addingQuestions}></AddingOption>
+            <AddingOption addQuestion={addQuestion}></AddingOption>
             <Form onSubmit={handleSubmit}>
               {questions.map((q, index) => {
                 return (
                   <QuestionForm
-                    questiontype={q.questiontype}
-                    delfunction={delQuestions}
+                    questionType={q.questionType}
+                    delQuestion={delQuestion}
                     q={q}
                     qIndex={index}
                     questions={questions}
