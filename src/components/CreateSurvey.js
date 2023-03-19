@@ -19,39 +19,41 @@ function CreateSurvey() {
   console.log(result)
     setQuestions([...result])
   }
-  // TODO : input 값에 따라 추가되는 문제의 형식이 다르다
   function addingQuestions(input){ 
     if(questions == null){
       questions.push({
-        id:1,
-        questiontype:input
+        id:0,
+        questiontype:input,
+        questionTitle: "",
+        item : [],
+
+
       })
     }
     else{
       questions.push({
-      id: questions.length+1, 
+      id: questions.length, 
       questiontype: input,
+      questionTitle:"",
+      item :[],
+
+  
     })
   }
     setQuestions([...questions])
 
   }
-  const [item, setItem] = useState({
-    id: 1,
-    title: "test",
-    description: "testtest",
-    selection: [null, null]
-  });
-
+  console.log(questions)
   return (
     <div className='createSurvey'>
       <Container>
         <Row>
           <Col>
+
             <h1>Create Survey</h1>
             <AddingOption addingQuestions={addingQuestions} ></AddingOption>
             <Form>
-                {questions.map((q, index)=>{return <QuestionForm item={item} questiontype={q.questiontype} delfunction={delQuestions} index={q.id}/>})}
+                {questions.map((q, index)=>{return <QuestionForm questiontype={q.questiontype} delfunction={delQuestions} q={q} questions={questions} setQuestions={setQuestions}/>})}
             </Form>
           </Col>
         </Row>

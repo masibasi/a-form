@@ -14,14 +14,10 @@ function QuestionForm(props) {
   return (
     <Card style={{ maxWidth: "1024px" }}>
       <Card.Body>
-        <Card.Title>{props.item.title}</Card.Title>
-        <Card.Text>{props.item.description}</Card.Text>
-        <div style={{ border: "", float: "right", width: "10%" }}>
-            <input type="checkbox" name="essential" value="essential" /> essential 
-        </div>
-        <Button variant="outline-danger" onClick={(e)=>{props.delfunction(props.index)}}>X</Button>
+        <Card.Title>{props.q.questionTitle}</Card.Title>
+        <Button variant="outline-danger" onClick={(e)=>{props.delfunction(props.q.id)}}>X</Button>
           <div className="questionType">
-            {questionType==1 && <RadioButton item={props.item} selItem={props.setItem}/>}
+            {questionType==1 && <RadioButton q={props.q} questions={props.questions} setQuestions={props.setQuestions}/>}
             {questionType==2 && <Checkbox/>}
             {questionType==3 && <ShortForm/>}
           </div>
