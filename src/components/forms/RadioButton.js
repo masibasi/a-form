@@ -5,27 +5,27 @@ import Form from 'react-bootstrap/Form';
 
 function RadioButton(props) {
   function addSelection() {
-    props.questions[props.q.id].item.push(null);
+    props.questions[props.qIndex].item.push("");
     props.setQuestions([ ...props.questions ]);
   }
 
   function delSelection() {
-    props.questions[props.q.id].item.pop();
+    props.questions[props.qIndex].item.pop();
     props.setQuestions([ ...props.questions ]);
   }
 
   return (
     <Form.Group>
       {props.q.item.map((item, index) => (
-        <div key={`question-${props.q.id}-${index}`} className="mb-3" style={{ display: "flex" }}>
+        <div key={`question-${props.qIndex}-${index}`} className="mb-3">
           <InputGroup>
             <InputGroup.Checkbox
               disabled
               type={"radio"}
-              name={`radio-${props.q.id}`}
-              id={`radio-${props.q.id}-${index}`}
+              name={`radio-${props.qIdex}`}
+              id={`radio-${props.qIndex}-${index}`}
             />
-            <Form.Control type="text" defaultValue={item} placeholder="Enter selection" onChange={(e) => {
+            <Form.Control type="text" value={item} placeholder="Enter selection" onChange={(e) => {
               props.q.item[index] = e.target.value;
             }} />
           </InputGroup>

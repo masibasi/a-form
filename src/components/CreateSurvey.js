@@ -1,65 +1,72 @@
-import React, { useState } from 'react'
-import { Form } from 'react-bootstrap'
-import QuestionForm from './forms/QuestionForm';
-import AddingOption from './forms/AddingOption';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import React, { useState } from "react";
+import { Form } from "react-bootstrap";
+import QuestionForm from "./forms/QuestionForm";
+import AddingOption from "./forms/AddingOption";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 function CreateSurvey() {
   const [questions, setQuestions] = useState([]); //index, state(어떤 타입의 질문인지)
-  
+
   // TODO : X 표시를 누르면 해당 문제의 정보가 삭제된다.
-  function delQuestions (index){ 
-    
-    var result = questions.filter(function(value) {
-      console.log("index: ", index, " value.id", value.id)
-    return value.id !== index; 
-});
-  console.log(result)
-    setQuestions([...result])
+  function delQuestions(index) {
+    questions.splice(index, 1);
+    setQuestions([...questions]);
   }
-  function addingQuestions(input){ 
-    if(questions == null){
+
+  function addingQuestions(input) {
+    if (questions == null) {
       questions.push({
-        id:0,
-        questiontype:input,
+        questiontype: input,
         questionTitle: "",
-        item : [],
-
-
-      })
-    }
-    else{
+        item: [],
+      });
+    } else {
       questions.push({
-      id: questions.length, 
-      questiontype: input,
-      questionTitle:"",
-      item :[],
-
-  
-    })
+        questiontype: input,
+        questionTitle: "",
+        item: [],
+      });
+    }
+    setQuestions([...questions]);
   }
-    setQuestions([...questions])
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(questions);
   }
-  console.log(questions)
+
   return (
-    <div className='createSurvey'>
+    <div className="createSurvey">
       <Container>
         <Row>
           <Col>
-
             <h1>Create Survey</h1>
-            <AddingOption addingQuestions={addingQuestions} ></AddingOption>
-            <Form>
-                {questions.map((q, index)=>{return <QuestionForm questiontype={q.questiontype} delfunction={delQuestions} q={q} questions={questions} setQuestions={setQuestions}/>})}
+            <AddingOption addingQuestions={addingQuestions}></AddingOption>
+            <Form onSubmit={handleSubmit}>
+              {questions.map((q, index) => {
+                return (
+                  <QuestionForm
+                    questiontype={q.questiontype}
+                    delfunction={delQuestions}
+                    q={q}
+                    qIndex={index}
+                    questions={questions}
+                    setQuestions={setQuestions}
+                  />
+                );
+              })}
+              <Button type="submit" variant="danger">
+                Create Survey
+              </Button>
             </Form>
           </Col>
         </Row>
       </Container>
     </div>
-  )
+  );
 }
 
-export default CreateSurvey 
+export default CreateSurvey;

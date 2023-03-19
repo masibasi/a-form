@@ -1,18 +1,22 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
+
 //주관식
 function ShortForm(props) {
-
+  if (props.q.item.length === 0) {
+    props.q.item.push("");
+  }
 
   const textRef = React.useRef();
   const [answer, setAnswer] = useState("");
+
   const onChange = (e) => {
     setAnswer(e.target.value);
+    props.q.item[0] = e.target.value;
   };
-  React.useEffect(() => {
+
+  useEffect(() => {
     if (textRef && textRef.current) {
-      textRef.current.style.height = "100px";
       const taHeight = textRef.current.scrollHeight;
       textRef.current.style.height = taHeight + "px";
     }
@@ -20,10 +24,15 @@ function ShortForm(props) {
 
   return (
     <div>
-      
-        <Form.Group>
-          <Form.Control as="textarea" onChange={onChange} ref={textRef} />
-        </Form.Group>
+      <Form.Group>
+        <Form.Control
+          as="textarea"
+          rows={4}
+          value={props.q.item[0]}
+          onChange={onChange}
+          ref={textRef}
+        />
+      </Form.Group>
     </div>
   );
 }
