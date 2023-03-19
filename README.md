@@ -1,6 +1,6 @@
 # A-Form
 
-<https://form.acceler.kr>
+<https://aform.acceler.kr>
 
 A online form for everyone.<br>
 Developed by Acceler Team.

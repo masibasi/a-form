@@ -6,8 +6,8 @@ export default function Home() {
     <div className='Home'>
       <h1>A-Form</h1>
       <p>A onine form for everyone</p>
-      <Button>About Form</Button>{' '}
-      <Button variant="outline-primary">Create Form</Button>
+      <Button href='/create'>Create Form</Button>{' '}
+      <Button href='/about' variant="outline-primary">About Form</Button>
     </div>
   )
 }
