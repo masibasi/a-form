@@ -15,9 +15,9 @@ function QuestionForm(props) {
         <Card.Title>{props.q.questionTitle}</Card.Title>
         <Button variant="outline-danger" onClick={(e)=>{props.delfunction(props.q.id)}}>X</Button>
           <div className="questionType">
-            {questionType===1 && <RadioButton q={props.q} questions={props.questions} setQuestions={props.setQuestions}/>}
-            {questionType===2 && <Checkbox/>}
-            {questionType===3 && <ShortForm/>}
+            {questionType==1 && <RadioButton q={props.q} questions={props.questions} setQuestions={props.setQuestions}/>}
+            {questionType==2 && <Checkbox q={props.q} questions={props.questions} setQuestions={props.setQuestions}/>}
+            {questionType==3 && <ShortForm/>}
           </div>
       </Card.Body>
     </Card>
