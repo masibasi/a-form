@@ -92,6 +92,7 @@
 /* ShortForm */
 .shortform-input {
     min-height: 200px;
+    resize:none;
 }
 
 .form-selection-btn-wrapper {

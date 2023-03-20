@@ -15,12 +15,7 @@ function ShortForm(props) {
         props.q.item[0] = e.target.value;
     };
 
-    useEffect(() => {
-        if (textRef && textRef.current) {
-            const taHeight = textRef.current.scrollHeight;
-            textRef.current.style.height = taHeight + "px";
-        }
-    }, [answer]);
+   
 
     return (
         <Form.Group>
