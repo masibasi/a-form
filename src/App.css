@@ -1,8 +1,101 @@
 .Home {
-  text-align: center;
-  padding-top: 10%;
+    text-align: center;
+    padding-top: 10%;
+}
+/* CreateSurvey */
+
+.CreateSurvey {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 5%;
+}
+.CreateSurvey .text-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.CreateSurvey .surveyTitle {
+    border: none;
+    font-size: 2.4em;
+    font-weight: 800;
+    margin-bottom: 12px;
+    width: auto;
+    font-weight: 500;
+    text-align: center;
+}
+.CreateSurvey .surveyTitle:focus {
+    outline: none;
+    border-bottom: 1px solid blue;
+}
+.CreateSurvey .surveyDesc {
+    border: none;
+    font-size: 1em;
+    font-weight: 800;
+    margin-bottom: 12px;
+    width: auto;
+    font-weight: 400;
+    text-align: center;
+}
+.CreateSurvey .surveyDesc:focus {
+    outline: none;
+    border-bottom: 1px solid blue;
+}
+.ButtonWrapper {
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.ButtonWrapper .SurveyBtnWrapper {
+    margin-left: 12px;
+}
+.ButtonWrapper .SurveyBtnWrapper .submit-btn {
+    margin-right: 12px;
+}
+.CreateSurvey .Form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
-.createSurvey {
-  justify-content: center;
+/* QuestionForm */
+.QuestionForm {
+    margin-top: 2%;
+    width: 70%;
+}
+.QuestionForm .top-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.QuestionForm .delete-btn {
+    width: 40px;
+    height: 40px;
+}
+.QuestionForm .formtitle {
+    border: none;
+    font-size: 1.3em;
+    font-weight: 800;
+    margin-bottom: 12px;
+    min-width: 300px;
+    width: auto;
+    font-weight: 500;
+}
+.QuestionForm .formtitle:focus {
+    outline: none;
+    border-bottom: 1px solid blue;
+}
+
+/* ShortForm */
+.shortform-input {
+    min-height: 200px;
+}
+
+.form-selection-btn-wrapper {
+}
+.deleteSelection-btn {
+    margin-left: 8px;
 }
