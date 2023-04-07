@@ -1,22 +1,34 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import QuestionForm from "./forms/QuestionForm";
 import AddingOption from "./forms/AddingOption";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import { FormHandlingContext } from "../App";
 
 function CreateSurvey() {
     const [questions, setQuestions] = useState([]); //index, state(어떤 타입의 질문인지)
-    const [surveyTitle, setSurveyTitle] = useState("");
-    const [surveyDesc, setSurveyDesc] = useState("");
+    const [formTitle, setFormTitle] = useState("");
+    const [formDesc, setFormDesc] = useState("");
     const navigate = useNavigate();
-    const nextId = useRef(0); // 데이터 아이디
+    const nextCardId = useRef(0); // surveyCard 아이디
 
+    const { onCreate } = useContext(FormHandlingContext); // Form 작성 완료 handler를 context에서 불러온다
+
+    const handleCreate = () => {
+        if (formTitle == "") {
+            alert("enter in a title");
+            return;
+        } else {
+            onCreate(formTitle, formDesc, questions);
+            navigate("/");
+        }
+    };
     // TODO : X 표시를 누르면 해당 문제의 정보가 삭제된다.
     function delQuestion(index) {
         questions.splice(index, 1);
-        nextId.current -= 1;
+        nextCardId.current -= 1;
         setQuestions([...questions]);
     }
 
@@ -26,17 +38,17 @@ function CreateSurvey() {
                 questionType: input,
                 questionTitle: "",
                 item: [],
-                id: nextId.current,
+                id: nextCardId.current,
             });
         } else {
             questions.push({
                 questionType: input,
                 questionTitle: "",
                 item: [],
-                id: nextId.current,
+                id: nextCardId.current,
             });
         }
-        nextId.current += 1;
+        nextCardId.current += 1;
         setQuestions([...questions]);
     }
 
@@ -52,25 +64,27 @@ function CreateSurvey() {
     return (
         <Container className="CreateSurvey">
             <div className="text-wrapper">
-                <input
-                    className="surveyTitle"
-                    type="text"
-                    value={surveyTitle}
-                    placeholder="Create Survey"
-                    onChange={(e) => {
-                        {
-                            setSurveyTitle(e.target.value);
-                        }
-                    }}
-                />
+                <div>
+                    <input
+                        className="surveyTitle"
+                        type="text"
+                        value={formTitle}
+                        placeholder="Create Form"
+                        onChange={(e) => {
+                            {
+                                setFormTitle(e.target.value);
+                            }
+                        }}
+                    />
+                </div>
                 <input
                     className="surveyDesc"
                     type="text"
-                    value={surveyDesc}
-                    placeholder="Survey Description"
+                    value={formDesc}
+                    placeholder="Form Description"
                     onChange={(e) => {
                         {
-                            setSurveyDesc(e.target.value);
+                            setFormDesc(e.target.value);
                         }
                     }}
                 />
@@ -82,6 +96,9 @@ function CreateSurvey() {
                         className="submit-btn"
                         type="submit"
                         variant="outline-success"
+                        onClick={() => {
+                            handleCreate();
+                        }}
                     >
                         Create Survey
                     </Button>

@@ -5,6 +5,12 @@
 A online form for everyone.<br>
 Developed by Acceler Team.
 
+
+
+Screenshots : 
+<img width="1407" alt="image" src="https://user-images.githubusercontent.com/60805546/226337196-d9d72e43-fa6b-4375-a94d-2363f6571656.png">
+<img width="1394" alt="image" src="https://user-images.githubusercontent.com/60805546/226337235-f235c95d-3640-473d-9571-cfce47952e8e.png">
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
