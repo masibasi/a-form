@@ -33,6 +33,9 @@ export default function Layout() {
                                 <FaGithub size={24} />
                             </Nav.Link>
                         </Nav>
+                        <Nav.Link onClick={() => navigate("/register")}>
+                                회원가입
+                        </Nav.Link>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import Home from "./components/Home";
 import CreateSurvey from "./components/CreateSurvey";
 import About from "./components/About";
+import RegisterForm from "./components/RegisterForm";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -41,6 +42,7 @@ function App() {
                             <Route index element={<Home />} />
                             <Route path="about" element={<About />} />
                             <Route path="create" element={<CreateSurvey />} />
+                            <Route path="register" element={<RegisterForm />} />
                         </Route>
                     </Routes>
                 </BrowserRouter>
