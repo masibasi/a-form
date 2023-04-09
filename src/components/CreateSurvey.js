@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import { Form } from "react-bootstrap";
+import { Form, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import QuestionForm from "./forms/QuestionForm";
 import AddingOption from "./forms/AddingOption";
@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { FormHandlingContext } from "../App";
 
+import axios from "axios";
 function CreateSurvey() {
     const [questions, setQuestions] = useState([]); //index, state(어떤 타입의 질문인지)
     const [formTitle, setFormTitle] = useState("");
@@ -16,13 +17,31 @@ function CreateSurvey() {
 
     const { onCreate } = useContext(FormHandlingContext); // Form 작성 완료 handler를 context에서 불러온다
 
+    /* Variables for modal */
+    const [linkModalShow, setLinkModalShow] = useState(false);
+    const [confirmModalShow, setConfirmModalShow] = useState(false);
+
+    const handleClose = () => {
+        setLinkModalShow(false);
+        navigate("/");
+    };
+    const handleConfirmModalClose = () => {
+        setConfirmModalShow(false);
+    };
+
+    const handleShow = () => {
+        setConfirmModalShow(false);
+        onCreate(formTitle, formDesc, questions);
+        setLinkModalShow(true);
+    };
+
+    // function for creating new form
     const handleCreate = () => {
         if (formTitle == "") {
             alert("enter in a title");
             return;
         } else {
-            onCreate(formTitle, formDesc, questions);
-            navigate("/");
+            setConfirmModalShow(true);
         }
     };
     // TODO : X 표시를 누르면 해당 문제의 정보가 삭제된다.
@@ -63,6 +82,53 @@ function CreateSurvey() {
 
     return (
         <Container className="CreateSurvey">
+            <>
+                <Modal
+                    show={confirmModalShow}
+                    onHide={handleConfirmModalClose}
+                    className="sendFormModal"
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title>Finish Editing?</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Footer>
+                        <Button
+                            variant="secondary"
+                            onClick={handleConfirmModalClose}
+                        >
+                            No, Keep editing
+                        </Button>
+                        <Button variant="primary" onClick={handleShow}>
+                            Yes
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </>
+            <>
+                <Modal
+                    show={linkModalShow}
+                    onHide={handleClose}
+                    className="sendFormModal"
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title>Form Created!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Form Link</Modal.Body>
+                    <input
+                        className="formLinkInput"
+                        type="text"
+                        value={"http://localhost:3000/create"}
+                    />
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
+                        </Button>
+                        <Button variant="primary" onClick={handleClose}>
+                            Follow Link
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </>
             <div className="text-wrapper">
                 <div>
                     <input
@@ -100,7 +166,7 @@ function CreateSurvey() {
                             handleCreate();
                         }}
                     >
-                        Create Survey
+                        Complete Form
                     </Button>
                     <Button
                         className="delete-btn"
@@ -108,7 +174,7 @@ function CreateSurvey() {
                         variant="outline-danger"
                         onClick={() => navigate("/", { replace: true })}
                     >
-                        Delete Survey
+                        Delete Form
                     </Button>
                 </div>
             </div>
