@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import { Form } from "react-bootstrap";
+import { Form, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import QuestionForm from "./forms/QuestionForm";
 import AddingOption from "./forms/AddingOption";
@@ -16,13 +16,31 @@ function CreateSurvey() {
 
     const { onCreate } = useContext(FormHandlingContext); // Form 작성 완료 handler를 context에서 불러온다
 
+    /* Variables for modal */
+    const [createModalShow, setCreateModalShow] = useState(false);
+    const [confirmModalShow, setConfirmModalShow] = useState(false);
+
+    const handleClose = () => {
+        setCreateModalShow(false);
+        navigate("/");
+    };
+    const handleConfirmModalClose = () => {
+        setConfirmModalShow(false);
+    };
+
+    const handleShow = () => {
+        setConfirmModalShow(false);
+        onCreate(formTitle, formDesc, questions);
+        setCreateModalShow(true);
+    };
+
+    // function for creating new form
     const handleCreate = () => {
         if (formTitle == "") {
             alert("enter in a title");
             return;
         } else {
-            onCreate(formTitle, formDesc, questions);
-            navigate("/");
+            setConfirmModalShow(true);
         }
     };
     // TODO : X 표시를 누르면 해당 문제의 정보가 삭제된다.
@@ -63,6 +81,53 @@ function CreateSurvey() {
 
     return (
         <Container className="CreateSurvey">
+            <>
+                <Modal
+                    show={confirmModalShow}
+                    onHide={handleConfirmModalClose}
+                    className="sendFormModal"
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title>Finish Editing?</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Footer>
+                        <Button
+                            variant="secondary"
+                            onClick={handleConfirmModalClose}
+                        >
+                            No, Keep editing
+                        </Button>
+                        <Button variant="primary" onClick={handleShow}>
+                            Yes
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </>
+            <>
+                <Modal
+                    show={createModalShow}
+                    onHide={handleClose}
+                    className="sendFormModal"
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title>Form Created!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Form Link</Modal.Body>
+                    <input
+                        className="formLinkInput"
+                        type="text"
+                        value={"http://localhost:3000/create"}
+                    />
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
+                        </Button>
+                        <Button variant="primary" onClick={handleClose}>
+                            Follow Link
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </>
             <div className="text-wrapper">
                 <div>
                     <input

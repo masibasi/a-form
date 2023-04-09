@@ -7,6 +7,7 @@
     justify-content: center;
 }
 /* CreateSurvey */
+
 .CreateSurvey {
     display: flex;
     flex-direction: column;
@@ -104,6 +105,23 @@
     margin-left: 8px;
 }
 
+/* SendFormModal */
+.sendFormModal {
+}
+.formLinkInput {
+    width: 80%;
+}
+.modal-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-header {
+    width: 100%;
+}
+.modal-footer {
+    padding-left: auto;
+}
 /* FormList */
 .formList {
     margin-top: 50px;
