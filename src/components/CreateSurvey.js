@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { FormHandlingContext } from "../App";
 
+import axios from "axios";
 function CreateSurvey() {
     const [questions, setQuestions] = useState([]); //index, state(어떤 타입의 질문인지)
     const [formTitle, setFormTitle] = useState("");
@@ -17,11 +18,11 @@ function CreateSurvey() {
     const { onCreate } = useContext(FormHandlingContext); // Form 작성 완료 handler를 context에서 불러온다
 
     /* Variables for modal */
-    const [createModalShow, setCreateModalShow] = useState(false);
+    const [linkModalShow, setLinkModalShow] = useState(false);
     const [confirmModalShow, setConfirmModalShow] = useState(false);
 
     const handleClose = () => {
-        setCreateModalShow(false);
+        setLinkModalShow(false);
         navigate("/");
     };
     const handleConfirmModalClose = () => {
@@ -31,7 +32,7 @@ function CreateSurvey() {
     const handleShow = () => {
         setConfirmModalShow(false);
         onCreate(formTitle, formDesc, questions);
-        setCreateModalShow(true);
+        setLinkModalShow(true);
     };
 
     // function for creating new form
@@ -105,7 +106,7 @@ function CreateSurvey() {
             </>
             <>
                 <Modal
-                    show={createModalShow}
+                    show={linkModalShow}
                     onHide={handleClose}
                     className="sendFormModal"
                 >
@@ -165,7 +166,7 @@ function CreateSurvey() {
                             handleCreate();
                         }}
                     >
-                        Create Survey
+                        Complete Form
                     </Button>
                     <Button
                         className="delete-btn"
@@ -173,7 +174,7 @@ function CreateSurvey() {
                         variant="outline-danger"
                         onClick={() => navigate("/", { replace: true })}
                     >
-                        Delete Survey
+                        Delete Form
                     </Button>
                 </div>
             </div>

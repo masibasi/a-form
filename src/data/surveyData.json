@@ -1,0 +1,7 @@
+{
+  "surveyPk": 1,
+  "surveyTitle": "test",
+  "surveyDescription": "test survey",
+  "questions": "[{\"id\": 0,\"questionTitle\": \"test question\",\"questionType\": 1, \"item\": [\"test1\", \"test2\", \"test3\"]},{\"id\": 1,\"questionTitle\": \"test question2\",\"questionType\": 2,\"item\": [\"test4\", \"test5\", \"test6\"]}]",
+  "author": "test"
+}
