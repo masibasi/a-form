@@ -1,0 +1,87 @@
+{
+  "info": {
+    "_postman_id": "43ce6879-4cf0-402f-b61a-304fefc00265",
+    "name": "KEA-aform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "22983364"
+  },
+  "item": [
+    {
+      "name": "/api/survey/:surveyPk",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "/api/survey/create",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"surveyTitle\": \"test\",\n    \"surveyDescription\": \"test survey\",\n    \"questions\": \"[{\\\"id\\\": 0,\\\"questionTitle\\\": \\\"test question\\\",\\\"questionType\\\": 1, \\\"item\\\": [\\\"test1\\\", \\\"test2\\\", \\\"test3\\\"]},{\\\"id\\\": 1,\\\"questionTitle\\\": \\\"test question2\\\",\\\"questionType\\\": 2,\\\"item\\\": [\\\"test4\\\", \\\"test5\\\", \\\"test6\\\"]}]\",\n    \"userId\": \"test\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/api/survey/create",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "survey", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/api/surveyAnswer",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"surveyPk\": 1,\n    \"userId\": \"test\",\n    \"answer\": []\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/api/surveyAnswer",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "surveyAnswer"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/api/user",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"userId\": \"test\",\n    \"userEmail\": \"test@test.com\",\n    \"userPassword\": \"qwer1234!\",\n    \"userGender\": false,\n    \"userPhone\": \"000-0000-0000\",\n    \"userAddress\": \"Seoul, Korea\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/api/user",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "user"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
