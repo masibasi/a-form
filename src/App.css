@@ -1,6 +1,6 @@
 .Home {
     text-align: center;
-    padding-top: 10%;
+    padding-top: 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,7 +20,7 @@
     justify-content: center;
     width: 100%;
     padding: 5%;
-    margin-top: 40px;
+    margin-top: 10%;
 }
 .CreateSurvey .text-wrapper {
     display: flex;
@@ -146,4 +146,8 @@
     border-bottom: 1px solid rgba(151, 151, 151, 0.4);
     text-align: left;
     padding-left: 20%;
+}
+
+/* Navbar */
+.navbarContainer {
 }

@@ -12,7 +12,7 @@ export default function Layout() {
     return (
         <div>
             <Navbar fixed="top" bg="light" expand="lg">
-                <Container>
+                <Container className="navbarContainer">
                     <Navbar.Brand onClick={() => navigate("/")}>
                         <b>A-Form</b>
                     </Navbar.Brand>

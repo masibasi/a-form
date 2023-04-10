@@ -22,18 +22,23 @@ function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(
         localStorage.getItem("isLoggedIn")
     );
-    const nextSurveyId = useRef(0); // 전체 forms 의 id를 관리하는 변수
+    const nextSurveyId = useRef(1); // 전체 forms 의 id를 관리하는 변수
     const [formData, setFormData] = useState([]); //Form 전체 데이터 관리 state
 
     // Create
     const onCreate = (formTitle, formDesc, questions) => {
-        const options = { headers: { "Content-Type": "application/json" } };
         const newForm = {
             id: nextSurveyId.current,
             formTitle: formTitle,
             formDesc: formDesc,
             questions: [...questions],
         };
+        formData === []
+            ? setFormData([newForm])
+            : setFormData([...formData, newForm]);
+
+        // send newSurvey to database
+        const options = { headers: { "Content-Type": "application/json" } };
         const newSurvey = {
             // surveyPk: nextSurveyId.current,
             surveyTitle: formTitle,
@@ -41,11 +46,7 @@ function App() {
             questions: JSON.stringify([...questions]),
             author: 1,
         };
-        console.log("Axios newsurvy : ", newSurvey);
-        formData === []
-            ? setFormData([newForm])
-            : setFormData([...formData, newForm]);
-        // send newSurvey to database
+        console.log("Axios newsurey : ", newSurvey);
         axios
             .post("/survey/create", newSurvey, options)
             .then((response) => {})

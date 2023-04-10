@@ -13,7 +13,7 @@ export const FormList = () => {
                 <div
                     key={it.id}
                     className="formListElem"
-                    onClick={() => navigate(`survey/${it.id}`)}
+                    onClick={() => navigate(`/survey/${it.id}`)}
                 >
                     Title : {it.formTitle}
                 </div>

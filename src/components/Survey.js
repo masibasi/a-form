@@ -5,18 +5,24 @@ import QuestionForm from "./forms/QuestionForm";
 import AddingOption from "./forms/AddingOption";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import { FormHandlingContext } from "../App";
-import Axios from "axios";
+
+import axios from "axios";
 
 export default function Survey() {
     const [data, setData] = useState({});
     const [surveyAnswer, setSurveyAnswer] = useState();
-    const { surveyId } = useParams();
+    const { id } = useParams();
 
     useEffect(() => {
-        // Axios.get(`http://localhost:8080/survey/${data.surveyPk}/`).then((response) => {
-        //   setData(response.data);
-        // });
+        axios
+            .get(`/survey/${id}`)
+            .then((response) => {
+                setData(response.data);
+                console.log("response : ", response.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
 
         // 일단 axios로 값을 받았다고 가정하고 설정
         let response = {
