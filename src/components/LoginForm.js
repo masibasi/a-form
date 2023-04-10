@@ -24,7 +24,7 @@ export default function Login() {
     const loginClick = () => {
         axios
             .post(
-                "/user/login",
+                "/api/user/login",
                 {
                     userId,
                     userPassword,
@@ -51,7 +51,7 @@ export default function Login() {
         }
     };
     const register = (e) => {
-        navigate("/register");
+        navigate("/api/register");
     };
 
     return (

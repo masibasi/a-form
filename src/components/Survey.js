@@ -15,7 +15,7 @@ export default function Survey() {
 
     useEffect(() => {
         axios
-            .get(`/survey/${id}`)
+            .get(`http://127.0.0.1:8080/api/survey/${id}`)
             .then((response) => {
                 setData(response.data);
                 console.log("response : ", response.data);

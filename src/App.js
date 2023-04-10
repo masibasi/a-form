@@ -48,7 +48,7 @@ function App() {
         };
         console.log("Axios newsurey : ", newSurvey);
         axios
-            .post("/survey/create", newSurvey, options)
+            .post("/api/survey/create", newSurvey, options)
             .then((response) => {})
             .catch((err) => {
                 console.log(err);
