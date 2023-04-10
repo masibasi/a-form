@@ -35,15 +35,17 @@ function App() {
             questions: [...questions],
         };
         const newSurvey = {
-            surveyPk: nextSurveyId.current,
+            // surveyPk: nextSurveyId.current,
             surveyTitle: formTitle,
             surveyDescription: formDesc,
-            questions: [...questions],
+            questions: JSON.stringify([...questions]),
+            author: 1,
         };
+        console.log("Axios newsurvy : ", newSurvey);
         formData === []
             ? setFormData([newForm])
             : setFormData([...formData, newForm]);
-        // send newForm to database
+        // send newSurvey to database
         axios
             .post("/survey/create", newSurvey, options)
             .then((response) => {})
