@@ -16,7 +16,7 @@ function CreateSurvey() {
     const nextCardId = useRef(0); // surveyCard 아이디
 
     const { onCreate } = useContext(FormHandlingContext); // Form 작성 완료 handler를 context에서 불러온다
-    const { nextSurveyId } = useContext(IdContext);
+    const surveyId = useContext(IdContext);
     /* Variables for modal */
     const [linkModalShow, setLinkModalShow] = useState(false);
     const [confirmModalShow, setConfirmModalShow] = useState(false);
@@ -109,8 +109,8 @@ function CreateSurvey() {
                         className="formLinkInput"
                         type="text"
                         value={
-                            `http://localhost:3000/survey/1`
-                            // value={`http://localhost:3000/survey/${nextSurveyId}`
+                            // `http://localhost:3000/survey/1`
+                            `http://localhost:3000/survey/${surveyId}`
                         }
                     />
                     <Modal.Footer>
@@ -119,7 +119,7 @@ function CreateSurvey() {
                         </Button>
                         <Button
                             variant="primary"
-                            onClick={() => navigate("survey/1")}
+                            onClick={() => navigate(`/survey/${surveyId}`)}
                         >
                             Follow Link
                         </Button>

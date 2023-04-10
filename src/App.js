@@ -23,21 +23,11 @@ function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(
         localStorage.getItem("isLoggedIn")
     );
-    const nextSurveyId = useRef(1); // 전체 forms 의 id를 관리하는 변수
+    const [surveyId, setSurveyId] = useState(); // 전체 forms 의 id를 관리하는 변수
     const [formData, setFormData] = useState([]); //Form 전체 데이터 관리 state
 
     // Create
     const onCreate = (formTitle, formDesc, questions) => {
-        const newForm = {
-            id: nextSurveyId.current,
-            formTitle: formTitle,
-            formDesc: formDesc,
-            questions: [...questions],
-        };
-        formData === []
-            ? setFormData([newForm])
-            : setFormData([...formData, newForm]);
-
         // send newSurvey to database
         const options = { headers: { "Content-Type": "application/json" } };
         const newSurvey = {
@@ -50,11 +40,22 @@ function App() {
         console.log("Axios newsurey : ", newSurvey);
         axios
             .post("/api/survey/create", newSurvey, options)
-            .then((response) => {})
+            .then((response) => {
+                console.log(response.data.surveyPk);
+                setSurveyId(response.data.surveyPk);
+                const newForm = {
+                    id: response.data.surveyPk,
+                    formTitle: formTitle,
+                    formDesc: formDesc,
+                    questions: [...questions],
+                };
+                formData === []
+                    ? setFormData([newForm])
+                    : setFormData([...formData, newForm]);
+            })
             .catch((err) => {
                 console.log(err);
             });
-        nextSurveyId.current += 1;
     };
 
     useEffect(() => {
@@ -64,7 +65,7 @@ function App() {
     return (
         <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
             <FormStateContext.Provider value={formData}>
-                <IdContext.Provider value={nextSurveyId}>
+                <IdContext.Provider value={surveyId}>
                     <FormHandlingContext.Provider value={{ onCreate }}>
                         <BrowserRouter>
                             <Routes>
