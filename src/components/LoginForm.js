@@ -24,7 +24,7 @@ export default function Login() {
     const loginClick = () => {
         axios
             .post(
-                "/api/user/login",
+                "/user/login",
                 {
                     userId,
                     userPassword,

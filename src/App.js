@@ -45,7 +45,7 @@ function App() {
             : setFormData([...formData, newForm]);
         // send newForm to database
         axios
-            .post("/user/login", newSurvey, options)
+            .post("/survey/create", newSurvey, options)
             .then((response) => {})
             .catch((err) => {
                 console.log(err);
