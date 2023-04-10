@@ -1,96 +1,93 @@
 .App {
-  background-color: white;
+    background-color: white;
 }
 
 .Auth-form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  font-family: 'larizo';
-}
-
-.Auth-form {
-  width: 420px;
-  box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
-  padding-top: 30px;
-  padding-bottom: 20px;
-  border-radius: 8px;
-  background-color: white;
-}
-
-.Auth-form-content {
-  width: 420px;
-  padding-left: 12%;
-  padding-right: 12%;
-  
-}
-
-.Auth-form-title {
-  text-align: center;
-  margin-bottom: 1em;
-  font-size: 24px;
-  color: rgb(34, 34, 34);
-  font-weight: 800;
-}
-
-label {
-  font-size: 14px;
-  font-weight: 600;
-  color: rgb(34, 34, 34);
-}
-
-@media (max-width:550px) {
-
-
-  .App {
-    background-color: white;
-  }
-  
-  .Auth-form-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: 100vh;
-    font-family: 'larizo';
-  }
-  
-.sharpic{
-    width: 100%;
-    height: 30%;
-
+    /* height: 80vh; */
+    font-family: "larizo";
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
 
-  .Auth-form {
-    width: 50;
-    height:65%;
+.Auth-form {
+    width: 420px;
     box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
-    padding-top: 30px;
-    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 40px;
     border-radius: 8px;
     background-color: white;
-    float: left;
-  }
-  
-  .Auth-form-content {
+}
+
+.Auth-form-content {
+    width: 420px;
     padding-left: 12%;
     padding-right: 12%;
-  }
-  
-  .Auth-form-title {
+}
+
+.Auth-form-title {
     text-align: center;
     margin-bottom: 1em;
     font-size: 24px;
     color: rgb(34, 34, 34);
     font-weight: 800;
-  }
-  
-  label {
+}
+
+label {
     font-size: 14px;
     font-weight: 600;
     color: rgb(34, 34, 34);
-  }
+}
 
+@media (max-width: 550px) {
+    .App {
+        background-color: white;
+    }
+
+    .Auth-form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        font-family: "larizo";
+    }
+
+    .sharpic {
+        width: 100%;
+        height: 30%;
+    }
+
+    .Auth-form {
+        width: 50;
+        height: 65%;
+        box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+        padding-top: 30px;
+        padding-bottom: 20px;
+        border-radius: 8px;
+        background-color: white;
+        float: left;
+    }
+
+    .Auth-form-content {
+        padding-left: 12%;
+        padding-right: 12%;
+    }
+
+    .Auth-form-title {
+        text-align: center;
+        margin-bottom: 1em;
+        font-size: 24px;
+        color: rgb(34, 34, 34);
+        font-weight: 800;
+    }
+
+    label {
+        font-size: 14px;
+        font-weight: 600;
+        color: rgb(34, 34, 34);
+    }
 }

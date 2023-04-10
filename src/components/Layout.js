@@ -11,7 +11,7 @@ export default function Layout() {
     const { isLoggedIn } = useContext(AuthContext);
     return (
         <div>
-            <Navbar bg="light" expand="lg">
+            <Navbar fixed="top" bg="light" expand="lg">
                 <Container>
                     <Navbar.Brand onClick={() => navigate("/")}>
                         <b>A-Form</b>
@@ -38,27 +38,36 @@ export default function Layout() {
 
                         {isLoggedIn ? (
                             <>
-                            <Nav.Link onClick={() => navigate("/my-page")}>
-                                마이페이지
-                            </Nav.Link>
-                            <Nav.Link onClick={() => {
-                                if (window.confirm("로그아웃하시겠습니까?")){
-                                    localStorage.removeItem("isLoggedIn");
-                                    window.location.reload();
-                                }
-                            }}>
-                                로그아웃
-                            </Nav.Link>
-                        </>)
-                            : (<>
-                            <Nav.Link onClick={() => navigate("/register")}>
-                                회원가입
-                            </Nav.Link>
-                            <Nav.Link onClick={() => navigate("/login")}>
+                                <Nav.Link onClick={() => navigate("/my-page")}>
+                                    마이페이지
+                                </Nav.Link>
+                                <Nav.Link
+                                    onClick={() => {
+                                        if (
+                                            window.confirm(
+                                                "로그아웃하시겠습니까?"
+                                            )
+                                        ) {
+                                            localStorage.removeItem(
+                                                "isLoggedIn"
+                                            );
+                                            window.location.reload();
+                                        }
+                                    }}
+                                >
+                                    로그아웃
+                                </Nav.Link>
+                            </>
+                        ) : (
+                            <>
+                                <Nav.Link onClick={() => navigate("/register")}>
+                                    회원가입
+                                </Nav.Link>
+                                <Nav.Link onClick={() => navigate("/login")}>
                                     로그인
-                            </Nav.Link>
-                            </>)}
-
+                                </Nav.Link>
+                            </>
+                        )}
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
