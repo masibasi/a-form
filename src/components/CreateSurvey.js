@@ -6,8 +6,8 @@ import AddingOption from "./forms/AddingOption";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { FormHandlingContext } from "../App";
+import Axios from "axios";
 
-import axios from "axios";
 function CreateSurvey() {
     const [questions, setQuestions] = useState([]); //index, state(어떤 타입의 질문인지)
     const [formTitle, setFormTitle] = useState("");
@@ -36,6 +36,11 @@ function CreateSurvey() {
     };
 
     // function for creating new form
+    const options = {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    };
     const handleCreate = () => {
         if (formTitle == "") {
             alert("enter in a title");
@@ -71,13 +76,16 @@ function CreateSurvey() {
         setQuestions([...questions]);
     }
 
-    useEffect(() => {
-        console.log(questions);
-    }, [questions]);
+    // useEffect(() => {
+    //     console.log(questions);
+    // }, [questions]);
 
     function handleSubmit(e) {
         e.preventDefault();
         console.log(questions);
+
+        Axios.post("http://localhost:8080/survey/create", questions, options).then(response => {
+        }).catch((err) => { console.log(err) });
     }
 
     return (
@@ -182,6 +190,7 @@ function CreateSurvey() {
                 {questions.map((q, index) => {
                     return (
                         <QuestionForm
+                            forCreate={true}
                             questionType={q.questionType}
                             delQuestion={delQuestion}
                             q={q}
