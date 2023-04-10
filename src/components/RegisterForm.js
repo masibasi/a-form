@@ -16,11 +16,18 @@ export default function RegisterForm() {
   const [userPhone, setUserPhone] = useState('');
   const [userAddress, setUserAddress] = useState('');
 
+  const [isValidUserEmail, setIsValidUserEmail] = useState(false);
   const [isValidUserPassword, setIsValidUserPassword] = useState(false);
   const [isValidUserPhone, setIsValidUserPhone] = useState(false);
 
+  const validateEmail = (value) => {
+    const pattern = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const isValid = pattern.test(value);
+    setIsValidUserEmail(isValid);
+  }
+
   const validatePassword = (value) => {
-    const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+]{8,}$/;
     const isValid = pattern.test(value);
     setIsValidUserPassword(isValid);
   }
@@ -35,7 +42,9 @@ export default function RegisterForm() {
     setUserId(e.target.value);
   }
   const emailChange = (e) => {
-    setUserEmail(e.target.value);
+    const value = e.target.value;
+    setUserEmail(value);
+    validateEmail(value);
   }
   const passwordChange = (e) => {
     const value = e.target.value;
@@ -59,7 +68,7 @@ export default function RegisterForm() {
 
   const confirm = (e) => {
     axios
-      .post("http://127.0.0.1:8080/app/user", {
+      .post("/user", {
         userId,
         userEmail,
         userPassword,
@@ -114,6 +123,8 @@ export default function RegisterForm() {
               className="form-control mt-1"
               onChange={emailChange}
             />
+            {!isValidUserEmail && <div style={{ color: 'red', fontSize: '6px' }}>이메일 형식을 확인해주세요.</div>}
+            {isValidUserEmail && <div style={{ color: 'green', fontSize: '6px' }}>올바른 이메일 형식입니다.</div>}
           </div>
           <div className="form-group mt-3">
             <label>Password</label>
