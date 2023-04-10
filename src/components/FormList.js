@@ -8,12 +8,12 @@ export const FormList = () => {
 
     return (
         <div className="formList">
-            {formData == [] ? null : <h3>Form List</h3>}
+            {formData == "" ? null : <h3>Form List</h3>}
             {formData.map((it) => (
                 <div
                     key={it.id}
                     className="formListElem"
-                    onClick={() => navigate(`form/${it.id}`)}
+                    onClick={() => navigate(`survey/${it.id}`)}
                 >
                     Title : {it.formTitle}
                 </div>

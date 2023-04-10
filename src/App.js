@@ -12,6 +12,7 @@ import LoginForm from "./components/LoginForm";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form } from "./components/Form";
+import axios from "axios";
 
 export const FormHandlingContext = React.createContext();
 export const FormStateContext = React.createContext();
@@ -26,15 +27,29 @@ function App() {
 
     // Create
     const onCreate = (formTitle, formDesc, questions) => {
+        const options = { headers: { "Content-Type": "application/json" } };
         const newForm = {
             id: nextSurveyId.current,
             formTitle: formTitle,
             formDesc: formDesc,
             questions: [...questions],
         };
+        const newSurvey = {
+            surveyPk: nextSurveyId.current,
+            surveyTitle: formTitle,
+            surveyDescription: formDesc,
+            questions: [...questions],
+        };
         formData === []
             ? setFormData([newForm])
             : setFormData([...formData, newForm]);
+        // send newForm to database
+        axios
+            .post("/api/survey/create", newSurvey, options)
+            .then((response) => {})
+            .catch((err) => {
+                console.log(err);
+            });
         nextSurveyId.current += 1;
     };
 
@@ -55,7 +70,7 @@ function App() {
                                     path="create"
                                     element={<CreateSurvey />}
                                 />
-                                <Route path="survey" element={<Survey />} />
+                                <Route path="survey/:id" element={<Survey />} />
                                 <Route
                                     path="register"
                                     element={<RegisterForm />}

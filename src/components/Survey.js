@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import QuestionForm from "./forms/QuestionForm";
 import AddingOption from "./forms/AddingOption";
 import Container from "react-bootstrap/Container";
@@ -11,6 +11,7 @@ import Axios from "axios";
 export default function Survey() {
     const [data, setData] = useState({});
     const [surveyAnswer, setSurveyAnswer] = useState();
+    const { surveyId } = useParams();
 
     useEffect(() => {
         // Axios.get(`http://localhost:8080/survey/${data.surveyPk}/`).then((response) => {
