@@ -5,7 +5,7 @@ import QuestionForm from "./forms/QuestionForm";
 import AddingOption from "./forms/AddingOption";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import { FormHandlingContext } from "../App";
+import { FormHandlingContext, IdContext } from "../App";
 import Axios from "axios";
 
 function CreateSurvey() {
@@ -16,7 +16,7 @@ function CreateSurvey() {
     const nextCardId = useRef(0); // surveyCard 아이디
 
     const { onCreate } = useContext(FormHandlingContext); // Form 작성 완료 handler를 context에서 불러온다
-
+    const { nextSurveyId } = useContext(IdContext);
     /* Variables for modal */
     const [linkModalShow, setLinkModalShow] = useState(false);
     const [confirmModalShow, setConfirmModalShow] = useState(false);
@@ -108,13 +108,19 @@ function CreateSurvey() {
                         disabled
                         className="formLinkInput"
                         type="text"
-                        value={"http://localhost:3000/create"}
+                        value={
+                            `http://localhost:3000/survey/1`
+                            // value={`http://localhost:3000/survey/${nextSurveyId}`
+                        }
                     />
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                        <Button variant="primary" onClick={handleClose}>
+                        <Button
+                            variant="primary"
+                            onClick={() => navigate("survey/1")}
+                        >
                             Follow Link
                         </Button>
                     </Modal.Footer>

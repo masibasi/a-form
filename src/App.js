@@ -17,6 +17,7 @@ import axios from "axios";
 export const FormHandlingContext = React.createContext();
 export const FormStateContext = React.createContext();
 export const AuthContext = React.createContext();
+export const IdContext = React.createContext();
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(
@@ -44,7 +45,7 @@ function App() {
             surveyTitle: formTitle,
             surveyDescription: formDesc,
             questions: JSON.stringify([...questions]),
-            author: 1,
+            userId: "asdf", // 로그인 한 사람 아이디 동적으로 바뀌게 수정 필요
         };
         console.log("Axios newsurey : ", newSurvey);
         axios
@@ -63,26 +64,34 @@ function App() {
     return (
         <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
             <FormStateContext.Provider value={formData}>
-                <FormHandlingContext.Provider value={{ onCreate }}>
-                    <BrowserRouter>
-                        <Routes>
-                            <Route path="/" element={<Layout />}>
-                                <Route index element={<Home />} />
-                                <Route path="about" element={<About />} />
-                                <Route
-                                    path="create"
-                                    element={<CreateSurvey />}
-                                />
-                                <Route path="survey/:id" element={<Survey />} />
-                                <Route
-                                    path="register"
-                                    element={<RegisterForm />}
-                                />
-                                <Route path="login" element={<LoginForm />} />
-                            </Route>
-                        </Routes>
-                    </BrowserRouter>
-                </FormHandlingContext.Provider>
+                <IdContext.Provider value={nextSurveyId}>
+                    <FormHandlingContext.Provider value={{ onCreate }}>
+                        <BrowserRouter>
+                            <Routes>
+                                <Route path="/" element={<Layout />}>
+                                    <Route index element={<Home />} />
+                                    <Route path="about" element={<About />} />
+                                    <Route
+                                        path="create"
+                                        element={<CreateSurvey />}
+                                    />
+                                    <Route
+                                        path="survey/:id"
+                                        element={<Survey />}
+                                    />
+                                    <Route
+                                        path="register"
+                                        element={<RegisterForm />}
+                                    />
+                                    <Route
+                                        path="login"
+                                        element={<LoginForm />}
+                                    />
+                                </Route>
+                            </Routes>
+                        </BrowserRouter>
+                    </FormHandlingContext.Provider>
+                </IdContext.Provider>
             </FormStateContext.Provider>
         </AuthContext.Provider>
     );
