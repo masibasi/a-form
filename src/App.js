@@ -10,51 +10,63 @@ import LoginForm from "./components/LoginForm";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Form } from "./components/Form";
 
 export const FormHandlingContext = React.createContext();
 export const FormStateContext = React.createContext();
 export const AuthContext = React.createContext();
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn"));
-  const nextSurveyId = useRef(0); // 전체 forms 의 id를 관리하는 변수
-  const [formData, setFormData] = useState([]); //Form 전체 데이터 관리 state
+    const [isLoggedIn, setIsLoggedIn] = useState(
+        localStorage.getItem("isLoggedIn")
+    );
+    const nextSurveyId = useRef(0); // 전체 forms 의 id를 관리하는 변수
+    const [formData, setFormData] = useState([]); //Form 전체 데이터 관리 state
 
-  // Create
-  const onCreate = (formTitle, formDesc, questions) => {
-    const newForm = {
-      id: nextSurveyId.current,
-      formTitle: formTitle,
-      formDesc: formDesc,
-      questions: [...questions],
+    // Create
+    const onCreate = (formTitle, formDesc, questions) => {
+        const newForm = {
+            id: nextSurveyId.current,
+            formTitle: formTitle,
+            formDesc: formDesc,
+            questions: [...questions],
+        };
+        formData === []
+            ? setFormData([newForm])
+            : setFormData([...formData, newForm]);
+        nextSurveyId.current += 1;
     };
-    formData === [] ? setFormData([newForm]) : setFormData([...formData, newForm]);
-    nextSurveyId.current += 1;
-  };
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
+    useEffect(() => {
+        console.log(formData);
+    }, [formData]);
 
-  return (
-    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
-      <FormStateContext.Provider value={formData}>
-        <FormHandlingContext.Provider value={{ onCreate }}>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Layout />}>
-                <Route index element={<Home />} />
-                <Route path="about" element={<About />} />
-                <Route path="create" element={<CreateSurvey />} />
-                <Route path="register" element={<RegisterForm />} />
-                <Route path="login" element={<LoginForm />} />
-              </Route>
-            </Routes>
-          </BrowserRouter>
-        </FormHandlingContext.Provider>
-      </FormStateContext.Provider>
-    </AuthContext.Provider>
-  );
+    return (
+        <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+            <FormStateContext.Provider value={formData}>
+                <FormHandlingContext.Provider value={{ onCreate }}>
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path="/" element={<Layout />}>
+                                <Route index element={<Home />} />
+                                <Route path="about" element={<About />} />
+                                <Route
+                                    path="create"
+                                    element={<CreateSurvey />}
+                                />
+                                <Route
+                                    path="register"
+                                    element={<RegisterForm />}
+                                />
+                                <Route path="login" element={<LoginForm />} />
+                                <Route path="form/:id" element={<Form />} />
+                            </Route>
+                        </Routes>
+                    </BrowserRouter>
+                </FormHandlingContext.Provider>
+            </FormStateContext.Provider>
+        </AuthContext.Provider>
+    );
 }
 
 export default App;
