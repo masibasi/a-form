@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./components/Home";
 import CreateSurvey from "./components/CreateSurvey";
+import Survey from "./components/Survey";
 import About from "./components/About";
 import RegisterForm from "./components/RegisterForm";
 
@@ -54,12 +55,12 @@ function App() {
                                     path="create"
                                     element={<CreateSurvey />}
                                 />
+                                <Route path="survey" element={<Survey />} />
                                 <Route
                                     path="register"
                                     element={<RegisterForm />}
                                 />
                                 <Route path="login" element={<LoginForm />} />
-                                <Route path="form/:id" element={<Form />} />
                             </Route>
                         </Routes>
                     </BrowserRouter>
