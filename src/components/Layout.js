@@ -38,34 +38,44 @@ export default function Layout() {
 
                         {isLoggedIn ? (
                             <>
-                                <Nav.Link onClick={() => navigate("/my-page")}>
-                                    마이페이지
-                                </Nav.Link>
-                                <Nav.Link
-                                    onClick={() => {
-                                        if (
-                                            window.confirm(
-                                                "로그아웃하시겠습니까?"
-                                            )
-                                        ) {
-                                            localStorage.removeItem(
-                                                "isLoggedIn"
-                                            );
-                                            window.location.reload();
-                                        }
-                                    }}
-                                >
-                                    로그아웃
-                                </Nav.Link>
+                                <Nav className="my-3">
+                                    <Nav.Link
+                                        onClick={() => navigate("/my-page")}
+                                    >
+                                        마이페이지
+                                    </Nav.Link>
+                                    <Nav.Link
+                                        onClick={() => {
+                                            if (
+                                                window.confirm(
+                                                    "로그아웃하시겠습니까?"
+                                                )
+                                            ) {
+                                                localStorage.removeItem(
+                                                    "isLoggedIn"
+                                                );
+                                                window.location.reload();
+                                            }
+                                        }}
+                                    >
+                                        로그아웃
+                                    </Nav.Link>
+                                </Nav>
                             </>
                         ) : (
                             <>
-                                <Nav.Link onClick={() => navigate("/register")}>
-                                    회원가입
-                                </Nav.Link>
-                                <Nav.Link onClick={() => navigate("/login")}>
-                                    로그인
-                                </Nav.Link>
+                                <Nav className="my-3">
+                                    <Nav.Link
+                                        onClick={() => navigate("/register")}
+                                    >
+                                        회원가입
+                                    </Nav.Link>
+                                    <Nav.Link
+                                        onClick={() => navigate("/login")}
+                                    >
+                                        로그인
+                                    </Nav.Link>
+                                </Nav>
                             </>
                         )}
                     </Navbar.Collapse>

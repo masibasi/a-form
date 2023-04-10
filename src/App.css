@@ -6,6 +6,11 @@
     align-items: center;
     justify-content: center;
 }
+.homeBtnWrapper {
+    display: flex;
+    gap: 10px;
+}
+
 /* CreateSurvey */
 
 .CreateSurvey {

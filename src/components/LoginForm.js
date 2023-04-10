@@ -32,7 +32,7 @@ export default function Login() {
                 { "Content-Type": "application/json" }
             )
             .then((res) => {
-                alert("Success!");
+                alert("로그인 되었습니다!");
                 setIsLoggedIn(true);
                 localStorage.setItem("isLoggedIn", true);
                 navigate("/");
