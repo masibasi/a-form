@@ -11,7 +11,6 @@ import LoginForm from "./components/LoginForm";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Form } from "./components/Form";
 import axios from "axios";
 
 export const FormHandlingContext = React.createContext();

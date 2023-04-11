@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import QuestionForm from "./forms/QuestionForm";
-import AddingOption from "./forms/AddingOption";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
@@ -73,7 +72,7 @@ export default function Survey() {
         // };
         // console.log(answerForm);
         // setSurveyAnswer(answerForm);
-    }, []);
+    }, [id]);
 
     function handleSubmit(e) {
         // 버튼누르면 응답 제출
