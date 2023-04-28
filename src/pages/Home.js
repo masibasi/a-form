@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-import { FormList } from "./FormList";
+import { FormList } from "../components/FormList";
 
 export default function Home() {
     const navigation = useNavigate();

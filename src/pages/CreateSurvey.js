@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { Form, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import QuestionForm from "./forms/QuestionForm";
-import AddingOption from "./forms/AddingOption";
+import QuestionForm from "../components/forms/QuestionForm";
+import AddingOption from "../components/forms/AddingOption";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { FormHandlingContext, IdContext } from "../App";

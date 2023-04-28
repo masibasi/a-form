@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-import Home from "./components/Home";
-import CreateSurvey from "./components/CreateSurvey";
-import Survey from "./components/Survey";
-import About from "./components/About";
-import RegisterForm from "./components/RegisterForm";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import CreateSurvey from "./pages/CreateSurvey";
+import Survey from "./pages/Survey";
+import About from "./pages/About";
+import RegisterForm from "./pages/RegisterForm";
 
-import LoginForm from "./components/LoginForm";
+import LoginForm from "./pages/LoginForm";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -31,7 +31,7 @@ function App() {
         // send newSurvey to database
         const options = { headers: { "Content-Type": "application/json" } };
         const newSurvey = {
-            // surveyPk: nextSurveyId.current,
+            // surveyPk: nextS  furveyId.current,
             surveyTitle: formTitle,
             surveyDescription: formDesc,
             questions: JSON.stringify([...questions]),
