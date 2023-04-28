@@ -39,7 +39,7 @@ function App() {
         };
         console.log("Axios newsurey : ", newSurvey);
         axios
-            .post("/api/survey/create", newSurvey, options)
+            .post("http://127.0.0.1:8080/api/survey/create", newSurvey, options)
             .then((response) => {
                 console.log(response.data.surveyPk);
                 setSurveyId(response.data.surveyPk);

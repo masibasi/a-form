@@ -11,6 +11,10 @@
     gap: 10px;
 }
 
+/* Layout */
+.navMenuComponent {
+    margin-right: 12px;
+}
 /* CreateSurvey */
 
 .CreateSurvey {
