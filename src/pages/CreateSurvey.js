@@ -1,11 +1,11 @@
 import React, { useState, useRef, useContext } from "react";
 import { Form, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import QuestionForm from "./forms/QuestionForm";
-import AddingOption from "./forms/AddingOption";
+import QuestionForm from "../components/forms/QuestionForm";
+import AddingOption from "../components/forms/AddingOption";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import { FormHandlingContext } from "../App";
+import { FormHandlingContext, IdContext } from "../App";
 
 function CreateSurvey() {
     const [questions, setQuestions] = useState([]); //index, state(어떤 타입의 질문인지)
@@ -15,6 +15,7 @@ function CreateSurvey() {
     const nextCardId = useRef(0); // surveyCard 아이디
 
     const { onCreate } = useContext(FormHandlingContext); // Form 작성 완료 handler를 context에서 불러온다
+    const surveyId = useContext(IdContext);
     /* Variables for modal */
     const [linkModalShow, setLinkModalShow] = useState(false);
     const [confirmModalShow, setConfirmModalShow] = useState(false);
@@ -107,8 +108,8 @@ function CreateSurvey() {
                         className="formLinkInput"
                         type="text"
                         value={
-                            `http://localhost:3000/survey/1`
-                            // value={`http://localhost:3000/survey/${nextSurveyId}`
+                            // `http://localhost:3000/survey/1`
+                            `http://localhost:3000/survey/${surveyId}`
                         }
                     />
                     <Modal.Footer>
@@ -117,7 +118,7 @@ function CreateSurvey() {
                         </Button>
                         <Button
                             variant="primary"
-                            onClick={() => navigate("survey/1")}
+                            onClick={() => navigate(`/survey/${surveyId}`)}
                         >
                             Follow Link
                         </Button>

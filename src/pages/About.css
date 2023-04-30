@@ -1,0 +1,17 @@
+/* About */
+
+.About {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.About img {
+    width: 100px;
+}
+.About .page1 {
+    display: flex;
+    /* flex-direction: column; */
+}
+.About .A {
+    color: blue;
+}

@@ -3,8 +3,10 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Outlet, useNavigate } from "react-router-dom";
-import { FaGithub } from "react-icons/fa";
+
 import { AuthContext } from "../App";
+
+import logo from "../assets/images/A-Form-logo.png";
 
 export default function Layout() {
     const navigate = useNavigate();
@@ -14,28 +16,17 @@ export default function Layout() {
             <Navbar fixed="top" bg="light" expand="lg">
                 <Container className="navbarContainer">
                     <Navbar.Brand onClick={() => navigate("/")}>
-                        <b>A-Form</b>
+                        <img src={logo} width={"130px"} />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <Nav.Link onClick={() => navigate("/")}>
-                                Home
-                            </Nav.Link>
-                            <Nav.Link onClick={() => navigate("/about")}>
-                                About
-                            </Nav.Link>
-                        </Nav>
-                        <Navbar.Text>
-                            Developed by:{" "}
-                            <a href="https://acceler.kr">Team ACCELER</a>
-                        </Navbar.Text>
-                        <Nav>
-                            <Nav.Link href="https://github.com/KEA-ACCELER/a-form">
-                                <FaGithub size={24} />
-                            </Nav.Link>
-                        </Nav>
-
+                        <Nav className="me-auto"></Nav>
+                        <Nav.Link
+                            className="navMenuComponent"
+                            onClick={() => navigate("/about")}
+                        >
+                            About
+                        </Nav.Link>
                         {isLoggedIn ? (
                             <>
                                 <Nav className="my-3">

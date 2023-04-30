@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-import Home from "./components/Home";
-import CreateSurvey from "./components/CreateSurvey";
-import Survey from "./components/Survey";
-import About from "./components/About";
-import RegisterForm from "./components/RegisterForm";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import CreateSurvey from "./pages/CreateSurvey";
+import Survey from "./pages/Survey";
+import About from "./pages/About";
+import RegisterForm from "./pages/RegisterForm";
 
-import LoginForm from "./components/LoginForm";
+import LoginForm from "./pages/LoginForm";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -22,25 +22,15 @@ function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(
         localStorage.getItem("isLoggedIn")
     );
-    const nextSurveyId = useRef(1); // 전체 forms 의 id를 관리하는 변수
+    const [surveyId, setSurveyId] = useState(); // 전체 forms 의 id를 관리하는 변수
     const [formData, setFormData] = useState([]); //Form 전체 데이터 관리 state
 
     // Create
     const onCreate = (formTitle, formDesc, questions) => {
-        const newForm = {
-            id: nextSurveyId.current,
-            formTitle: formTitle,
-            formDesc: formDesc,
-            questions: [...questions],
-        };
-        formData === []
-            ? setFormData([newForm])
-            : setFormData([...formData, newForm]);
-
         // send newSurvey to database
         const options = { headers: { "Content-Type": "application/json" } };
         const newSurvey = {
-            // surveyPk: nextSurveyId.current,
+            // surveyPk: nextS  furveyId.current,
             surveyTitle: formTitle,
             surveyDescription: formDesc,
             questions: JSON.stringify([...questions]),
@@ -48,12 +38,23 @@ function App() {
         };
         console.log("Axios newsurey : ", newSurvey);
         axios
-            .post("/api/survey/create", newSurvey, options)
-            .then((response) => {})
+            .post("http://127.0.0.1:8080/api/survey/create", newSurvey, options)
+            .then((response) => {
+                console.log(response.data.surveyPk);
+                setSurveyId(response.data.surveyPk);
+                const newForm = {
+                    id: response.data.surveyPk,
+                    formTitle: formTitle,
+                    formDesc: formDesc,
+                    questions: [...questions],
+                };
+                formData === []
+                    ? setFormData([newForm])
+                    : setFormData([...formData, newForm]);
+            })
             .catch((err) => {
                 console.log(err);
             });
-        nextSurveyId.current += 1;
     };
 
     useEffect(() => {
@@ -63,7 +64,7 @@ function App() {
     return (
         <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
             <FormStateContext.Provider value={formData}>
-                <IdContext.Provider value={nextSurveyId}>
+                <IdContext.Provider value={surveyId}>
                     <FormHandlingContext.Provider value={{ onCreate }}>
                         <BrowserRouter>
                             <Routes>
