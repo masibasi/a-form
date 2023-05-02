@@ -1,0 +1,82 @@
+/* Community */
+.Community {
+    margin-top: 3%;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+.Community .title {
+    margin: 0;
+    margin-right: 16px;
+    text-align: center;
+}
+.Community .titleWrapper {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+}
+.Community .title2Wrapper {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+.Community .AvsBWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-bottom: 28px;
+}
+.Community .AvsBTitle {
+    margin-top: 16px;
+    text-align: center;
+}
+.Community .bottomWrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.Community .hotSurveyWrapper {
+    width: 65%;
+    padding-right: 40px;
+}
+.Community .hotCategoryWrapper {
+    width: 35%;
+}
+
+/* HotSurvey */
+
+.HotSurvey {
+    display: flex;
+    /* justify-content: space-between; */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px rgba(0, 0, 0, 0.05);
+    margin-bottom: 16px;
+    padding-bottom: 4px;
+}
+.hotCategory {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px rgba(0, 0, 0, 0.05);
+}
+.HotSurvey .surveyTitle {
+    width: 60%;
+}
+.HotSurvey .date {
+    width: 30%;
+}
+.HotSurvey .status {
+    width: 10%;
+}
+.HotSurvey .OPEN {
+    color: #29b95f;
+}
+.HotSurvey .CLOSED {
+    color: #d20000;
+}
+
+.Community h5 {
+    margin: 0;
+    margin-right: 16px;
+}
+.Community p {
+    margin: 0;
+}

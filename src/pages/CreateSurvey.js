@@ -126,17 +126,16 @@ function CreateSurvey() {
                 </Modal>
             </>
             <div className="text-wrapper">
-                <div>
-                    <input
-                        className="surveyTitle"
-                        type="text"
-                        value={formTitle}
-                        placeholder="Create Form"
-                        onChange={(e) => {
-                            setFormTitle(e.target.value);
-                        }}
-                    />
-                </div>
+                <input
+                    className="surveyTitle"
+                    type="text"
+                    value={formTitle}
+                    placeholder="Create Form"
+                    onChange={(e) => {
+                        setFormTitle(e.target.value);
+                    }}
+                />
+
                 <input
                     className="surveyDesc"
                     type="text"

@@ -8,7 +8,7 @@ export const FormList = () => {
 
     return (
         <div className="formList">
-            {formData === "" ? null : <h3>Form List</h3>}
+            {formData === "" ? <h3>Form List</h3> : null}
             {formData.map((it) => (
                 <div
                     key={it.id}

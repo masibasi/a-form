@@ -23,7 +23,7 @@ html {
     gap: 50px;
 }
 .homeBtn {
-    width: 150px;
+    width: 160px;
 }
 .homeTopWrapper {
     display: flex;
@@ -31,15 +31,40 @@ html {
     width: 100%;
 }
 .homeLeftWrapper {
-    margin-left: 10%;
+    margin-left: 8%;
     margin-top: 10%;
 }
 .homeImg {
     width: 35%;
 }
 /* Layout */
+
 .navMenuComponent {
     margin-right: 12px;
+}
+.navbarRight {
+    display: flex;
+    align-items: center;
+}
+.Layout .searchWrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-right: 24px;
+    width: 500px;
+}
+.Layout .searchBar {
+    width: 100%;
+    margin-right: 100;
+}
+.navbarContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-left: 16px;
+    margin-right: 4%;
 }
 /* CreateSurvey */
 
@@ -178,6 +203,5 @@ html {
 }
 
 /* Navbar */
-.navbarContainer {
-    padding: 0;
+.Navbar {
 }

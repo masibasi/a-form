@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
@@ -6,12 +6,14 @@ import CreateSurvey from "./pages/CreateSurvey";
 import Survey from "./pages/Survey";
 import About from "./pages/About";
 import RegisterForm from "./pages/RegisterForm";
+import { CreateAvsB } from "./pages/CreateAvsB";
 
 import LoginForm from "./pages/LoginForm";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import { Community } from "./pages/Community";
 
 export const FormHandlingContext = React.createContext();
 export const FormStateContext = React.createContext();
@@ -86,6 +88,14 @@ function App() {
                                     <Route
                                         path="login"
                                         element={<LoginForm />}
+                                    />
+                                    <Route
+                                        path="community"
+                                        element={<Community />}
+                                    />
+                                    <Route
+                                        path="AvsB"
+                                        element={<CreateAvsB />}
                                     />
                                 </Route>
                             </Routes>

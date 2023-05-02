@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import QuestionForm from "../components/forms/QuestionForm";
-import AddingOption from "../components/forms/AddingOption";
+
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
