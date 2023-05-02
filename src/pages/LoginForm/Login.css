@@ -5,18 +5,28 @@
 .Auth-form-container {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     width: 100vw;
     /* height: 80vh; */
     font-family: "larizo";
-    /* margin-top: 10%; */
+    margin-top: 50px;
+    /* box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px; */
     margin-bottom: 100px;
 }
-
+.Auth-form-container img {
+    width: 180px;
+    margin-bottom: 20px;
+}
+.Auth-form-container h1 {
+    font-weight: 800;
+}
+.Auth-form-container h5 {
+    text-align: center;
+}
 .Auth-form {
     width: 420px;
-    box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
-    padding-top: 20px;
+    /* box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px; */
     padding-bottom: 40px;
     border-radius: 8px;
     background-color: white;
@@ -42,6 +52,24 @@ label {
     color: rgb(34, 34, 34);
 }
 
+.formBirthdayWrapper {
+    display: flex;
+    justify-content: space-between;
+}
+select {
+    border: 1px solid rgb(0 0 0 / 16%);
+    padding: 6px 12px;
+    border-radius: 8px;
+}
+.selectYear {
+    width: 50%;
+}
+.selectMonth {
+    width: 23%;
+}
+.selectDay {
+    width: 23%;
+}
 @media (max-width: 550px) {
     .App {
         background-color: white;

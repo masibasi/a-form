@@ -1,42 +1,7 @@
 html {
-    margin-top: 8%;
+    /* margin-top: 8%; */
 }
 
-.Home {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-.Home .title {
-    text-align: left;
-    font-weight: 700;
-}
-.Home .catchPhrase {
-    text-align: left;
-    font-size: 1.15em;
-}
-.homeBtnWrapper {
-    display: flex;
-    gap: 50px;
-}
-.homeBtn {
-    width: 160px;
-}
-.homeTopWrapper {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-}
-.homeLeftWrapper {
-    margin-left: 8%;
-    margin-top: 10%;
-}
-.homeImg {
-    width: 35%;
-}
 /* Layout */
 
 .navMenuComponent {
@@ -49,10 +14,10 @@ html {
 .Layout .searchWrapper {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 45%;
     transform: translate(-50%, -50%);
     margin-right: 24px;
-    width: 500px;
+    width: 50vw;
 }
 .Layout .searchBar {
     width: 100%;
@@ -66,122 +31,7 @@ html {
     margin-left: 16px;
     margin-right: 4%;
 }
-/* CreateSurvey */
 
-.CreateSurvey {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 5%;
-}
-.CreateSurvey .text-wrapper {
-    display: flex;
-    flex-direction: column;
-}
-.CreateSurvey .surveyTitle {
-    border: none;
-    font-size: 2.4em;
-    font-weight: 800;
-    margin-bottom: 12px;
-    width: auto;
-    font-weight: 500;
-    text-align: center;
-}
-.CreateSurvey .surveyTitle:focus {
-    outline: none;
-    border-bottom: 1px solid blue;
-}
-.CreateSurvey .surveyDesc {
-    border: none;
-    font-size: 1em;
-    font-weight: 800;
-    margin-bottom: 12px;
-    width: auto;
-    font-weight: 400;
-    text-align: center;
-}
-.CreateSurvey .surveyDesc:focus {
-    outline: none;
-    border-bottom: 1px solid blue;
-}
-.ButtonWrapper {
-    margin-top: 2%;
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-}
-.ButtonWrapper .SurveyBtnWrapper {
-    margin-left: 12px;
-}
-.ButtonWrapper .SurveyBtnWrapper .submit-btn {
-    margin-right: 12px;
-}
-.CreateSurvey .Form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-
-/* QuestionForm */
-.QuestionForm {
-    margin-top: 2%;
-    width: 70%;
-}
-.QuestionForm .top-wrapper {
-    display: flex;
-    justify-content: space-between;
-}
-.QuestionForm .delete-btn {
-    width: 40px;
-    height: 40px;
-}
-.QuestionForm .formtitle {
-    border: none;
-    font-size: 1.3em;
-    font-weight: 800;
-    margin-bottom: 12px;
-    min-width: 300px;
-    width: auto;
-    font-weight: 500;
-}
-.QuestionForm .formtitle:focus {
-    outline: none;
-    border-bottom: 1px solid blue;
-}
-
-/* ShortForm */
-.shortform-input {
-    min-height: 200px;
-    resize: none;
-}
-
-.form-selection-btn-wrapper {
-}
-.deleteSelection-btn {
-    margin-left: 8px;
-}
-
-/* SendFormModal */
-.sendFormModal {
-}
-.formLinkInput {
-    width: 80%;
-}
-.modal-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.modal-header {
-    width: 100%;
-}
-.modal-footer {
-    padding-left: auto;
-}
 /* FormList */
 .formList {
     margin-top: 50px;
@@ -204,4 +54,5 @@ html {
 
 /* Navbar */
 .Navbar {
+    margin-bottom: 20px;
 }

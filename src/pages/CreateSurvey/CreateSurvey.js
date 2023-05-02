@@ -1,12 +1,16 @@
 import React, { useState, useRef, useContext } from "react";
-import { Form, Modal } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import QuestionForm from "../components/forms/QuestionForm";
-import AddingOption from "../components/forms/AddingOption";
+import QuestionForm from "../../components/forms/QuestionForm";
+import AddingOption from "../../components/forms/AddingOption";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import { FormHandlingContext, IdContext } from "../App";
-
+import { FormHandlingContext, IdContext } from "../../App";
+import "./CreateSurvey.css";
+import {
+    ConfirmSurveyModal,
+    LinkModal,
+} from "../../components/ConfirmSurveyModal";
 function CreateSurvey() {
     const [questions, setQuestions] = useState([]); //index, state(어떤 타입의 질문인지)
     const [formTitle, setFormTitle] = useState("");
@@ -28,7 +32,7 @@ function CreateSurvey() {
         setConfirmModalShow(false);
     };
 
-    const handleShow = () => {
+    const handleSubmit = () => {
         setConfirmModalShow(false);
         onCreate(formTitle, formDesc, questions);
         setLinkModalShow(true);
@@ -71,60 +75,16 @@ function CreateSurvey() {
 
     return (
         <Container className="CreateSurvey">
-            <>
-                <Modal
-                    show={confirmModalShow}
-                    onHide={handleConfirmModalClose}
-                    className="sendFormModal"
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title>Finish Editing?</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Footer>
-                        <Button
-                            variant="secondary"
-                            onClick={handleConfirmModalClose}
-                        >
-                            No, Keep editing
-                        </Button>
-                        <Button variant="primary" onClick={handleShow}>
-                            Yes
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
-            </>
-            <>
-                <Modal
-                    show={linkModalShow}
-                    onHide={handleClose}
-                    className="sendFormModal"
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title>Form Created!</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>Form Link</Modal.Body>
-                    <input
-                        disabled
-                        className="formLinkInput"
-                        type="text"
-                        value={
-                            // `http://localhost:3000/survey/1`
-                            `http://localhost:3000/survey/${surveyId}`
-                        }
-                    />
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                            Close
-                        </Button>
-                        <Button
-                            variant="primary"
-                            onClick={() => navigate(`/survey/${surveyId}`)}
-                        >
-                            Follow Link
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
-            </>
+            <ConfirmSurveyModal
+                modalShow={confirmModalShow}
+                handleModalClose={handleConfirmModalClose}
+                onSubmit={handleSubmit}
+            />
+            <LinkModal
+                modalShow={linkModalShow}
+                handleModalClose={handleClose}
+                surveyId={surveyId}
+            />
             <div className="text-wrapper">
                 <input
                     className="surveyTitle"

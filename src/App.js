@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
-import Home from "./pages/Home";
-import CreateSurvey from "./pages/CreateSurvey";
-import Survey from "./pages/Survey";
-import About from "./pages/About";
-import RegisterForm from "./pages/RegisterForm";
-import { CreateAvsB } from "./pages/CreateAvsB";
+import Home from "./pages/Home/Home";
+import CreateSurvey from "./pages/CreateSurvey/CreateSurvey";
+import Survey from "./pages/Survey/Survey";
+import About from "./pages/About/About";
+import RegisterForm from "./pages/RegisterForm/RegisterForm";
+import { CreateAvsB } from "./pages/CreateAvsB/CreateAvsB";
+import { Community } from "./pages/Community/Community";
 
-import LoginForm from "./pages/LoginForm";
+import LoginForm from "./pages/LoginForm/LoginForm";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import { Community } from "./pages/Community";
 
 export const FormHandlingContext = React.createContext();
 export const FormStateContext = React.createContext();

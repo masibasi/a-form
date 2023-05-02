@@ -14,7 +14,7 @@ export default function Layout() {
     const { isLoggedIn } = useContext(AuthContext);
     return (
         <div className="Layout">
-            <Navbar fixed="top" bg="white">
+            <Navbar className="Navbar" bg="white">
                 <div className="navbarContainer ">
                     <Navbar.Brand onClick={() => navigate("/")}>
                         <img src={logo} width={"130px"} alt="" />

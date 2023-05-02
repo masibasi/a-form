@@ -1,16 +1,16 @@
 import React from "react";
 import { FaGithub } from "react-icons/fa";
-import Logo2 from "../assets/images/logo2.png";
+import Logo2 from "../../assets/images/logo2.png";
 import "./About.css";
-import desk1 from "../assets/images/desk1.png";
-import x_icon from "../assets/images/x_icon.png";
-import check from "../assets/images/check1.png";
+import desk1 from "../../assets/images/desk1.png";
+import x_icon from "../../assets/images/x_icon.png";
+import check from "../../assets/images/check1.png";
 
 export default function About() {
     return (
         <div className="About">
             <div className="page1">
-                <img src={Logo2} />
+                <img src={Logo2} alt="" />
                 <h4>
                     <span className="A">A</span>mazing Form <br />
                     <span className="A">A</span>utomatical Form <br /> By team{" "}
@@ -29,13 +29,13 @@ export default function About() {
                         </span>
                     </h4>
                     <div>
-                        <img src={desk1} />
+                        <img src={desk1} alt="" />
                     </div>
                 </div>
                 <div className="container2">
                     <div className="sentence1">
                         <div className="sen1_subcontainer1">
-                            <img src={x_icon} />
+                            <img src={x_icon} alt="" />
                             <span className="problem1">
                                 "설문 문항을 일일이 만들어야 해요"
                             </span>
@@ -50,7 +50,7 @@ export default function About() {
 
                     <div className="sentence2">
                         <div className="sen2_subcontainer1">
-                            <img src={x_icon} />
+                            <img src={x_icon} alt="" />
                             <span className="problem1">
                                 "설문 결과가 쉽게 파악 되었으면 좋겠어요"
                             </span>
@@ -65,7 +65,7 @@ export default function About() {
 
                     <div className="sentence3">
                         <div className="sen3_subcontainer1">
-                            <img src={x_icon} />
+                            <img src={x_icon} alt="" />
                             <span className="problem1">
                                 "설문이 응답자들에게 어떻게 보일까요"
                             </span>
@@ -93,7 +93,7 @@ export default function About() {
                 <div className="container1">
                     <div className="solution1">
                         <div className="sol1_subcontainer1">
-                            <img src={check} />
+                            <img src={check} alt="" />
                             <span className="solName">Auto Form</span>
                         </div>
                         <div className="sol1_subcontainer2">
@@ -109,7 +109,7 @@ export default function About() {
 
                     <div className="solution2">
                         <div className="sol2_subcontainer1">
-                            <img src={check} />
+                            <img src={check} alt="" />
                             <span className="solName">Auto Form</span>
                         </div>
                         <div className="sol1_subcontainer2">
@@ -125,7 +125,7 @@ export default function About() {
 
                     <div className="solution3">
                         <div className="sol3_subcontainer1">
-                            <img src={check} />
+                            <img src={check} alt="" />
                             <span className="solName">Auto Form</span>
                         </div>
                         <div className="sol1_subcontainer2">

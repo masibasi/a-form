@@ -1,5 +1,9 @@
 import "./Community.css";
-import { HotAvsBSurvey, HotCategory, HotSurvey } from "../components/HotSurvey";
+import {
+    HotAvsBSurvey,
+    HotCategory,
+    HotSurvey,
+} from "../../components/HotSurvey";
 
 export const Community = () => {
     return (

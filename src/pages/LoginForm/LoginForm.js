@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import "./Login.css";
 import Button from "react-bootstrap/Button";
-import { AuthContext } from "../App";
+import { AuthContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -24,7 +24,7 @@ export default function Login() {
     const loginClick = () => {
         axios
             .post(
-                "/api/user/login",
+                "http://localhost:8080/api/user/login",
                 {
                     userId,
                     userPassword,
