@@ -1,0 +1,28 @@
+.Comment {
+    padding-left: 12px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px rgba(0, 0, 0, 0.05);
+    margin-bottom: 16px;
+    padding-bottom: 4px;
+    align-items: center;
+}
+.Comment .commentLeft {
+    display: flex;
+}
+.Comment .nickname {
+    margin-right: 32px;
+    font-weight: 600;
+}
+.Comment .content {
+}
+.commentMoreBtn {
+    background-color: transparent;
+    border: 0;
+}
+.commentPopover {
+    display: flex;
+    flex-direction: column;
+}

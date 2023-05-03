@@ -1,9 +1,11 @@
 import React from "react";
 import AB from "../assets/images/AB.png";
-
+import { useNavigate } from "react-router-dom";
+import "./HotSurvey.css";
 export const HotSurvey = (props) => {
+    const navigate = useNavigate();
     return (
-        <div className="HotSurvey">
+        <div className="HotSurvey" onClick={() => navigate("/details/32")}>
             <p className="surveyTitle">{props.title}</p>
             <p className="date">{props.date}</p>
             <p className={`status ${props.status}`}>{props.status}</p>

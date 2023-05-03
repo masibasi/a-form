@@ -8,11 +8,12 @@ import About from "./pages/About/About";
 import RegisterForm from "./pages/RegisterForm/RegisterForm";
 import { CreateAvsB } from "./pages/CreateAvsB/CreateAvsB";
 import { Community } from "./pages/Community/Community";
-
+import { SurveyDetail } from "./pages/Survey/SurveyDetail";
 import LoginForm from "./pages/LoginForm/LoginForm";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import axios from "axios";
 
 export const FormHandlingContext = React.createContext();
@@ -96,6 +97,10 @@ function App() {
                                     <Route
                                         path="AvsB"
                                         element={<CreateAvsB />}
+                                    />
+                                    <Route
+                                        path="details/:id"
+                                        element={<SurveyDetail />}
                                     />
                                 </Route>
                             </Routes>

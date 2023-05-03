@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { FormList } from "../../components/FormList";
 import Bg from "../../assets/images/form-bg.png";
 import "./Home.css";
+
 export default function Home() {
     const navigation = useNavigate();
 
@@ -43,7 +44,7 @@ export default function Home() {
                 </div>
                 <img src={Bg} className="homeImg" alt="" />
             </div>
-            <FormList />
+            {/* <FormList /> */}
         </div>
     );
 }

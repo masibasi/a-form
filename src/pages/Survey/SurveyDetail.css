@@ -1,0 +1,64 @@
+.SurveyDetail {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding-left: 4%;
+    padding-right: 4%;
+    min-height: calc(100vh - 103.23px);
+    justify-content: space-between;
+}
+.SurveyDetail .topWrapper {
+    display: flex;
+}
+.SurveyDetail .descWrapper {
+    padding: 40px;
+    padding-left: 20%;
+    width: 70%;
+}
+.SurveyDetail .title {
+    border: none;
+    font-size: 4em;
+    font-weight: 800;
+    margin-bottom: 12px;
+    width: auto;
+    font-weight: 500;
+}
+.SurveyDetail .desc {
+    border: none;
+    font-size: 1.5em;
+    font-weight: 800;
+    margin-bottom: 12px;
+    width: auto;
+    font-weight: 400;
+}
+.SurveyDetail .statistics {
+    display: flex;
+}
+.SurveyDetail .buttonWrapper {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+.SurveyDetail .commentBox {
+    margin-bottom: 20px;
+}
+.SurveyDetail .commentBarWrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.SurveyDetail .commentBar {
+    width: 100%;
+    height: 35px;
+    margin-right: 20px;
+    padding-left: 12px;
+}
+.SurveyDetail .commentLabel {
+    width: 4000px;
+    /* height: 35px; */
+}
+.SurveyDetail .commentBarWrapper #submitBtn {
+    width: 60px;
+    height: 35px;
+}
