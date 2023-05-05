@@ -1,8 +1,14 @@
 html {
     /* margin-top: 8%; */
+    /* display: flex; */
 }
 
 /* Layout */
+.Outlet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .navMenuComponent {
     margin-right: 12px;
@@ -11,6 +17,11 @@ html {
     display: flex;
     align-items: center;
 }
+/* .Layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
 .Layout .searchWrapper {
     position: absolute;
     top: 50%;
@@ -31,28 +42,20 @@ html {
     margin-left: 16px;
     margin-right: 4%;
 }
-
-/* FormList */
-.formList {
-    margin-top: 50px;
-    margin-bottom: 4px;
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: 700px;
-}
-.formListElem {
-    padding-top: 4px;
-    padding-bottom: 4px;
-    width: 100%;
-    border-bottom: 1px solid rgba(151, 151, 151, 0.4);
-    text-align: left;
-    padding-left: 20%;
-}
-
 /* Navbar */
 .Navbar {
     margin-bottom: 20px;
+}
+.FadeIn {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.childClassName {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

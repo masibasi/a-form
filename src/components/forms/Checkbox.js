@@ -6,31 +6,26 @@ import "../../App.css";
 
 function Checkbox(props) {
     function addSelection() {
-        props.questions[props.qIndex].item.push("");
+        props.questions[props.qIndex].selections.push({ type: "LETTER", content: "" });
         props.setQuestions([...props.questions]);
     }
 
     function delSelection() {
-        props.questions[props.qIndex].item.pop();
+        props.questions[props.qIndex].selections.pop();
         props.setQuestions([...props.questions]);
     }
 
     return (
         <Form.Group>
-            {props.q.item.map((item, index) => (
+            {props.q.selections.map((item, index) => (
                 <div key={`question-${props.qIndex}-${index}`} className="mb-3">
                     <InputGroup>
-                        <InputGroup.Checkbox
-                            disabled
-                            type={"checkbox"}
-                            name={`checkbox-${props.qIdex}`}
-                            id={`checkbox-${props.qIndex}-${index}`}
-                        />
+                        <InputGroup.Checkbox disabled type={"checkbox"} name={`checkbox-${props.qIdex}`} id={`checkbox-${props.qIndex}-${index}`} />
                         <Form.Control
-                            value={props.q.item[index]}
+                            value={props.q.selections[index].content}
                             placeholder="Enter selection"
                             onChange={(e) => {
-                                props.q.item[index] = e.target.value;
+                                props.q.selections[index].content = e.target.value;
                                 props.setQuestions([...props.questions]);
                             }}
                         />

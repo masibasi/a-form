@@ -8,7 +8,7 @@ function AddingOption(props) {
             <Button
                 variant="outline-primary"
                 onClick={(event) => {
-                    props.addQuestion(1);
+                    props.addQuestion("RADIO");
                 }}
             >
                 Radio
@@ -16,7 +16,7 @@ function AddingOption(props) {
             <Button
                 variant="outline-primary"
                 onClick={(event) => {
-                    props.addQuestion(2);
+                    props.addQuestion("CHECKBOX");
                 }}
             >
                 CheckBox
@@ -24,7 +24,7 @@ function AddingOption(props) {
             <Button
                 variant="outline-primary"
                 onClick={(event) => {
-                    props.addQuestion(3);
+                    props.addQuestion("SHORTFORM");
                 }}
             >
                 Shortform

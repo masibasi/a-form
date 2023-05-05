@@ -1,13 +1,11 @@
 import "./Community.css";
-import {
-    HotAvsBSurvey,
-    HotCategory,
-    HotSurvey,
-} from "../../components/HotSurvey";
+import { HotAvsBSurvey, HotCategory, SurveyListItem } from "../../components/SurveyListItem";
+import FadeIn from "react-fade-in/lib/FadeIn";
+import { SurveyList } from "../SurveyList/SurveyList";
 
 export const Community = () => {
     return (
-        <div className="Community">
+        <FadeIn className="Community" childClassName="childClassName">
             <div className="titleWrapper">
                 <h4 className="title">박빙설문 a대 b</h4>
                 <p>더보기</p>
@@ -26,11 +24,11 @@ export const Community = () => {
                         <h5>Hot 설문</h5>
                         <p>더보기</p>
                     </div>
-                    <HotSurvey title="설문지 123" />
-                    <HotSurvey status="CLOSED" />
-                    <HotSurvey />
-                    <HotSurvey />
-                    <HotSurvey status="CLOSED" />
+                    <SurveyListItem title="설문지 123" />
+                    <SurveyListItem status="CLOSED" />
+                    <SurveyListItem />
+                    <SurveyListItem />
+                    <SurveyListItem status="CLOSED" />
                 </div>
                 <div className="hotCategoryWrapper">
                     <div className="title2Wrapper">
@@ -44,6 +42,11 @@ export const Community = () => {
                     <HotCategory />
                 </div>
             </div>
-        </div>
+            <div className="titleWrapper">
+                <h4 className="title">전체 설문</h4>
+                <p>더보기</p>
+            </div>
+            <SurveyList />
+        </FadeIn>
     );
 };

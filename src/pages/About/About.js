@@ -5,28 +5,24 @@ import "./About.css";
 import desk1 from "../../assets/images/desk1.png";
 import x_icon from "../../assets/images/x_icon.png";
 import check from "../../assets/images/check1.png";
+import FadeIn from "react-fade-in/lib/FadeIn";
 
 export default function About() {
     return (
-        <div className="About">
+        <FadeIn className="About">
             <div className="page1">
-                <img src={Logo2} alt="" />
+                <img src={Logo2} alt="" className="logo" width={100} />
                 <h4>
                     <span className="A">A</span>mazing Form <br />
-                    <span className="A">A</span>utomatical Form <br /> By team{" "}
-                    <span className="A">A</span>CCELER !
+                    <span className="A">A</span>utomatical Form <br /> By team <span className="A">A</span>CCELER !
                 </h4>
-            </div>{" "}
+            </div>
             <div className="page2">
                 <div className="container1">
                     <h4>
-                        <span className="Consideration">
-                            어떤 기능들을 고려해야 설문 제작자를 위한
-                        </span>
+                        <span className="Consideration">어떤 기능들을 고려해야 설문 제작자를 위한</span>
                         <br />
-                        <span className="Consideration">
-                            서비스를 만들 수 있을지 고민했습니다
-                        </span>
+                        <span className="Consideration">서비스를 만들 수 있을지 고민했습니다</span>
                     </h4>
                     <div>
                         <img src={desk1} alt="" />
@@ -36,49 +32,35 @@ export default function About() {
                     <div className="sentence1">
                         <div className="sen1_subcontainer1">
                             <img src={x_icon} alt="" />
-                            <span className="problem1">
-                                "설문 문항을 일일이 만들어야 해요"
-                            </span>
+                            <span className="problem1">"설문 문항을 일일이 만들어야 해요"</span>
                         </div>
                         <div className="sen1_subcontainer2">
-                            <span className="hope1">
-                                설문 제작이 더 간편하고 자동화가 되었으면
-                                좋겠습니다
-                            </span>
+                            <span className="hope1">설문 제작이 더 간편하고 자동화가 되었으면 좋겠습니다</span>
                         </div>
                     </div>
 
                     <div className="sentence2">
                         <div className="sen2_subcontainer1">
                             <img src={x_icon} alt="" />
-                            <span className="problem1">
-                                "설문 결과가 쉽게 파악 되었으면 좋겠어요"
-                            </span>
+                            <span className="problem1">"설문 결과가 쉽게 파악 되었으면 좋겠어요"</span>
                         </div>
                         <div className="sen2_subcontainer2">
-                            <span className="hope1">
-                                설문 결과를 요약하고 경향성을 확인하는 방법이
-                                간단해졌으면 좋겠습니다
-                            </span>
+                            <span className="hope1">설문 결과를 요약하고 경향성을 확인하는 방법이 간단해졌으면 좋겠습니다</span>
                         </div>
                     </div>
 
                     <div className="sentence3">
                         <div className="sen3_subcontainer1">
                             <img src={x_icon} alt="" />
-                            <span className="problem1">
-                                "설문이 응답자들에게 어떻게 보일까요"
-                            </span>
+                            <span className="problem1">"설문이 응답자들에게 어떻게 보일까요"</span>
                         </div>
                         <div className="sen3_subcontainer2">
-                            <span className="hope1">
-                                응답자들이 대답하기에 적절한 질문인지를 확인하면
-                                설문 응답률을 높일 수 있을 것 같습니다
-                            </span>
+                            <span className="hope1">응답자들이 대답하기에 적절한 질문인지를 확인하면 설문 응답률을 높일 수 있을 것 같습니다</span>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div className="page3">
                 <div className="goal">
                     <span>
@@ -142,13 +124,11 @@ export default function About() {
                     </div>
                 </div>
             </div>
+
             <div className="developed-by">
                 Developed by: <a href="https://acceler.kr">Team ACCELER</a>
-                <FaGithub
-                    size={24}
-                    href="https://github.com/KEA-ACCELER/a-form"
-                />
+                <FaGithub size={24} href="https://github.com/KEA-ACCELER/a-form" />
             </div>
-        </div>
+        </FadeIn>
     );
 }

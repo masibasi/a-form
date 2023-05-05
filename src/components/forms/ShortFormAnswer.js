@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 
 //주관식
 function ShortFormAnswer(props) {
-    const [answer, setAnswer] = useState(props.q.item[0]);
+    const [answer, setAnswer] = useState(props.q.selections[0].content);
 
     const onChange = (e) => {
         setAnswer(e.target.value);
@@ -12,13 +12,7 @@ function ShortFormAnswer(props) {
 
     return (
         <Form.Group>
-            <Form.Control
-                className="shortform-input"
-                as="textarea"
-                rows={4}
-                value={answer}
-                onChange={onChange}
-            />
+            <Form.Control className="shortform-input" as="textarea" rows={4} value={answer} onChange={onChange} />
         </Form.Group>
     );
 }

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import "./CreateAvsB.css";
 import { Button } from "react-bootstrap";
+import FadeIn from "react-fade-in/lib/FadeIn";
 export const CreateAvsB = () => {
     const [formTitle, setFormTitle] = useState("");
     const [formDesc, setFormDesc] = useState("");
@@ -42,94 +43,83 @@ export const CreateAvsB = () => {
     const imgRef = useRef();
     return (
         <div className="CreateAvsB">
-            Create AvsB
-            <div className="text-wrapper">
-                <input
-                    className="surveyTitle"
-                    type="text"
-                    value={formTitle}
-                    placeholder="Create Form"
-                    onChange={(e) => {
-                        setFormTitle(e.target.value);
-                    }}
-                />
-                <textarea
-                    className="surveyDesc"
-                    type="text"
-                    value={formDesc}
-                    placeholder="Form Description"
-                    onChange={(e) => {
-                        setFormDesc(e.target.value);
-                    }}
-                />
-            </div>
-            <div className="AvsBWrapper">
-                <div className="ABContent">
+            <FadeIn className="FadeIn" childClassName="childClassName">
+                <div className="text-wrapper">
                     <input
-                        className="ABTitle"
-                        value={A}
-                        placeholder="A"
+                        className="surveyTitle"
+                        type="text"
+                        value={formTitle}
+                        placeholder="Create Form"
                         onChange={(e) => {
-                            setA(e.target.value);
+                            setFormTitle(e.target.value);
                         }}
                     />
-                    <input
-                        className="ABDesc"
-                        value={ADesc}
-                        placeholder="Description"
+                    <textarea
+                        className="surveyDesc"
+                        type="text"
+                        value={formDesc}
+                        placeholder="Form Description"
                         onChange={(e) => {
-                            setADesc(e.target.value);
+                            setFormDesc(e.target.value);
                         }}
                     />
-                    <img className="ABImage" src={imgFileA} alt="" />
-                    <form>
-                        <label className="ABImage-label" htmlFor="profileImg">
+                </div>
+                <div className="AvsBWrapper">
+                    <div className="ABContent">
+                        <input
+                            className="ABTitle"
+                            value={A}
+                            placeholder="A"
+                            onChange={(e) => {
+                                setA(e.target.value);
+                            }}
+                        />
+                        <input
+                            className="ABDesc"
+                            value={ADesc}
+                            placeholder="Description"
+                            onChange={(e) => {
+                                setADesc(e.target.value);
+                            }}
+                        />
+                        <img className="ABImage" src={imgFileA} alt="" />
+                        <form>
+                            <label className="ABImage-label" htmlFor="profileImg">
+                                이미지 추가
+                            </label>
+                            <input onChange={setPreviewImgA} className="ABImage-input" type="file" accept="image/*" id="profileImg" />
+                        </form>
+                    </div>
+                    <div className="ABContent">
+                        <input
+                            className="ABTitle"
+                            value={B}
+                            placeholder="B"
+                            onChange={(e) => {
+                                setB(e.target.value);
+                            }}
+                        />
+                        <input
+                            className="ABDesc"
+                            value={BDesc}
+                            placeholder="Description"
+                            onChange={(e) => {
+                                setBDesc(e.target.value);
+                            }}
+                        />
+
+                        <img className="ABImage" src={imgFileB} alt="" />
+
+                        <label className="ABImage-label" htmlFor="imgB">
                             이미지 추가
                         </label>
-                        <input
-                            onChange={setPreviewImgA}
-                            className="ABImage-input"
-                            type="file"
-                            accept="image/*"
-                            id="profileImg"
-                        />
-                    </form>
+                        <input onChange={setPreviewImgB} className="ABImage-input" type="file" accept="image/*" id="imgB" />
+                    </div>
                 </div>
-                <div className="ABContent">
-                    <input
-                        className="ABTitle"
-                        value={B}
-                        placeholder="B"
-                        onChange={(e) => {
-                            setB(e.target.value);
-                        }}
-                    />
-                    <input
-                        className="ABDesc"
-                        value={BDesc}
-                        placeholder="Description"
-                        onChange={(e) => {
-                            setBDesc(e.target.value);
-                        }}
-                    />
-
-                    <img className="ABImage" src={imgFileB} alt="" />
-
-                    <label className="ABImage-label" htmlFor="imgB">
-                        이미지 추가
-                    </label>
-                    <input
-                        onChange={setPreviewImgB}
-                        className="ABImage-input"
-                        type="file"
-                        accept="image/*"
-                        id="imgB"
-                    />
-                </div>
-            </div>
-            <Button variant="outline-primary" onClick={submitHandler}>
-                Submit
-            </Button>
+                <Button variant="outline-primary" onClick={submitHandler}>
+                    Submit
+                </Button>
+            </FadeIn>
         </div>
     );
 };
