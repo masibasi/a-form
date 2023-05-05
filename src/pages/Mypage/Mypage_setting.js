@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Mypage.css";
 import profileimg from "../../assets/images/profile_sample1.png";
 import alarm from "../../assets/images/alarm.png";
+import alarm_no from "../../assets/images/alarm_no.png";
 
 export default function Mypage_setting() {
   const [previewImg, setPreviewImg] = useState(null);
@@ -12,18 +13,20 @@ export default function Mypage_setting() {
     setPreviewImg(previewImageUrl);
   };
 
+  const [isAlarmEnabled, setIsAlarmEnabled] = useState(true);
+
+  const toggleAlarm = () => {
+    setIsAlarmEnabled(!isAlarmEnabled);
+  };
+
   return (
     <div className="Mypage_setting">
       <div className="setting_container1">
         <div className="profile_img">
-          {previewImg ? (
-            <img src={previewImg} alt="" style={{ width: "11rem", height: "11rem", borderRadius: "50%" }} />
-          ) : (
-            <img src={profileimg} alt="" style={{ width: "11rem", height: "11rem", borderRadius: "50%" }} />
-          )}
+          <img src={previewImg ? previewImg : profileimg} alt="" className="profile_picture" />
         </div>
 
-        <button className="change_photo_button" onClick={() => document.getElementById("profileImg").click()}>
+        <button className="button change_photo_button" onClick={() => document.getElementById("profileImg").click()}>
           Change Photo
         </button>
         <input onChange={handleImageChange} className="change_photo_button_input" type="file" accept="image/*" id="profileImg" />
@@ -55,8 +58,8 @@ export default function Mypage_setting() {
         </div>
 
         <div className="alarm_setting">
-          <div className="alarm_icon">
-            <img src={alarm} alt="" />
+          <div className="alarm_icon" onClick={toggleAlarm}>
+            <img src={isAlarmEnabled ? alarm : alarm_no} alt="" />
           </div>
           <div className="alarm_option">Enable Notification</div>
         </div>

@@ -13,8 +13,10 @@
         "react-dom": "^18.2.0",
         "react-fade-in": "^2.0.1",
         "react-icons": "^4.8.0",
+        "react-responsive-carousel": "^3.2.23",
         "react-router-dom": "^6.9.0",
         "react-scripts": "5.0.1",
+        "react-transition-group": "^4.4.5",
         "recoil": "^0.7.7",
         "styled-components": "^5.3.10",
         "web-vitals": "^2.1.4"

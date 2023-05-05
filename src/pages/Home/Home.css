@@ -1,38 +1,39 @@
 /* Home */
 .Home {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 .Home .title {
-    text-align: left;
-    font-weight: 700;
+  text-align: left;
+  font-weight: 700;
 }
 .Home .catchPhrase {
-    text-align: left;
-    font-size: 1.15em;
+  text-align: left;
+  font-size: 1.15em;
 }
 
 .homeBtnWrapper {
-    margin-top: 60px;
-    display: flex;
-    gap: 50px;
+  margin-top: 60px;
+  display: flex;
+  gap: 50px;
 }
 .homeBtn {
-    width: 160px;
+  width: 160px;
 }
 .homeTopWrapper {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
 .homeLeftWrapper {
-    margin-left: 8%;
-    margin-top: 10%;
+  margin-left: 8%;
+  margin-top: 10%;
 }
 .homeImg {
-    width: 35%;
+  width: 35%;
+  margin-top: 5%;
 }
