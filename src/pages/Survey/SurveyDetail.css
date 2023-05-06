@@ -1,18 +1,22 @@
 .SurveyDetail {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    padding-left: 4%;
-    padding-right: 4%;
     min-height: calc(100vh - 103.23px);
+}
+.SurveyDetail .surveyWrapper {
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 .SurveyDetail .topWrapper {
     display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.SurveyDetail .contentWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 .SurveyDetail .descWrapper {
-    padding: 40px;
-    padding-left: 20%;
     width: 70%;
 }
 .SurveyDetail .title {
@@ -33,15 +37,18 @@
 }
 .SurveyDetail .statistics {
     display: flex;
+    width: 100%;
+    margin-top: 9%;
+    margin-bottom: 9%;
 }
 .SurveyDetail .buttonWrapper {
-    width: 30%;
     display: flex;
     align-items: center;
     justify-items: center;
 }
 .SurveyDetail .commentBox {
     margin-bottom: 20px;
+    width: 100%;
 }
 .SurveyDetail .commentBarWrapper {
     display: flex;
@@ -53,6 +60,17 @@
     height: 35px;
     margin-right: 20px;
     padding-left: 12px;
+    box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+    border: 0;
+}
+.SurveyDetail .commentBar:focus {
+    width: 100%;
+    height: 35px;
+    margin-right: 20px;
+    padding-left: 12px;
+    box-shadow: rgba(100, 100, 111, 0.6) 0px 7px 29px 0px;
+    border: 0;
+    outline: none !important;
 }
 .SurveyDetail .commentLabel {
     width: 4000px;

@@ -23,7 +23,7 @@ export const HotCategory = (props) => {
 
 export const HotAvsBSurvey = (props) => {
     return (
-        <div className="formWrapper">
+        <div className="HotAvsBSurvey  hvr-glow">
             <img src={props.img} alt="" />
             <p className="AvsBTitle">{props.title}</p>
         </div>

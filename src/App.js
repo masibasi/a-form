@@ -12,39 +12,28 @@ import { SurveyDetail } from "./pages/Survey/SurveyDetail";
 import LoginForm from "./pages/LoginForm/LoginForm";
 
 import "./App.css";
+import "./hover.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import axios from "axios";
 import Mypage from "./pages/Mypage/Mypage";
 import Mypage_setting from "./pages/Mypage/Mypage_setting";
 import { SurveyList } from "./pages/SurveyList/SurveyList";
+import { SurveyContextProvider } from "./services/servey/survey.context";
+import axios from "axios";
+import { AuthenticationContextProvider } from "./services/authentication/authentication.context";
 
 export const FormHandlingContext = React.createContext();
-export const FormStateContext = React.createContext();
+
 export const AuthContext = React.createContext();
-export const IdContext = React.createContext();
-
-function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn"));
-
-    // Create
-    const onCreate = (type, deadline, title, description, questions) => {
-        // send newSurvey to database
-        const options = { headers: { "Content-Type": "application/json" } };
-        const q = questions;
-        q.map((it) => {
-            delete it["id"];
-        });
-        const newSurvey = {
-            type: type,
-            title: title,
-            description: description,
-            deadline: "2023-05-04T12:50:18.171Z",
-            questions: questions,
-            author: 0, // 로그인 한 사람 아이디 동적으로 바뀌게 수정 필요
-        };
-        const formId = axios
-            .post("http://localhost:3010/surveys", newSurvey, options)
+const Test = () => {
+    const link = "http://localhost:8080/app/user/login";
+    const user = {
+        userId: "test4",
+        userPw: "qwer1234!",
+    };
+    const userLogin = () => {
+        axios
+            .post(link, user)
             .then((response) => {
                 console.log(response.data);
                 return response.data;
@@ -52,33 +41,44 @@ function App() {
             .catch((err) => {
                 console.log(err);
             });
-
-        return formId;
     };
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
-            <FormHandlingContext.Provider value={{ onCreate }}>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<Layout />}>
-                            <Route index element={<Home />} />
-                            <Route path="about" element={<About />} />
-                            <Route path="mypage" element={<Mypage />} />
-                            <Route path="create" element={<CreateSurvey />} />
-                            <Route path="survey/:id" element={<Survey />} />
-                            <Route path="register" element={<RegisterForm />} />
-                            <Route path="login" element={<LoginForm />} />
-                            <Route path="community" element={<Community />} />
-                            <Route path="AvsB" element={<CreateAvsB />} />
-                            <Route path="mypage_setting" element={<Mypage_setting />} />
-                            <Route path="details/:id" element={<SurveyDetail />} />
-                            <Route path="surveyList" element={<SurveyList />} />
-                        </Route>
-                    </Routes>
-                </BrowserRouter>
-            </FormHandlingContext.Provider>
-        </AuthContext.Provider>
+        <div>
+            <button onClick={userLogin}>login</button>
+        </div>
+    );
+};
+
+function App() {
+    const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn"));
+
+    return (
+        <AuthenticationContextProvider>
+            <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+                <SurveyContextProvider>
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path="/" element={<Layout />}>
+                                <Route index element={<Home />} />
+                                <Route path="about" element={<About />} />
+                                <Route path="mypage" element={<Mypage />} />
+                                <Route path="create" element={<CreateSurvey />} />
+                                <Route path="survey/:id" element={<Survey />} />
+                                <Route path="register" element={<RegisterForm />} />
+                                <Route path="login" element={<LoginForm />} />
+                                <Route path="community" element={<Community />} />
+                                <Route path="AvsB" element={<CreateAvsB />} />
+                                <Route path="mypage_setting" element={<Mypage_setting />} />
+                                <Route path="details/:id" element={<SurveyDetail />} />
+                                <Route path="surveyList" element={<SurveyList />} />
+                                <Route path="test" element={<Test />} />
+                            </Route>
+                        </Routes>
+                    </BrowserRouter>
+                </SurveyContextProvider>
+            </AuthContext.Provider>
+        </AuthenticationContextProvider>
     );
 }
 

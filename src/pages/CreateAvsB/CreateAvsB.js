@@ -43,7 +43,7 @@ export const CreateAvsB = () => {
     const imgRef = useRef();
     return (
         <div className="CreateAvsB">
-            <FadeIn className="FadeIn" childClassName="childClassName">
+            <FadeIn className="surveyWrapper" childClassName="childClassName">
                 <div className="text-wrapper">
                     <input
                         className="surveyTitle"

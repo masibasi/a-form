@@ -1,0 +1,38 @@
+[
+    {
+        "type": "NORMAL",
+        "title": "string",
+        "deadline": "2023-05-04T12:50:18.171Z",
+        "questions": [
+            {
+                "title": "string",
+                "type": "RADIO",
+                "selections": [
+                    {
+                        "type": "LETTER",
+                        "content": "string"
+                    }
+                ]
+            }
+        ],
+        "description": "string"
+    }
+    {
+        "type": "NORMAL",
+        "title": "string",
+        "deadline": "2023-05-04T12:50:18.171Z",
+        "questions": [
+            {
+                "title": "string",
+                "type": "RADIO",
+                "selections": [
+                    {
+                        "type": "LETTER",
+                        "content": "string"
+                    }
+                ]
+            }
+        ],
+        "description": "string"
+    }
+]

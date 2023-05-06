@@ -6,6 +6,14 @@
     width: 100%;
     margin-bottom: 4%;
 }
+.Community .pageTitle {
+    margin: 0;
+    margin-right: 16px;
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    /* text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue; */
+}
 .Community .title {
     margin: 0;
     margin-right: 16px;
@@ -15,7 +23,12 @@
     margin-bottom: 24px;
     display: flex;
     align-items: center;
+    /* justify-content: center; */
+
     width: 100%;
+}
+.Community .all {
+    justify-content: center;
 }
 .Community .title2Wrapper {
     margin-bottom: 12px;
@@ -26,11 +39,14 @@
 .Community .AvsBWrapper {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-right: 10%;
-    margin-left: 10%;
+    justify-content: space-around;
+
+    padding-top: 2%;
+    padding-bottom: 2%;
     margin-bottom: 28px;
     width: 100%;
+    border-radius: 25px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .Community .AvsBTitle {
     margin-top: 16px;
@@ -44,9 +60,30 @@
     margin-bottom: 28px;
 }
 .Community .hotSurveyWrapper {
-    width: 65%;
-    padding-right: 40px;
+    width: 63%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-right: 2%;
+    padding-left: 2%;
+    border-radius: 25px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .Community .hotCategoryWrapper {
-    width: 35%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-right: 2%;
+    padding-left: 2%;
+    border-radius: 25px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width: 33%;
+}
+.Community .sucveyListWrapper {
+    width: 63%;
+    /* margin-right: auto; */
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-right: 2%;
+    padding-left: 2%;
+    border-radius: 25px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }

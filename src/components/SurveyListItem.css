@@ -47,3 +47,9 @@
 .Community p {
     margin: 0;
 }
+
+.HotAvsBSurvey {
+    padding: 2%;
+    border-radius: 5%;
+    cursor: pointer;
+}

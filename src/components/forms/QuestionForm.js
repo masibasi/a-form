@@ -12,7 +12,7 @@ function QuestionForm(props) {
     const questionType = props.type;
 
     return (
-        <Card className="QuestionForm" style={{ maxWidth: "1024px" }}>
+        <Card className="QuestionForm hvr-float" style={{ maxWidth: "1024px" }}>
             <Card.Body>
                 <div className="top-wrapper">
                     <Card.Title>

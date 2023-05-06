@@ -22,15 +22,12 @@ export default function Login() {
     useEffect(() => {}, []);
 
     const loginClick = () => {
+        const loginData = {
+            userId: userId,
+            userPw: userPassword,
+        };
         axios
-            .post(
-                "http://localhost:8080/api/user/login",
-                {
-                    userId,
-                    userPassword,
-                },
-                { "Content-Type": "application/json" }
-            )
+            .post("http://localhost:8080/app/user/login", loginData, { "Content-Type": "application/json" })
             .then((res) => {
                 alert("로그인 되었습니다!");
                 setIsLoggedIn(true);
@@ -62,42 +59,22 @@ export default function Login() {
                     <br></br>
                     <div className="form-group mt-3">
                         <label>ID</label>
-                        <input
-                            type="text"
-                            name="id"
-                            className="form-control mt-1"
-                            placeholder="Enter id"
-                            onChange={idChange}
-                        />
+                        <input type="text" name="id" className="form-control mt-1" placeholder="Enter id" onChange={idChange} />
                     </div>
                     <div className="form-group mt-3">
                         <label>Password</label>
-                        <input
-                            type="password"
-                            className="form-control mt-1"
-                            placeholder="Enter password"
-                            onChange={passwordChange}
-                            onKeyDown={enterKeyPress}
-                        />
+                        <input type="password" className="form-control mt-1" placeholder="Enter password" onChange={passwordChange} onKeyDown={enterKeyPress} />
                     </div>
                     <br></br>
                     <br></br>
                     <div className="text-center">
                         Not registered yet?{" "}
-                        <span
-                            className="link-primary"
-                            onClick={register}
-                            style={{ cursor: "pointer" }}
-                        >
+                        <span className="link-primary" onClick={register} style={{ cursor: "pointer" }}>
                             Sign Up
                         </span>
                     </div>
                     <div className="d-grid gap-2 mt-3">
-                        <Button
-                            variant="dark"
-                            onClick={loginClick}
-                            className="btn btn-primary"
-                        >
+                        <Button variant="dark" onClick={loginClick} className="btn btn-primary">
                             Sign In
                         </Button>
                     </div>

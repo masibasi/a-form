@@ -3,7 +3,6 @@ import { Form } from "react-bootstrap";
 import { useLocation, useParams } from "react-router-dom";
 import QuestionForm from "../../components/forms/QuestionForm";
 
-import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
 import Axios from "axios";
@@ -77,7 +76,7 @@ export default function Survey() {
     return (
         <>
             {loaded ? (
-                <div className="CreateSurvey">
+                <div className="Survey">
                     <FadeIn className="surveyWrapper" childClassName="childClassName">
                         <div className="text-wrapper">
                             <div className="surveyTitle">{surveyData.title}</div>

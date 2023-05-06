@@ -58,10 +58,7 @@ export default function Mypage() {
                         <div className="nameline">
                             <div className="profile_name">Won Kim</div>
                             <div className="edit">
-                                <button
-                                    className="edit_button"
-                                    onClick={handleSettingClick}
-                                >
+                                <button className="edit_button" onClick={handleSettingClick}>
                                     <img src={edit_icon} alt="" />
                                 </button>
                             </div>
@@ -83,30 +80,16 @@ export default function Mypage() {
                     </div>
                 </div>
 
-                <div className="Survey">
+                <div className="Mypage_survey">
                     <div className="written_post">
                         <div className="I_write">내가 작성한 설문</div>
                         <div className="I_write_list">
                             {surveyList_written.map((survey, index) => (
                                 <div className="survey_item" key={index}>
-                                    <div className="survey_title">
-                                        {survey.title}
-                                    </div>
-                                    <div className="survey_date">
-                                        {survey.date}
-                                    </div>
-                                    <button
-                                        className={`status_button ${
-                                            survey.status === "진행중"
-                                                ? "green"
-                                                : "red"
-                                        }`}
-                                    >
-                                        {survey.status}
-                                    </button>
-                                    <button className="statistics_button">
-                                        통계보기
-                                    </button>
+                                    <div className="survey_title">{survey.title}</div>
+                                    <div className="survey_date">{survey.date}</div>
+                                    <button className={`status_button ${survey.status === "진행중" ? "green" : "red"}`}>{survey.status}</button>
+                                    <button className="statistics_button">통계보기</button>
                                 </div>
                             ))}
                         </div>
@@ -117,24 +100,10 @@ export default function Mypage() {
                         <div className="I_writing_list">
                             {surveyList_writing.map((survey, index) => (
                                 <div className="survey_item" key={index}>
-                                    <div className="survey_title">
-                                        {survey.title}
-                                    </div>
-                                    <div className="survey_date">
-                                        {survey.date}
-                                    </div>
-                                    <button
-                                        className={`status_button ${
-                                            survey.status === "진행중"
-                                                ? "green"
-                                                : "red"
-                                        }`}
-                                    >
-                                        {survey.status}
-                                    </button>
-                                    <button className="statistics_button">
-                                        통계보기
-                                    </button>
+                                    <div className="survey_title">{survey.title}</div>
+                                    <div className="survey_date">{survey.date}</div>
+                                    <button className={`status_button ${survey.status === "진행중" ? "green" : "red"}`}>{survey.status}</button>
+                                    <button className="statistics_button">통계보기</button>
                                 </div>
                             ))}
                         </div>
