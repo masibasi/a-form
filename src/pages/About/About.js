@@ -11,6 +11,7 @@ import survey from "../../assets/images/3D_survey2.png";
 import survey2 from "../../assets/images/3D_survey3.png";
 import right_arrow from "../../assets/images/right_arrow.png";
 import left_arrow from "../../assets/images/left_arrow.png";
+import aform_media from "../../assets/images/media/A-form.mp4";
 
 export default function About() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -64,14 +65,6 @@ export default function About() {
     },
   ];
 
-  // const handlePrev = () => {
-  //   setCurrentIndex((currentIndex - 1 + solutions.length) % solutions.length);
-  // };
-
-  // const handleNext = () => {
-  //   setCurrentIndex((currentIndex + 1) % solutions.length);
-  // };
-
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % solutions.length);
@@ -89,11 +82,13 @@ export default function About() {
   return (
     <FadeIn className="About">
       <div className="page1">
-        <img src={Logo2} alt="" />
+        {/* <img src={Logo2} alt="" />
         <h4>
           <span className="A">A</span>mazing Form <br />
           <span className="A">A</span>utomatical Form <br /> By team <span className="A">A</span>CCELER !
-        </h4>
+        </h4> */}
+
+        <video src={aform_media} width="100%" height="auto" style={{ objectFit: "contain" }} autoPlay loop />
       </div>{" "}
       <div className="page2">
         <div className="container1">
@@ -152,24 +147,21 @@ export default function About() {
         <div className="goal_img">
           <img src={survey2} alt="" />
         </div>
+      </div>
+      <div className="page4">
+        <div className="container0">
+          <div className="onlyaform">오직, A-Form 에서만</div>
+        </div>
 
         <div className="container1">
-          <Carousel
-            showStatus={false}
-            showThumbs={false}
-            infiniteLoop={true}
-            onChange={handleCarouselChange}
-            autoPlay={true} // 자동 전환 활성화
-            interval={2000} // 3초 간격으로 전환
-          >
+          <Carousel showStatus={false} showThumbs={false} infiniteLoop={true} onChange={handleCarouselChange} autoPlay={true} interval={2000}>
             {solutions.map((solution, index) => (
               <div className={`card`} key={index}>
                 <div className="solution_nametag">
-                  {/* <img src={check} alt="" className="card_check" /> */}
                   <div className="solName">{solution.solName}</div>
                 </div>
 
-                <div className="sol1_subcontainer2">
+                <div className={solution.subcontainer1}>
                   <span className="hope1">{solution.content}</span>
                 </div>
               </div>
