@@ -4,21 +4,40 @@ export const AuthenticationContext = createContext();
 
 export const AuthenticationContextProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
-    const [user, setUser] = useState(null);
+    const [userToken, setUserToken] = useState(null);
     const [isLogin, setIsLogin] = useState(false);
 
-    const onLogin = (id, password) => {
-        const res = AuthenticationContext(id, password);
-        setUser(res.token);
-        setIsLogin(res.login);
+    const onLogin = async (userId, userPassword) => {
+        let loginRes = await loginHandler(userId, userPassword);
+        console.log(loginRes);
+        if (loginRes.data == "아이디가 존재하지 않습니다.") {
+            alert("아이디가 존재하지 않습니다.");
+            return;
+        } else if (loginRes.data == "비밀번호가 일치하지 않습니다.") {
+            alert("비밀번호가 일치하지 않습니다.");
+            return;
+        } else {
+            setUserToken(loginRes.data);
+            setIsLogin(true);
+            alert("로그인 되었습니다!");
+        }
     };
+
+    const onLogout = () => {
+        setUserToken("");
+        setIsLogin(false);
+        alert("로그아웃 되었습니다!");
+        window.location.reload();
+    };
+
     return (
         <AuthenticationContext.Provider
             value={{
-                user,
+                userToken,
                 isLoading,
                 onLogin,
                 isLogin,
+                onLogout,
             }}
         >
             {children}

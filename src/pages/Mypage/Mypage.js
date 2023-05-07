@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Mypage.css";
 import profileimg from "../../assets/images/profile_sample1.png";
 import edit_icon from "../../assets/images/edit_icon 1.png";
 import FadeIn from "react-fade-in/lib/FadeIn";
+import { AuthenticationContext } from "../../services/authentication/authentication.context";
 
 export default function Mypage() {
-    const navigation = useNavigate();
+    const navigate = useNavigate();
     const handleSettingClick = () => {
-        navigation("/mypage_setting");
+        navigate("/mypage_setting");
     };
+    const { userToken, isLogin } = useContext(AuthenticationContext);
+
+    const CheckLogin = () => {
+        if (isLogin == false) {
+            alert("로그인이 필요한 서비스 입니다.");
+            navigate(-1);
+        }
+    };
+    useEffect(() => {
+        CheckLogin();
+    }, []);
     const surveyList_written = [
         {
             title: "설문 제목 1",

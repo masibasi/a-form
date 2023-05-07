@@ -4,13 +4,15 @@ import "./Login.css";
 import Button from "react-bootstrap/Button";
 import { AuthContext } from "../../App";
 import { useNavigate } from "react-router-dom";
+import { AuthenticationContext } from "../../services/authentication/authentication.context";
 
 export default function Login() {
     const navigate = useNavigate();
 
     const [userId, setUserId] = useState("");
     const [userPassword, setUserPassword] = useState("");
-    const { setIsLoggedIn } = useContext(AuthContext);
+
+    const { onLogin, isLogin } = useContext(AuthenticationContext);
 
     const idChange = (e) => {
         setUserId(e.target.value);
@@ -19,32 +21,13 @@ export default function Login() {
         setUserPassword(e.target.value);
     };
 
-    useEffect(() => {}, []);
+    useEffect(() => {
+        isLogin && navigate("/");
+    }, [isLogin]);
 
-    const loginClick = () => {
-        const loginData = {
-            userId: userId,
-            userPw: userPassword,
-        };
-        axios
-            .post("http://localhost:8080/app/user/login", loginData, { "Content-Type": "application/json" })
-            .then((res) => {
-                alert("로그인 되었습니다!");
-                setIsLoggedIn(true);
-                localStorage.setItem("isLoggedIn", true);
-                navigate("/");
-            })
-            .catch((err) => {
-                if (err.response.status === 403) {
-                    alert("Invalid User");
-                } else {
-                    alert(err);
-                }
-            });
-    };
     const enterKeyPress = (e) => {
         if (e.key === "Enter") {
-            loginClick();
+            onLogin(userId, userPassword);
         }
     };
     const register = (e) => {
@@ -74,7 +57,7 @@ export default function Login() {
                         </span>
                     </div>
                     <div className="d-grid gap-2 mt-3">
-                        <Button variant="dark" onClick={loginClick} className="btn btn-primary">
+                        <Button variant="dark" onClick={() => onLogin(userId, userPassword)} className="btn btn-primary">
                             Sign In
                         </Button>
                     </div>

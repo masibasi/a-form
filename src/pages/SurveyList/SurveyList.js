@@ -9,7 +9,7 @@ export const SurveyList = ({ page, offset, status, sort }) => {
     const [showList, setShowList] = useState(false);
     const getFormData = async () => {
         const result = await axios.get(`http://localhost:3010/surveys?page=${page}&offset=${offset}&progressStatus=${status}&sort=${sort}`);
-        console.log(result);
+        // console.log(result);
         setFormData(result.data.data);
         setShowList(true);
     };

@@ -8,10 +8,11 @@ import { AuthContext } from "../App";
 
 import logo from "../assets/images/A-Form-logo.png";
 import { Button, Form } from "react-bootstrap";
+import { AuthenticationContext } from "../services/authentication/authentication.context";
 
 export default function Layout() {
     const navigate = useNavigate();
-    const { isLoggedIn } = useContext(AuthContext);
+    const { isLogin, onLogout } = useContext(AuthenticationContext);
     return (
         <div className="Layout">
             <Navbar className="Navbar" bg="white">
@@ -27,14 +28,13 @@ export default function Layout() {
                         <Nav.Link className="navMenuComponent" onClick={() => navigate("/about")}>
                             About
                         </Nav.Link>
-                        {isLoggedIn ? (
+                        {isLogin ? (
                             <Nav>
                                 <Nav.Link onClick={() => navigate("/mypage")}>마이페이지</Nav.Link>
                                 <Nav.Link
                                     onClick={() => {
                                         if (window.confirm("로그아웃하시겠습니까?")) {
-                                            localStorage.removeItem("isLoggedIn");
-                                            window.location.reload();
+                                            onLogout();
                                         }
                                     }}
                                 >

@@ -1,73 +1,71 @@
 /* Home */
 .Home {
-  text-align: center;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-around;
-  /* padding-left: 5%;
-  padding-right: 5%; */
-  flex-direction: column;
+    text-align: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
+    flex-direction: column;
 }
 
 .page1 {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
+    display: flex;
+    width: 100%;
+    height: 100%;
 }
 .homeLeftWrapper {
-  margin-left: 8%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
 }
 .Home .title {
-  text-align: left;
-  font-weight: 700;
-  font-size: 2rem;
+    text-align: left;
+    font-weight: 700;
+    font-size: 2rem;
 }
 .Home .catchPhrase {
-  text-align: left;
-  font-size: 1.4rem;
+    text-align: left;
+    font-size: 1.4rem;
 }
 
 .Home .imgWrapper {
-  height: 100%;
-  margin-top: 5%;
-  width: 100%;
-
-  display: inline-block;
+    height: 100%;
+    width: 70%;
+    display: flex;
 }
 .homeBtnWrapper {
-  margin-top: 60px;
-  display: flex;
-  gap: 50px;
+    margin-top: 60px;
+    display: flex;
+    gap: 50px;
 }
 .homeBtn {
-  width: 160px;
+    width: 160px;
 }
 
 .homeImg {
-  width: 80%;
+    width: 100%;
 }
 
 #about_btn {
-  background-color: #1abc9c;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
 }
 
 #about_btn:hover {
-  background-color: #148f77;
+    background-color: #148f77;
 }
 
 #about_btn:active {
-  transform: translateY(2px);
+    transform: translateY(2px);
 }

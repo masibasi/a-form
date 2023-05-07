@@ -1,3 +1,5 @@
+import React from "react";
+
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -6,21 +8,20 @@ export const loginHandler = (userId, userPassword) => {
         userId: userId,
         userPw: userPassword,
     };
-    const navigate = useNavigate;
-    axios
+
+    let loginResult = axios
         .post("http://localhost:8080/app/user/login", loginData, { "Content-Type": "application/json" })
         .then((res) => {
-            alert("로그인 되었습니다!");
-
             localStorage.setItem("isLoggedIn", true);
-            navigate("/");
-            return { token: res.data, login: true };
+            return res;
         })
         .catch((err) => {
-            if (err.response.status === 403) {
+            if (err.response === 403) {
                 alert("Invalid User");
             } else {
                 alert(err);
             }
         });
+
+    return loginResult;
 };

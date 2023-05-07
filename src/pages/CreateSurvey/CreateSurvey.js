@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
 import { Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import QuestionForm from "../../components/forms/QuestionForm";
@@ -10,6 +10,7 @@ import "../Survey/Survey.css";
 import { ConfirmSurveyModal, LinkModal } from "../../components/ConfirmSurveyModal";
 import FadeIn from "react-fade-in/lib/FadeIn";
 import { SurveyContext } from "../../services/servey/survey.context";
+import { AuthenticationContext } from "../../services/authentication/authentication.context";
 
 function CreateSurvey() {
     const [questions, setQuestions] = useState([]); //index, state(어떤 타입의 질문인지)
@@ -19,29 +20,41 @@ function CreateSurvey() {
     const nextCardId = useRef(0); // surveyCard 아이디
 
     // Create
-    const { createSurvey } = useContext(SurveyContext); // Form 작성 완료 handler를 context에서 불러온다
+    const { CreateSurvey } = useContext(SurveyContext); // Form 작성 완료 handler를 context에서 불러온다
+    // User Token, isLogin
+    const { userToken, isLogin } = useContext(AuthenticationContext);
 
+    const CheckLogin = () => {
+        if (isLogin == false) {
+            alert("로그인이 필요한 서비스 입니다.");
+            navigate(-1);
+        }
+    };
+    useEffect(() => {
+        CheckLogin();
+    }, [isLogin]);
     /* Variables for modal */
     const [linkModalShow, setLinkModalShow] = useState(false);
     const [confirmModalShow, setConfirmModalShow] = useState(false);
     const [deadline, setDeadline] = useState("");
     const [surveyId, setSurveyId] = useState("");
+    /* Functions for modal */
     const handleClose = () => {
         setLinkModalShow(false);
-        // navigate("/");
+        navigate("/");
     };
     const handleConfirmModalClose = () => {
         setConfirmModalShow(false);
     };
-
+    // Submit
     const handleSubmit = async () => {
         const type = "NORMAL";
         setConfirmModalShow(false);
-        let newId = await createSurvey(type, deadline, title, description, questions);
+        let newId = await CreateSurvey(type, deadline, title, description, questions, userToken);
         setSurveyId(newId);
         setLinkModalShow(true);
     };
-
+    // When click "Complete Form" Button
     const handleCreate = () => {
         if (title === "") {
             alert("enter in a title");
