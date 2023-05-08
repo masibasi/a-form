@@ -1,148 +1,149 @@
 /* About */
 
 .About {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .About .page1 {
-    display: flex;
-    /* flex-direction: column; */
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
 }
 .About .logo {
-    flex-basis: 25%;
-    width: 10%;
+  flex-basis: 25%;
+  width: 10%;
 }
 .About .A {
-    color: blue;
+  color: blue;
 }
 
 .About .page1 img {
-    flex-basis: 40%;
-    width: 10%;
+  flex-basis: 40%;
+  width: 10%;
 }
 
 .About .page1 h4 {
-    flex-basis: 40%;
-    margin-left: 5rem; /* 이미지와 간격을 조정*/
-    font-size: 3rem;
-    line-height: 80px; /* 이미지의 높이와 같도록 지정 */
+  flex-basis: 40%;
+  margin-left: 5rem; /* 이미지와 간격을 조정*/
+  font-size: 3rem;
+  line-height: 80px; /* 이미지의 높이와 같도록 지정 */
 }
 
 .About .developed-by {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 1rem;
-    margin-bottom: 32px;
-    margin-top: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 1rem;
+  margin-bottom: 32px;
+  margin-top: 30%;
 }
 
 .About .developed-by a {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .About .page2 {
-    display: flex;
-    /* flex-direction: column; */
-    align-items: center;
-    padding-top: 15%;
-    width: 100%;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  padding-top: 15%;
+  width: 100vw;
+  height: 100vh;
 }
 
 .About .page2 h4 {
-    margin-left: 20%;
-    font-size: 2rem;
+  margin-left: 20%;
+  font-size: 2rem;
 }
 
 .container1 {
-    flex-basis: 50%;
-    padding: 2rem;
-    box-sizing: border-box;
+  flex-basis: 50%;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 .container2 {
-    flex-basis: 50%;
-    padding: 2rem;
-    box-sizing: border-box;
+  flex-basis: 50%;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 .container1 .Consideration {
-    padding-bottom: 3%;
-    line-height: 1.5; /* 문장 간격 조절 */
-    font-family: "Roboto", sans-serif; /* 글꼴 변경 */
-    color: #3a3a3a; /* 텍스트 색상 변경 */
-    font-weight: 500; /* 글자 굵기 변경 */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
+  padding-bottom: 3%;
+  line-height: 1.5; /* 문장 간격 조절 */
+  font-family: "Roboto", sans-serif; /* 글꼴 변경 */
+  color: #3a3a3a; /* 텍스트 색상 변경 */
+  font-weight: 500; /* 글자 굵기 변경 */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
 }
 
 .page2 .container1 img {
-    width: 70%;
-    padding-top: 5%;
-    height: auto;
-    margin-left: 15%;
-    margin-top: -5%;
+  width: 70%;
+  padding-top: 5%;
+  height: auto;
+  margin-left: 15%;
+  margin-top: -5%;
 }
 
 .page2 .container2 img {
-    width: 5%;
-    margin-right: 5%;
+  width: 5%;
+  margin-right: 5%;
 }
 
 .page2 .container2 .sentence1 {
-    margin-bottom: 5%;
+  margin-bottom: 5%;
 }
 
 .page2 .container2 .sentence2 {
-    margin-bottom: 5%;
+  margin-bottom: 5%;
 }
 
 .page2 .container2 .problem1 {
-    font-weight: bold;
-    font-size: 1.7rem;
+  font-weight: bold;
+  font-size: 1.7rem;
 }
 
 .page2 .container2 .hope1 {
-    font-size: 1.1rem;
-    margin-left: 10%;
+  font-size: 1.1rem;
+  margin-left: 10%;
 }
 
 .page2 .container2 .sentence1 .sen1_subcontainer1 {
-    margin-bottom: 0.7rem;
+  margin-bottom: 0.7rem;
 }
 
 .page2 .container2 .sentence1 .sen1_subcontainer2 {
-    width: 100%;
-    justify-content: center;
+  width: 100%;
+  justify-content: center;
 }
 
 .page2 .container2 .sentence2 .sen2_subcontainer1 {
-    margin-bottom: 0.7rem;
+  margin-bottom: 0.7rem;
 }
 
 .page2 .container2 .sentence3 .sen3_subcontainer1 {
-    margin-bottom: 0.7rem;
+  margin-bottom: 0.7rem;
 }
 
 /*-------------- page3 -------------------*/
 .About .page3 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 10%;
-    width: 100vw;
-    height: 100vh;
-    padding-bottom: 5%;
-    background-color: #f9fafb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10%;
+  width: 100vw;
+  height: 100vh;
+  padding-bottom: 5%;
+  background-color: #f9fafb;
 }
 
 /* .page3 .goal {
@@ -155,157 +156,167 @@
 @import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
 
 .goal {
-    font-family: "Gowun Dodum", sans-serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    font-style: normal;
-    /* 원하는 폰트 색상으로 설정합니다 */
-    color: #333;
-    flex-direction: row;
-    display: flex;
+  font-family: "Gowun Dodum", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-style: normal;
+  /* 원하는 폰트 색상으로 설정합니다 */
+  color: #333;
+  flex-direction: row;
+  display: flex;
 }
 
 .About .page4 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 10%;
-    width: 100%;
-    padding-bottom: 5%;
-    /* background-color: #333; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10%;
+  width: 100vw;
+  height: 100vh;
+  padding-bottom: 5%;
+  /* background-color: #333; */
 }
 .page4 .container1 img {
-    width: 10%;
-    margin-right: 5%;
+  width: 10%;
+  margin-right: 5%;
 }
 
 .page4 .container1 .solName {
-    font-weight: bold;
-    font-size: 1.7rem;
-    border-bottom: 2px solid black;
-    white-space: nowrap;
-    min-width: 150px;
+  font-weight: bold;
+  font-size: 1.7rem;
+  border-bottom: 2px solid black;
+  white-space: nowrap;
+  min-width: 150px;
 }
 
 .page4 .container1 {
-    display: flex;
+  display: flex;
 }
 
 .page4 .container1 .solution1,
 .solution2,
 .solution3 {
-    flex-basis: 50%;
-    text-align: center;
+  flex-basis: 50%;
+  text-align: center;
 }
 
 .page4 .container1 .solution1 {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
 
 .page4 .container1 .solution2 {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
 
 .page4 .container1 .solution1 .sol1_subcontainer1 {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .page4 .container1 .solution2 .sol2_subcontainer1 {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .page4 .container1 .solution3 .sol3_subcontainer1 {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 /*--------------------*/
 /* 카드의 기본 스타일 설정 */
 .About .selected {
-    /* background-color: red; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .card {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 0 1px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    margin: 1rem 0;
-    width: 40%; /* 카드의 너비를 변경 */
-    max-width: 1000px; /* 원하는 최대 너비 설정 */
-    position: relative;
-    padding-bottom: 5%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 0 1px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin: 1rem 0;
+  width: 40%; /* 카드의 너비를 변경 */
+  max-width: 1000px; /* 원하는 최대 너비 설정 */
+  position: relative;
+  padding-bottom: 5%;
 }
 
 /* 이미지를 카드 상단에 표시 */
 
 .card img {
-    width: 10%;
-    margin-bottom: 1rem;
+  width: 10%;
+  margin-bottom: 1rem;
 }
 
 .card .solName {
-    font-weight: bold;
-    font-size: 1.7rem;
-    border-bottom: 2px solid black;
-    margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 1.7rem;
+  border-bottom: 2px solid black;
+  margin-bottom: 1rem;
 }
 
 .card .hope1 {
-    font-size: 1.4rem;
-    line-height: 1.6;
-    color: #333;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: #333;
 }
 
 .page4 .container1_sub2 {
-    padding: 2rem 0;
+  padding: 2rem 0;
 }
 
 .card_check {
-    height: 1.5rem;
-    width: auto;
+  height: 1.5rem;
+  width: auto;
 }
 
 .solution_nametag {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card {
-    margin-bottom: 3rem; /* 카드와 점 사이의 간격을 위해 설정함 */
+  margin-bottom: 3rem; /* 카드와 점 사이의 간격을 위해 설정함 */
 }
 
 .video-container {
-    position: absolute;
-    top: 10%; /* 부모 요소의 정 중앙으로 위치하도록 설정 */
+  position: absolute;
+  top: 10%; /* 부모 요소의 정 중앙으로 위치하도록 설정 */
 
-    transform: translate(-50%, -50%); /* 정 가운데로 정렬 */
-    /* padding-bottom: 56.25%; */
-    width: 100%;
-    height: auto;
-    margin: auto; /* 중앙 정렬 */
+  transform: translate(-50%, -50%); /* 정 가운데로 정렬 */
+  /* padding-bottom: 56.25%; */
+  width: 100%;
+  height: auto;
+  margin: auto; /* 중앙 정렬 */
 }
 
 .video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 10rem;
-    height: 10rem;
-    object-fit: contain; /* 동영상 비율 유지 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10rem;
+  height: 10rem;
+  object-fit: contain; /* 동영상 비율 유지 */
 }
 
 .onlyaform {
-    border-radius: 5px;
-    color: black;
-    font-family: Arial, sans-serif;
-    font-size: 2rem;
-    font-weight: bold;
-    padding: 10px;
-    text-align: center;
-    text-transform: uppercase;
-    text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  color: black;
+  font-family: Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms;
 }

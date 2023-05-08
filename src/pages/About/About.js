@@ -12,6 +12,8 @@ import survey2 from "../../assets/images/3D_survey3.png";
 import right_arrow from "../../assets/images/right_arrow.png";
 import left_arrow from "../../assets/images/left_arrow.png";
 import aform_media from "../../assets/images/media/A-form.mp4";
+import useScrollFadeIn from "../Effect/useScrollFadeIn";
+import useScrollClipPath from "../Effect/useScrollClipPath";
 
 export default function About() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -79,18 +81,18 @@ export default function About() {
     setCurrentIndex(index);
   };
 
-  return (
-    <FadeIn className="About">
-      <div className="page1">
-        {/* <img src={Logo2} alt="" />
-        <h4>
-          <span className="A">A</span>mazing Form <br />
-          <span className="A">A</span>utomatical Form <br /> By team <span className="A">A</span>CCELER !
-        </h4> */}
+  /*-------- scroll ---------*/
+  const fadeInPage2 = useScrollFadeIn("up", 1, 0); // 애니메이션 방향, 애니메이션 총 동작 시간, 애니메이션 지연시간
+  const fadeInPage3 = useScrollFadeIn("left", 1, 0);
+  const fadeInPage4 = useScrollFadeIn("up", 1, 0);
+  const clipPathPage3 = useScrollClipPath("left", 1, 0);
 
+  return (
+    <div className="About">
+      <div className="page1">
         <video src={aform_media} width="100%" height="auto" style={{ objectFit: "contain" }} autoPlay loop />
       </div>{" "}
-      <div className="page2">
+      <div className="page2" {...fadeInPage2}>
         <div className="container1">
           <h4>
             <span className="Consideration">어떤 기능들을 고려해야 설문 제작자를 위한</span>
@@ -133,7 +135,7 @@ export default function About() {
           </div>
         </div>
       </div>
-      <div className="page3">
+      <div className="page3" {...fadeInPage3}>
         <div className="goal">
           <span>
             A-Form의 목표는 설문 조사 생성 및 분석 프로세스를
@@ -148,7 +150,7 @@ export default function About() {
           <img src={survey2} alt="" />
         </div>
       </div>
-      <div className="page4">
+      <div className="page4" {...fadeInPage4}>
         <div className="container0">
           <div className="onlyaform">오직, A-Form 에서만</div>
         </div>
@@ -173,6 +175,6 @@ export default function About() {
         Developed by: <a href="https://acceler.kr">Team ACCELER</a>
         <FaGithub size={24} href="https://github.com/KEA-ACCELER/a-form" />
       </div>
-    </FadeIn>
+    </div>
   );
 }
