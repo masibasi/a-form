@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Form } from "react-bootstrap";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import QuestionForm from "../../components/forms/QuestionForm";
+import { SurveyContext } from "../../services/servey/survey.context";
 
 import Button from "react-bootstrap/Button";
 
-import Axios from "axios";
 import FadeIn from "react-fade-in/lib/FadeIn";
-import axios from "axios";
+import { AuthenticationContext } from "../../services/authentication/authentication.context";
 
 export default function Survey() {
+    const { GetSurveyById, PostSurveyAnswer } = useContext(SurveyContext);
+    const { userToken } = useContext(AuthenticationContext);
     const [surveyData, setSurveyData] = useState({
         title: "Default Survey Title",
         description: "Default survey description",
@@ -27,7 +29,7 @@ export default function Survey() {
 
     //Get Survey Data
     const getSurveyData = async () => {
-        let data = await axios.get(`http://localhost:3010/surveys/${id}`);
+        let data = await GetSurveyById(id);
         setSurveyData(data.data);
         setAnswerForm(data.data);
         console.log(data.data);
@@ -39,9 +41,9 @@ export default function Survey() {
     //Set AnswerForm
     const setAnswerForm = (data) => {
         let answerForm = {
-            surveyPk: data._id,
-            userPk: data.author,
-            answer: Array.from({ length: data.questions.length }, (_, i) =>
+            survey: data._id,
+            // userPk: data.author,
+            answers: Array.from({ length: data.questions.length }, (_, i) =>
                 Array.from(
                     {
                         length: data.questions[i].selections.length,
@@ -54,24 +56,12 @@ export default function Survey() {
         setSurveyAnswer(answerForm);
     };
 
-    function handleSubmit(e) {
-        // 버튼누르면 응답 제출
-        e.preventDefault();
+    const handleSubmit = async () => {
         surveyAnswer.answer = JSON.stringify(surveyAnswer.answer);
         console.log(surveyAnswer);
-
-        Axios.post("http://localhost:8080/api/surveyAnswer", surveyAnswer, {
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-            .then((response) => {
-                console.log(response.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }
+        const result = await PostSurveyAnswer(surveyAnswer, userToken);
+        alert(result);
+    };
 
     return (
         <>
@@ -85,12 +75,12 @@ export default function Survey() {
                         <Form className="Form" onSubmit={handleSubmit}>
                             {surveyData.questions &&
                                 surveyData.questions.map((q, index) => {
-                                    return <QuestionForm forCreate={false} type={q.type} q={q} qIndex={index} key={q._id} answer={surveyAnswer.answer[index]} />;
+                                    return <QuestionForm forCreate={false} type={q.type} q={q} qIndex={index} key={q._id} answer={surveyAnswer.answers[index]} />;
                                 })}
                         </Form>
                         <div className="ButtonWrapper">
                             <div className="SurveyBtnWrapper">
-                                <Button className="submit-btn" type="submit" variant="outline-success">
+                                <Button className="submit-btn" type="submit" variant="outline-success" onClick={handleSubmit}>
                                     Submit Answer
                                 </Button>
                             </div>

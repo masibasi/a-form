@@ -1,15 +1,18 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+
 import "./SurveyList.css";
-import { SurveyListItem } from "../../components/SurveyListItem";
+import { SurveyListItem } from "./SurveyListItem";
+import { SurveyContext } from "../../services/servey/survey.context";
+
 export const SurveyList = ({ page, offset, status, sort }) => {
-    const navigate = useNavigate();
     const [formData, setFormData] = useState();
     const [showList, setShowList] = useState(false);
+    const { GetSurveyData } = useContext(SurveyContext);
     const getFormData = async () => {
-        const result = await axios.get(`http://localhost:3010/surveys?page=${page}&offset=${offset}&progressStatus=${status}&sort=${sort}`);
-        // console.log(result);
+        console.log(page, offset, status, sort);
+
+        const result = await GetSurveyData(page, offset, status, sort);
+        console.log(result);
         setFormData(result.data.data);
         setShowList(true);
     };

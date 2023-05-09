@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "../LoginForm/Login.css";
@@ -7,9 +7,12 @@ import "../LoginForm/Login.css";
 import { useNavigate } from "react-router-dom";
 
 import Icon from "../../assets/images/girlIcon.png";
+import { AuthenticationContext } from "../../services/authentication/authentication.context";
 
 export default function RegisterForm() {
     const navigate = useNavigate();
+
+    const { onRegister, regComplete } = useContext(AuthenticationContext);
 
     const [userId, setUserId] = useState("");
     const [userEmail, setUserEmail] = useState("");
@@ -65,7 +68,16 @@ export default function RegisterForm() {
         setUserAddress(e.target.value);
     };
 
-    useEffect(() => {}, []);
+    const CheckComplete = () => {
+        if (regComplete == true) {
+            alert("회원가입 되었습니다!");
+            navigate(-1);
+        }
+        console.log(regComplete);
+    };
+    useEffect(() => {
+        CheckComplete();
+    }, [regComplete]);
 
     //생년월일 지정하는 코드
     const now = new Date();
@@ -106,23 +118,7 @@ export default function RegisterForm() {
             name: userName,
             birth: "",
         };
-        const options = { headers: { "Content-Type": "application/json" } };
-        console.log(JSON.stringify(registerData));
-        axios
-            .post("http://localhost:8080/app/user/join", registerData, options)
-            .then((res) => {
-                alert("Register Success");
-                navigate("/");
-            })
-            .catch((err) => {
-                if (err.response.status === 400) {
-                    alert("Invalid User Inputs");
-                } else if (err.response.status === 409) {
-                    alert(err.response.data);
-                } else {
-                    alert(err);
-                }
-            });
+        onRegister(registerData);
     };
 
     const login = (e) => {

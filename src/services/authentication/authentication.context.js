@@ -1,11 +1,14 @@
 import React, { useState, createContext } from "react";
 import { loginHandler } from "./authentication.service";
+import { registerHandler } from "./authentication.service";
+
 export const AuthenticationContext = createContext();
 
 export const AuthenticationContextProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [userToken, setUserToken] = useState(null);
     const [isLogin, setIsLogin] = useState(false);
+    const [regComplete, setRegComplete] = useState(false);
 
     const onLogin = async (userId, userPassword) => {
         let loginRes = await loginHandler(userId, userPassword);
@@ -30,6 +33,12 @@ export const AuthenticationContextProvider = ({ children }) => {
         window.location.reload();
     };
 
+    const onRegister = async (registerData) => {
+        setRegComplete(false);
+        let loginRes = await registerHandler(registerData);
+        setRegComplete(loginRes);
+    };
+
     return (
         <AuthenticationContext.Provider
             value={{
@@ -38,6 +47,8 @@ export const AuthenticationContextProvider = ({ children }) => {
                 onLogin,
                 isLogin,
                 onLogout,
+                onRegister,
+                regComplete,
             }}
         >
             {children}

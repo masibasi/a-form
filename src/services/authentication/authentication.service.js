@@ -25,3 +25,28 @@ export const loginHandler = (userId, userPassword) => {
 
     return loginResult;
 };
+
+export const registerHandler = (registerData) => {
+    const options = { headers: { "Content-Type": "application/json" } };
+    console.log(JSON.stringify(registerData));
+    let regResult = axios
+        .post("http://localhost:8080/app/user/join", registerData, options)
+        .then((res) => {
+            alert("Register Success");
+            return true;
+        })
+        .catch((err) => {
+            if (err.response.status === 400) {
+                alert("Invalid User Inputs");
+                return false;
+            } else if (err.response.status === 409) {
+                alert(err.response.data);
+                return false;
+            } else {
+                alert(err);
+                return false;
+            }
+        });
+
+    return regResult;
+};

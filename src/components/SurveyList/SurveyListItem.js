@@ -1,5 +1,5 @@
 import React from "react";
-import AB from "../assets/images/AB.png";
+import AB from "../../assets/images/AB.png";
 import { useNavigate } from "react-router-dom";
 import "./SurveyListItem.css";
 export const SurveyListItem = (props) => {

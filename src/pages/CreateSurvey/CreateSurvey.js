@@ -32,7 +32,7 @@ function CreateSurvey() {
     };
     useEffect(() => {
         CheckLogin();
-    }, [isLogin]);
+    }, []);
     /* Variables for modal */
     const [linkModalShow, setLinkModalShow] = useState(false);
     const [confirmModalShow, setConfirmModalShow] = useState(false);

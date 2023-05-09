@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./SurveyDetail.css";
 import { Button, Card, Collapse } from "react-bootstrap";
 import { Comment } from "../../components/Comment";
 import { useNavigate, useParams } from "react-router-dom";
 import FadeIn from "react-fade-in/lib/FadeIn";
-import axios from "axios";
+
+import { SurveyContext } from "../../services/servey/survey.context";
 
 export const SurveyDetail = () => {
+    const { GetSurveyById } = useContext(SurveyContext);
     const [open, setOpen] = useState(false);
     const [comment, setComment] = useState("");
     const [mockComment, setMockComment] = useState([
@@ -25,7 +27,7 @@ export const SurveyDetail = () => {
     };
     const { id } = useParams();
     const getSurveyData = async () => {
-        let data = await axios.get(`http://localhost:3010/surveys/${id}`);
+        let data = await GetSurveyById(id);
         setSurveyData(data.data);
         setLoaded(true);
     };
