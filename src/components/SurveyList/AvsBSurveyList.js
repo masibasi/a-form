@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { AvsBSurveyListItem } from "./AvsBSurveyListItem";
+import "./AvsBSurveyList.css";
 
-import "./SurveyList.css";
-import { SurveyListItem } from "./SurveyListItem";
-import { SurveyContext } from "../../services/servey/survey.context";
-
-export const SurveyList = ({ page, offset, status, sort }) => {
-  const [formData, setFormData] = useState();
+export const AvsBSurveyList = ({ page, offset, status, sort }) => {
+  const [formData, setFormData] = useState([]);
   const [showList, setShowList] = useState(false);
   const { GetSurveyData } = useContext(SurveyContext);
+
   const getFormData = async () => {
     console.log(page, offset, status, sort);
 
@@ -16,16 +16,17 @@ export const SurveyList = ({ page, offset, status, sort }) => {
     setFormData(result.data.data);
     setShowList(true);
   };
+
   useEffect(() => {
     getFormData();
   }, []);
 
   return (
-    <div className="SurveyList">
+    <div className="AvsBSurveyList">
       {showList ? (
         <>
           {formData.map((it) => (
-            <SurveyListItem key={it._id} title={it.title} id={it._id} author={it.author} />
+            <AvsBSurveyListItem key={it._id} title={it.title} id={it._id} author={it.author} />
           ))}
         </>
       ) : (
@@ -35,7 +36,7 @@ export const SurveyList = ({ page, offset, status, sort }) => {
   );
 };
 
-SurveyList.defaultProps = {
+AvsBSurveyList.defaultProps = {
   page: 1,
   offset: 10,
   progressStatus: "all",

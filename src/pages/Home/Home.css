@@ -23,14 +23,22 @@
   flex-direction: column;
   width: 80%;
 }
+
+@import url("https://static.toss.im/tps/main.css");
+@import url("https://static.toss.im/tps/others.css");
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
 .Home .title {
   text-align: left;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 2.3rem;
+  font-family: "Toss Product Sans", sans-serif;
 }
 .Home .catchPhrase {
   text-align: left;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
 }
 
 .Home .imgWrapper {

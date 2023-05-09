@@ -6,16 +6,16 @@ import { GetSurveyData, GetSurveyById, PostSurveyAnswer } from "./survey.service
 export const SurveyContext = createContext();
 
 export const SurveyContextProvider = ({ children }) => {
-    return (
-        <SurveyContext.Provider
-            value={{
-                CreateSurvey,
-                GetSurveyData,
-                GetSurveyById,
-                PostSurveyAnswer,
-            }}
-        >
-            {children}
-        </SurveyContext.Provider>
-    );
+  return (
+    <SurveyContext.Provider
+      value={{
+        CreateSurvey,
+        GetSurveyData,
+        GetSurveyById,
+        PostSurveyAnswer,
+      }}
+    >
+      {children}
+    </SurveyContext.Provider>
+  );
 };

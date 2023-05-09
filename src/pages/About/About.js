@@ -12,8 +12,8 @@ import survey2 from "../../assets/images/3D_survey3.png";
 import right_arrow from "../../assets/images/right_arrow.png";
 import left_arrow from "../../assets/images/left_arrow.png";
 import aform_media from "../../assets/images/media/A-form.mp4";
-import useScrollFadeIn from "../Effect/useScrollFadeIn";
-import useScrollClipPath from "../Effect/useScrollClipPath";
+import useScrollFadeIn from "../../animation/useScrollFadeIn";
+import useScrollClipPath from "../../animation/useScrollClipPath";
 
 export default function About() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -25,11 +25,13 @@ export default function About() {
       solName: "Auto Form",
       content: (
         <>
-          AI 기반 설문조사 자동 생성 기능을
+          AI 기반 설문조사 자동 생성
           <br />
-          제공하여 설문조사 작성에 소요되는
+          기능을 제공하여 설문조사
           <br />
-          시간과 노력을 줄입니다.
+          작성에 소요되는 시간과
+          <br />
+          노력을 줄입니다.
         </>
       ),
     },
@@ -40,11 +42,13 @@ export default function About() {
       solName: "Auto Statistics",
       content: (
         <>
-          주관식 답변 질문을 포함하여 설문조사
+          주관식 답변 질문을 포함하여
           <br />
-          결과의 자동 요약을 제공하여 설문조사
+          설문조사 결과의 자동 요약을
           <br />
-          결과의 정확성과 신뢰성을 향상시킵니다.
+          제공하여 설문조사 결과의
+          <br />
+          정확성과 신뢰성을 향상시킵니다.
         </>
       ),
     },
@@ -55,13 +59,15 @@ export default function About() {
       solName: "Community",
       content: (
         <>
-          커뮤니티 기능을 제공하여 설문조사
+          커뮤니티 기능을 제공하여
           <br />
-          제작자와 응답자 간의 참여 및 피드백을
+          설문조사 제작자와 응답자 간의
           <br />
-          촉진하여 응답률을 높이고 고품질
+          참여 및 피드백을 촉진하여
           <br />
-          데이터 수집을 보장합니다.
+          응답률을 높이고 고품질 데이터
+          <br />
+          수집을 보장합니다.
         </>
       ),
     },
@@ -85,7 +91,13 @@ export default function About() {
   const fadeInPage2 = useScrollFadeIn("up", 1, 0); // 애니메이션 방향, 애니메이션 총 동작 시간, 애니메이션 지연시간
   const fadeInPage3 = useScrollFadeIn("left", 1, 0);
   const fadeInPage4 = useScrollFadeIn("up", 1, 0);
-  const clipPathPage3 = useScrollClipPath("left", 1, 0);
+  const fadeInpage4Card = useScrollFadeIn("up", 1, 0);
+
+  const animatedCard = {
+    0: useScrollFadeIn("up", 1, 0),
+    1: useScrollFadeIn("up", 1, 0.2),
+    2: useScrollFadeIn("up", 1, 0.3),
+  };
 
   return (
     <div className="About">
@@ -156,19 +168,19 @@ export default function About() {
         </div>
 
         <div className="container1">
-          <Carousel showStatus={false} showThumbs={false} infiniteLoop={true} onChange={handleCarouselChange} autoPlay={true} interval={2000}>
-            {solutions.map((solution, index) => (
-              <div className={`card`} key={index}>
-                <div className="solution_nametag">
-                  <div className="solName">{solution.solName}</div>
-                </div>
-
-                <div className={solution.subcontainer1}>
-                  <span className="hope1">{solution.content}</span>
-                </div>
+          {/* <Carousel showStatus={false} showThumbs={false} infiniteLoop={true} onChange={handleCarouselChange} autoPlay={true} interval={2000}> */}
+          {solutions.map((solution, index) => (
+            <div className={`card`} key={index} {...animatedCard[index]}>
+              <div className="solution_nametag">
+                <div className="solName">{solution.solName}</div>
               </div>
-            ))}
-          </Carousel>
+
+              <div className={solution.subcontainer1}>
+                <span className="solution1">{solution.content}</span>
+              </div>
+            </div>
+          ))}
+          {/* </Carousel> */}
         </div>
       </div>
       <div className="developed-by">
