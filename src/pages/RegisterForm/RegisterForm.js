@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -68,6 +67,7 @@ export default function RegisterForm() {
         setUserAddress(e.target.value);
     };
 
+    //회원가입 완료되면 뒤로가기
     const CheckComplete = () => {
         if (regComplete == true) {
             alert("회원가입 되었습니다!");

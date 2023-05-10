@@ -42,13 +42,12 @@ export const AuthenticationContextProvider = ({ children }) => {
     return (
         <AuthenticationContext.Provider
             value={{
-                userToken,
-                isLoading,
-                onLogin,
-                isLogin,
-                onLogout,
-                onRegister,
-                regComplete,
+                userToken, // 유저를 식별하는 토큰을 저장하는 객체
+                onLogin, // 로그인 시도시 호출하는 함수
+                isLogin, // 로그인 되었다고 알려주는 변수
+                onLogout, // 로그아웃을 처리해주는 함수
+                onRegister, // 회원가입을 처리해주는 함수
+                regComplete, // 회원가입 완료 상태를 알려주는 변수
             }}
         >
             {children}

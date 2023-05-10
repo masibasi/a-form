@@ -65,7 +65,17 @@
     margin-left: 12px;
 }
 .ButtonWrapper .SurveyBtnWrapper .submit-btn {
-    margin-right: 12px;
+    margin-left: 12px;
+}
+.ButtonWrapper .SurveyBtnWrapper .delete-btn {
+    margin-left: 12px;
+}
+.ButtonWrapper .SurveyBtnWrapper .icon {
+    margin-right: 8px;
+}
+.ButtonWrapper .SurveyBtnWrapper .icon-svg {
+    margin-right: 8px;
+    margin-bottom: 5px;
 }
 .Survey .Form {
     display: flex;
@@ -73,37 +83,6 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-}
-/* QuestionForm */
-.QuestionForm {
-    margin-top: 4% !important;
-    margin-bottom: 0% !important;
-    width: 85% !important;
-    background-color: white;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 4px 4px 0px;
-    border-radius: 25px !important;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-.QuestionForm .top-wrapper {
-    display: flex;
-    justify-content: space-between;
-}
-.QuestionForm .delete-btn {
-    width: 40px;
-    height: 40px;
-}
-.QuestionForm .formtitle {
-    border: none;
-    font-size: 1.3em;
-    font-weight: 800;
-    margin-bottom: 12px;
-    min-width: 300px;
-    width: auto;
-    font-weight: 500;
-}
-.QuestionForm .formtitle:focus {
-    outline: none;
-    border-bottom: 1px solid blue;
 }
 
 /* ShortForm */

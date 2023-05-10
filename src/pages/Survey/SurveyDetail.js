@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./SurveyDetail.css";
 import { Button, Card, Collapse } from "react-bootstrap";
-import { Comment } from "../../components/Comment";
+import { Comment } from "../../components/Comment/Comment";
 import { useNavigate, useParams } from "react-router-dom";
 import FadeIn from "react-fade-in/lib/FadeIn";
 
@@ -12,10 +12,10 @@ export const SurveyDetail = () => {
     const [open, setOpen] = useState(false);
     const [comment, setComment] = useState("");
     const [mockComment, setMockComment] = useState([
-        { author: "작성자", content: "wow! this survey is awesome" },
-        { author: "작성자", content: "wow! this survey is awesome" },
-        { author: "작성자", content: "wow! this survey is awesome" },
-        { author: "작성자", content: "wow! this survey is awesome" },
+        { author: "작성자", content: "wow! this survey is awesome", id: 0 },
+        { author: "작성자", content: "wow! this survey is awesome", id: 1 },
+        { author: "작성자", content: "wow! this survey is awesome", id: 2 },
+        { author: "작성자", content: "wow! this survey is awesome", id: 3 },
     ]);
     const [surveyData, setSurveyData] = useState("");
     const [loaded, setLoaded] = useState(false);
@@ -34,7 +34,18 @@ export const SurveyDetail = () => {
     useEffect(() => {
         getSurveyData();
     }, []);
-
+    const CommentInput = () => {
+        return;
+    };
+    const CommentBox = React.memo(() => {
+        return (
+            <div className="commentBox">
+                {mockComment.map((it) => {
+                    return <Comment author={it.author} content={it.content} key={it.id} />;
+                })}
+            </div>
+        );
+    });
     return (
         <>
             {loaded ? (
@@ -68,16 +79,12 @@ export const SurveyDetail = () => {
                             </div>
                         </Collapse>
 
-                        <div className="commentBox">
-                            {mockComment.map((it) => {
-                                return <Comment author={it.author} content={it.content} />;
-                            })}
-                            <div className="commentBarWrapper">
-                                <input type="text" className="commentBar" value={comment} onChange={(e) => setComment(e.target.value)} />
-                                <Button id="submitBtn" onClick={addComment}>
-                                    등록
-                                </Button>
-                            </div>
+                        <CommentBox />
+                        <div className="commentBarWrapper">
+                            <input type="text" className="commentBar" value={comment} onChange={(e) => setComment(e.target.value)} />
+                            <Button id="submitBtn" onClick={addComment}>
+                                등록
+                            </Button>
                         </div>
                     </FadeIn>
                 </div>

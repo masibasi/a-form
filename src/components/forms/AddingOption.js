@@ -33,4 +33,4 @@ function AddingOption(props) {
     );
 }
 
-export default AddingOption;
+export default React.memo(AddingOption);

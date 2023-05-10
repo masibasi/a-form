@@ -31,17 +31,8 @@ export const Comment = ({ author, content }) => {
                 <div className="content"> {content}</div>
             </div>
 
-            <OverlayTrigger
-                trigger="click"
-                placement="left"
-                overlay={popover}
-                delay={1}
-                show={show}
-            >
-                <button
-                    className="commentMoreBtn"
-                    onClick={() => setShow(!show)}
-                >
+            <OverlayTrigger trigger="click" placement="left" overlay={popover} delay={1} show={show}>
+                <button className="commentMoreBtn" onClick={() => setShow(!show)}>
                     <FiMoreVertical />
                 </button>
             </OverlayTrigger>
