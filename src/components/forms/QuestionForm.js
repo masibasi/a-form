@@ -27,7 +27,7 @@ function QuestionForm(props) {
     });
 
     return (
-        <FadeIn className="QuestionForm hvr-float" style={{ maxWidth: "1024px" }}>
+        <FadeIn className="QuestionForm hvr-float" style={{ maxWidth: "1024px" }} childClassName="childClassName">
             <Card className="QuesionFormCard">
                 <Card.Body>
                     <div className="top-wrapper">

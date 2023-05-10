@@ -100,14 +100,17 @@ function CreateSurvey() {
         setLinkModalShow(true);
     };
     // When click "Complete Form" Button
-    const handleCreate = useCallback(() => {
-        if (title === "") {
-            alert("enter in a title");
-            return;
-        } else {
-            setConfirmModalShow(true);
-        }
-    }, [confirmModalShow]);
+    const handleCreate = useCallback(
+        (title) => {
+            if (title === "") {
+                alert("enter in a title");
+                return;
+            } else {
+                setConfirmModalShow(true);
+            }
+        },
+        [confirmModalShow]
+    );
 
     // AI GENERATE
     const AIGenerateHandler = () => {

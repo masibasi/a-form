@@ -4,9 +4,9 @@
     margin-bottom: 0% !important;
     width: 85% !important;
     background-color: white;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 4px 4px 0px;
+    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 4px 4px 0px; */
     border-radius: 25px !important;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    /* border: 1px solid rgba(0, 0, 0, 0.1); */
 }
 .QuesionFormCard {
     width: 100% !important;
