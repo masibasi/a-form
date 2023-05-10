@@ -17,7 +17,7 @@ import "./App.css";
 import "./hover.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import { SurveyContextProvider } from "./services/servey/survey.context";
+import { SurveyContextProvider } from "./services/survey/survey.context";
 import { AuthenticationContextProvider } from "./services/authentication/authentication.context";
 
 export const FormHandlingContext = React.createContext();

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Form } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import QuestionForm from "../../components/forms/QuestionForm";
-import { SurveyContext } from "../../services/servey/survey.context";
+import { SurveyContext } from "../../services/survey/survey.context";
 
 import Button from "react-bootstrap/Button";
 
@@ -57,7 +57,7 @@ export default function Survey() {
     };
 
     const handleSubmit = async () => {
-        console.log(surveyAnswer);
+        console.log(JSON.stringify(surveyAnswer));
         const result = await PostSurveyAnswer(surveyAnswer, userToken);
         alert(result);
     };

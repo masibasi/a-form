@@ -1,5 +1,8 @@
 import axios from "axios";
 
+const SURVEY_API_URL = process.env.REACT_APP_SURVEY_API_URL;
+const AI_API_URL = process.env.REACT_APP_AI_API_URL;
+
 export const CreateSurvey = (type, deadline, title, description, questions, userToken) => {
     // send newSurvey to database
     const options = { headers: { accept: "application/json", "Content-Type": "application/json", Authorization: `Bearer ${userToken}` } };
@@ -17,7 +20,7 @@ export const CreateSurvey = (type, deadline, title, description, questions, user
     console.log("newSurvey :asdfasdfsa ", newSurvey);
     console.log("token : ", userToken);
     const formId = axios
-        .post("http://localhost:3010/surveys", newSurvey, options)
+        .post(`${SURVEY_API_URL}/surveys`, newSurvey, options)
         .then((response) => {
             console.log(response.data);
             return response.data;
@@ -29,21 +32,23 @@ export const CreateSurvey = (type, deadline, title, description, questions, user
 };
 
 export const GetSurveyData = async (page, offset, status, sort) => {
-    const result = await axios.get(`http://localhost:3010/surveys?page=${page}&offset=${offset}&progressStatus=${status}&sort=${sort}`);
+    const result = await axios.get(`${SURVEY_API_URL}/surveys?page=${page}&offset=${offset}&progressStatus=${status}&sort=${sort}`);
     console.log(result.data);
     return result;
 };
 
 export const GetSurveyById = async (id) => {
-    const result = await axios.get(`http://localhost:3010/surveys/${id}`);
+    const result = await axios.get(`${SURVEY_API_URL}/surveys/${id}`);
     console.log(result.data);
     return result;
 };
 
 export const PostSurveyAnswer = async (surveyAnswer, userToken) => {
     const options = { headers: { accept: "application/json", "Content-Type": "application/json", Authorization: `Bearer ${userToken}` } };
+    console.log("answer: ", surveyAnswer);
+
     const result = await axios
-        .post("http://localhost:3010/answers", surveyAnswer, options)
+        .post(`${SURVEY_API_URL}/answers`, surveyAnswer, options)
         .then((response) => {
             console.log(response.data);
         })
@@ -59,7 +64,7 @@ export const AIGenerateSurvey = async (msg, userToken) => {
         msg: msg,
     };
     const result = await axios
-        .post("http://localhost:5001/chatbot", body, options)
+        .post(`${AI_API_URL}/chatbot`, body, options)
         .then((response) => {
             console.log(response.data);
         })

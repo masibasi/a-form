@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 import "../Survey/Survey.css";
 import { ConfirmSurveyModal, LinkModal } from "../../components/Modal/ConfirmSurveyModal";
 import FadeIn from "react-fade-in/lib/FadeIn";
-import { SurveyContext } from "../../services/servey/survey.context";
+import { SurveyContext } from "../../services/survey/survey.context";
 import { AuthenticationContext } from "../../services/authentication/authentication.context";
 
 import { SiProbot } from "react-icons/si";

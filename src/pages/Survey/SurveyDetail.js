@@ -5,7 +5,7 @@ import { Comment } from "../../components/Comment/Comment";
 import { useNavigate, useParams } from "react-router-dom";
 import FadeIn from "react-fade-in/lib/FadeIn";
 
-import { SurveyContext } from "../../services/servey/survey.context";
+import { SurveyContext } from "../../services/survey/survey.context";
 
 export const SurveyDetail = () => {
     const { GetSurveyById } = useContext(SurveyContext);

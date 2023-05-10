@@ -3,6 +3,8 @@ import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const USER_API_URL = process.env.REACT_APP_USER_API_URL;
+
 export const loginHandler = (userId, userPassword) => {
     const loginData = {
         userId: userId,
@@ -10,7 +12,7 @@ export const loginHandler = (userId, userPassword) => {
     };
 
     let loginResult = axios
-        .post("http://localhost:8080/app/user/login", loginData, { "Content-Type": "application/json" })
+        .post(`${USER_API_URL}/app/user/login`, loginData, { "Content-Type": "application/json" })
         .then((res) => {
             localStorage.setItem("isLoggedIn", true);
             return res;
@@ -30,7 +32,7 @@ export const registerHandler = (registerData) => {
     const options = { headers: { "Content-Type": "application/json" } };
     console.log(JSON.stringify(registerData));
     let regResult = axios
-        .post("http://localhost:8080/app/user/join", registerData, options)
+        .post(`${USER_API_URL}/app/user/join`, registerData, options)
         .then((res) => {
             alert("Register Success");
             return true;
