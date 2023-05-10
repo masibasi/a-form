@@ -52,3 +52,36 @@ export const registerHandler = (registerData) => {
 
     return regResult;
 };
+export const GetUserData = async (userToken) => {
+    const options = { headers: { accept: "application/json", "Content-Type": "application/json", Authorization: `Bearer ${userToken}` } };
+    const result = await axios
+        .get(`${USER_API_URL}/app/user/info`, options)
+        .then((response) => {
+            console.log(response.data);
+            return response.data;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    return result;
+};
+
+/*
+ * 아이디 중복확인 API
+ *
+ * @variable userId
+ *
+ * @return ok
+ */
+//  @CrossOrigin
+//  @GetMapping(path = "/idcheck/{userId}")
+
+/*
+ * 회원탈퇴 API
+ *
+ * @variable userPk
+ *
+ * @return ok, "deleted"
+ */
+// @CrossOrigin
+// @DeleteMapping(path = "/delete")

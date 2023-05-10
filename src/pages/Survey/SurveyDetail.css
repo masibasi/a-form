@@ -46,6 +46,9 @@
     align-items: center;
     justify-items: center;
 }
+.SurveyDetail .deleteSurveyBtn {
+    margin-right: 8px;
+}
 .SurveyDetail .commentBox {
     margin-bottom: 20px;
     width: 100%;

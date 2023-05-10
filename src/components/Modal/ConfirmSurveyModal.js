@@ -2,17 +2,9 @@ import React from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-export const ConfirmSurveyModal = ({
-    modalShow,
-    handleModalClose,
-    onSubmit,
-}) => {
+export const ConfirmSurveyModal = ({ modalShow, handleModalClose, onSubmit }) => {
     return (
-        <Modal
-            show={modalShow}
-            onHide={handleModalClose}
-            className="sendFormModal"
-        >
+        <Modal show={modalShow} onHide={handleModalClose} className="sendFormModal">
             <Modal.Header closeButton>
                 <Modal.Title>Post this Survey?</Modal.Title>
             </Modal.Header>
@@ -31,32 +23,17 @@ export const ConfirmSurveyModal = ({
 export const LinkModal = ({ modalShow, handleModalClose, surveyId }) => {
     const navigate = useNavigate();
     return (
-        <Modal
-            show={modalShow}
-            onHide={handleModalClose}
-            className="sendFormModal"
-        >
+        <Modal show={modalShow} onHide={handleModalClose} className="sendFormModal">
             <Modal.Header closeButton>
                 <Modal.Title>Form Created!</Modal.Title>
             </Modal.Header>
             <Modal.Body>Form Link</Modal.Body>
-            <input
-                disabled
-                className="formLinkInput"
-                type="text"
-                value={
-                    // `http://localhost:3000/survey/1`
-                    `http://localhost:3000/survey/${surveyId}`
-                }
-            />
+            <input disabled className="formLinkInput" type="text" value={`http://localhost:3000/details/${surveyId}`} />
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleModalClose}>
                     Close
                 </Button>
-                <Button
-                    variant="primary"
-                    onClick={() => navigate(`/survey/${surveyId}`)}
-                >
+                <Button variant="primary" onClick={() => navigate(`/details/${surveyId}`)}>
                     Follow Link
                 </Button>
             </Modal.Footer>
