@@ -1,8 +1,8 @@
 import "./Community.css";
 
-import FadeIn from "react-fade-in/lib/FadeIn";
 import { SurveyList } from "../../components/SurveyList/SurveyList";
 import { HotAvsBSurvey, HotCategory } from "../../components/SurveyList/SurveyListItem";
+import FadeIn from "../../animation/FadeIn";
 
 export const Community = () => {
   return (

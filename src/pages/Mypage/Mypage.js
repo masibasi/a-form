@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import "./Mypage.css";
 import profileimg from "../../assets/images/profile_sample1.png";
 import edit_icon from "../../assets/images/edit_icon 1.png";
-import FadeIn from "react-fade-in/lib/FadeIn";
 import { AuthenticationContext } from "../../services/authentication/authentication.context";
+import FadeIn from "../../animation/FadeIn";
 
 export default function Mypage() {
   const navigate = useNavigate();

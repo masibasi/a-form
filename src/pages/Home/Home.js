@@ -1,11 +1,9 @@
 import React from "react";
 import { Button, Dropdown, DropdownButton, Fade } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
-import FadeIn from "react-fade-in";
-
 import Bg from "../../assets/images/3D_survey1.png";
 import "./Home.css";
+import FadeIn from "../../animation/FadeIn";
 
 export default function Home() {
   const navigation = useNavigate();
