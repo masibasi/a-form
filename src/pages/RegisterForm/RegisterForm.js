@@ -68,16 +68,16 @@ export default function RegisterForm() {
     };
 
     //회원가입 완료되면 뒤로가기
-    const CheckComplete = () => {
-        if (regComplete == true) {
-            alert("회원가입 되었습니다!");
-            navigate(-1);
-        }
-        console.log(regComplete);
-    };
-    useEffect(() => {
-        CheckComplete();
-    }, [regComplete]);
+    // const CheckComplete = () => {
+    //     if (regComplete == true) {
+    //         alert("회원가입 되었습니다!");
+    //         navigate(-1);
+    //     }
+    //     console.log(regComplete);
+    // };
+    // useEffect(() => {
+    //     CheckComplete();
+    // }, [regComplete]);
 
     //생년월일 지정하는 코드
     const now = new Date();
@@ -107,7 +107,8 @@ export default function RegisterForm() {
         }
     }
 
-    const confirm = (e) => {
+    // 회원가입하기
+    const confirm = async (e) => {
         const registerData = {
             userId: userId,
             email: userEmail,
@@ -118,7 +119,10 @@ export default function RegisterForm() {
             name: userName,
             birth: "",
         };
-        onRegister(registerData);
+        let res = await onRegister(registerData);
+        if (res == true) {
+            navigate(-1);
+        }
     };
 
     const login = (e) => {

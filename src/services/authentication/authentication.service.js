@@ -12,7 +12,7 @@ export const loginHandler = (userId, userPassword) => {
     };
 
     let loginResult = axios
-        .post(`${USER_API_URL}/app/user/login`, loginData, { "Content-Type": "application/json" })
+        .post(`${USER_API_URL}/api/user/login`, loginData, { "Content-Type": "application/json" })
         .then((res) => {
             localStorage.setItem("isLoggedIn", true);
             return res;
@@ -32,7 +32,7 @@ export const registerHandler = (registerData) => {
     const options = { headers: { "Content-Type": "application/json" } };
     console.log(JSON.stringify(registerData));
     let regResult = axios
-        .post(`${USER_API_URL}/app/user/join`, registerData, options)
+        .post(`${USER_API_URL}/api/user/join`, registerData, options)
         .then((res) => {
             alert("Register Success");
             return true;
@@ -55,7 +55,7 @@ export const registerHandler = (registerData) => {
 export const GetUserData = async (userToken) => {
     const options = { headers: { accept: "application/json", "Content-Type": "application/json", Authorization: `Bearer ${userToken}` } };
     const result = await axios
-        .get(`${USER_API_URL}/app/user/info`, options)
+        .get(`${USER_API_URL}/api/user/info`, options)
         .then((response) => {
             console.log(response.data);
             return response.data;

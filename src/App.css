@@ -59,3 +59,8 @@ html {
     align-items: center;
     justify-content: center;
 }
+
+/* Toast */
+.Toastify__toast {
+    border-radius: 20px !important;
+}
