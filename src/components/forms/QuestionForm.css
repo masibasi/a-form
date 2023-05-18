@@ -12,9 +12,24 @@
   width: 100% !important;
   height: 100% !important;
   border: 0 !important;
-  margin: 0 !important;
+  margin-bottom: 2rem !important;
+  margin-top: 1rem;
   box-shadow: 0 !important;
   border-radius: 25px !important;
+  padding-right: 4rem !important;
+  padding-left: 2rem !important;
+}
+
+.QuestionForm .card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 0 1px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  /* margin: 1rem 1.5rem; */
+  width: 50; /* 카드의 너비를 변경 */
+  max-width: 1000px; /* 원하는 최대 너비 설정 */
+  position: relative;
+  padding-bottom: 5%;
 }
 .QuestionForm .top-wrapper {
   display: flex;

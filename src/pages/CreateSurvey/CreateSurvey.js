@@ -10,6 +10,7 @@ import { SurveyContext } from "../../services/survey/survey.context";
 import { AuthenticationContext } from "../../services/authentication/authentication.context";
 import { SiProbot } from "react-icons/si";
 import FadeIn from "../../animation/FadeIn";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 function CreateSurvey() {
   const mockData = {
@@ -150,6 +151,29 @@ function CreateSurvey() {
     setQuestions([...questions]);
   });
 
+  /*--------드래그 앤 드롭 부분 ----------*/
+  const handleDragEnd = (result) => {
+    // 핸들 드래그 종료 함수
+    if (!result.destination) {
+      // 드래그 대상이 리스트 외부로 드롭되면 아무 작업도 수행하지 않음
+      return;
+    }
+
+    const reorderedQuestions = reorder(questions, result.source.index, result.destination.index); // 원본 리스트에서 드래그 대상을 재배치하여 새 리스트를 생성함
+
+    setQuestions(reorderedQuestions); // 새로운 순서를 적용하여 질문 상태를 업데이트함
+  };
+
+  const reorder = (list, startIndex, endIndex) => {
+    // 리스트 재배치 함수
+    const result = Array.from(list); // 원본 리스트를 복사하여 새 리스트를 생성함
+    const [removed] = result.splice(startIndex, 1); // 시작 인덱스에서 요소를 제거하고 그 요소를 저장함
+
+    result.splice(endIndex, 0, removed); // 끝 인덱스에 제거한 요소를 삽입
+
+    return result; // 재배치된 새 리스트를 반환
+  };
+
   const FormBtnWrapper = React.memo(() => {
     return (
       <div className="ButtonWrapper">
@@ -211,22 +235,38 @@ function CreateSurvey() {
         </div>
         <FormBtnWrapper />
 
-        <Form className="Form">
-          {questions.map((q, index) => {
-            return (
-              <QuestionForm
-                forCreate={true}
-                type={q.type}
-                delQuestion={delQuestion}
-                q={q}
-                qIndex={index}
-                key={q.id}
-                questions={questions}
-                setQuestions={setQuestions}
-              />
-            );
-          })}
-        </Form>
+        <DragDropContext onDragEnd={handleDragEnd}>
+          <Droppable droppableId="droppable">
+            {(provided) => (
+              <Form className="Form" ref={provided.innerRef} {...provided.droppableProps}>
+                {questions.map((q, index) => (
+                  <Draggable key={q.id} draggableId={`draggable-${q.id}`} index={index}>
+                    {(provided) => (
+                      <div
+                        className="draggableFormWrapper"
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        style={{ ...provided.draggableProps.style }}
+                      >
+                        <QuestionForm
+                          forCreate={true}
+                          type={q.type}
+                          delQuestion={delQuestion}
+                          q={q}
+                          qIndex={index}
+                          questions={questions}
+                          setQuestions={setQuestions}
+                        />
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </Form>
+            )}
+          </Droppable>
+        </DragDropContext>
       </FadeIn>
     </div>
   );
