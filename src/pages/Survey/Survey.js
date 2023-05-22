@@ -57,25 +57,42 @@ export default function Survey() {
     setSurveyAnswer(answerForm);
   };
 
-  // const handleSubmit = async () => {
-  //   console.log(JSON.stringify(surveyAnswer));
-  //   const result = await PostSurveyAnswer(surveyAnswer, userToken);
-  //   alert("답변이 저장되었습니다.");
-  //   navigate(-1);
-  // };
-
   const handleSubmit = async () => {
     // 모든 필수항목이 답변되었는지 확인
     for (let i = 0; i < surveyData.questions.length; i++) {
-      if (surveyData.questions[i].isRequired && !surveyAnswer.answers[i]) {
-        alert("Please answer all required questions.");
-        return;
+      console.log(`Question ${i + 1} is required: ${surveyData.questions[i].isRequired}`);
+
+      // RADIO or CHECKBOX
+      if (surveyData.questions[i].type === "RADIO" || surveyData.questions[i].type === "CHECKBOX") {
+        // 필수항목이고 모든 value값이 false일때
+        if (surveyData.questions[i].isRequired && (!surveyAnswer.answers[i] || surveyAnswer.answers[i].every((answer) => answer === false))) {
+          alert("Please answer all required questions.");
+          return;
+        }
+      }
+      // SHORTFORM
+      else if (surveyData.questions[i].type === "SHORTFORM") {
+        if (surveyData.questions[i].isRequired && (!surveyAnswer.answers[i] || surveyAnswer.answers[i].length === 0)) {
+          alert("Please answer all required questions.");
+          return;
+        }
       }
     }
-    console.log(JSON.stringify(surveyAnswer));
-    const result = await PostSurveyAnswer(surveyAnswer, userToken);
-    alert("답변이 저장되었습니다.");
-    navigate(-1);
+
+    // 모든 필수 응답이 답변되었을때 제출 가능
+    try {
+      // Map the answers array to include only selected indices
+      surveyAnswer.answers = surveyAnswer.answers.map((answer, index) => {
+        return answer.map((selection, i) => (selection ? i : -1)).filter((i) => i !== -1);
+      });
+      console.log(JSON.stringify(surveyAnswer));
+      const result = await PostSurveyAnswer(surveyAnswer, userToken);
+      alert("답변이 저장되었습니다.");
+      navigate(-1);
+    } catch (error) {
+      console.error(error);
+      // handle error here
+    }
   };
 
   return (

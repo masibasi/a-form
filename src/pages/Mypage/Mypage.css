@@ -117,14 +117,21 @@
   margin-left: 7%;
 }
 
-.written_post {
+.my_template {
   display: flex;
   /* align-items: center; */
   justify-content: center;
   flex-direction: column;
 }
 
-.writing_post {
+.I_post {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  flex-direction: column;
+}
+
+.I_answer {
   display: flex;
   /* align-items: center; */
   justify-content: center;
