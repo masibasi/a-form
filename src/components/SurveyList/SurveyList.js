@@ -10,7 +10,6 @@ export const SurveyList = ({ page, offset, status, sort }) => {
     const { GetSurveyData } = useContext(SurveyContext);
     const getFormData = async () => {
         console.log(page, offset, status, sort);
-
         const result = await GetSurveyData(page, offset, status, sort);
         console.log(result);
         setFormData(result.data.data);

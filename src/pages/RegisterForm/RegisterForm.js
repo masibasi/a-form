@@ -11,7 +11,7 @@ import { AuthenticationContext } from "../../services/authentication/authenticat
 export default function RegisterForm() {
     const navigate = useNavigate();
 
-    const { onRegister, regComplete } = useContext(AuthenticationContext);
+    const { onRegister, regComplete, getIdCheck } = useContext(AuthenticationContext);
 
     const [userId, setUserId] = useState("");
     const [userEmail, setUserEmail] = useState("");
@@ -129,6 +129,9 @@ export default function RegisterForm() {
         navigate("/login");
     };
 
+    const checkDup = () => {
+        getIdCheck(userId);
+    };
     return (
         <div className="Auth-form-container">
             <img src={Icon} alt="" />
@@ -145,6 +148,7 @@ export default function RegisterForm() {
                     </div>
                     <div className="form-group mt-3">
                         <label>ID</label>
+                        <Button onClick={() => checkDup()}>중복</Button>
                         <input type="text" className="form-control mt-1" onChange={idChange} />
                     </div>
                     <div className="form-group mt-3">

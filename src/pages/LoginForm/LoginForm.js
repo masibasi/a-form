@@ -44,6 +44,7 @@ export default function Login() {
                         <label>ID</label>
                         <input type="text" name="id" className="form-control mt-1" placeholder="Enter id" onChange={idChange} />
                     </div>
+
                     <div className="form-group mt-3">
                         <label>Password</label>
                         <input type="password" className="form-control mt-1" placeholder="Enter password" onChange={passwordChange} onKeyDown={enterKeyPress} />

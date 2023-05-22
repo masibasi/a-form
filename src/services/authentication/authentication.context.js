@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect } from "react";
 import { loginHandler } from "./authentication.service";
-import { registerHandler, GetUserData } from "./authentication.service";
+import { registerHandler, GetUserData, getIdCheck } from "./authentication.service";
 
 export const AuthenticationContext = createContext();
 
@@ -12,11 +12,16 @@ export const AuthenticationContextProvider = ({ children }) => {
     const [userData, setUserData] = useState("");
 
     //Get user Data.
+    const initilaizeUserData = async () => {
+        setUserData(await GetUserData(userToken));
+    };
     useEffect(() => {
-        if (userToken != "") {
-            setUserData(GetUserData(userToken));
+        // userToken이 업데이트 되면 그 값을 가지고 유저의 데이터를 받아온다
+        if (userToken != undefined) {
+            initilaizeUserData();
         }
     }, [userToken]);
+
     const onLogin = async (userId, userPassword) => {
         let loginRes = await loginHandler(userId, userPassword);
         console.log(loginRes);
@@ -42,7 +47,6 @@ export const AuthenticationContextProvider = ({ children }) => {
         alert("로그아웃 되었습니다!");
         localStorage.removeItem("isLoggedIn");
         localStorage.removeItem("userToken");
-
         window.location.reload();
     };
 
@@ -63,6 +67,7 @@ export const AuthenticationContextProvider = ({ children }) => {
                 onRegister, // 회원가입을 처리해주는 함수
                 regComplete, // 회원가입 완료 상태를 알려주는 변수
                 userData, // 유저 데이타
+                getIdCheck, //id 중복검사
             }}
         >
             {children}

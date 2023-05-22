@@ -1,10 +1,26 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Mypage.css";
 import profileimg from "../../assets/images/profile_sample1.png";
 import alarm from "../../assets/images/alarm.png";
 import alarm_no from "../../assets/images/alarm_no.png";
+import { useNavigate } from "react-router-dom";
+import { AuthenticationContext } from "../../services/authentication/authentication.context";
 
 export default function Mypage_setting() {
+    const navigate = useNavigate();
+
+    const { userData } = useContext(AuthenticationContext);
+
+    const [name, setName] = useState(userData.name);
+    const [phone, setPhone] = useState(userData.phone);
+    const [email, setEmail] = useState(userData.email);
+    const [password, setPassword] = useState("");
+
+    useEffect(() => {
+        if (!localStorage.getItem("isLoggedIn")) navigate("/");
+        console.log(userData);
+    }, []);
+
     const [previewImg, setPreviewImg] = useState(null);
 
     const handleImageChange = (e) => {
@@ -41,19 +57,19 @@ export default function Mypage_setting() {
                 <div className="your_profile">
                     <div className="your_profile_item">
                         <div className="your_profile_title">Your name</div>
-                        <input type="text" className="your_profile_name" />
+                        <input type="text" className="your_profile_name" value={name} onChange={(e) => setName(e.target.value)} />
                     </div>
                     <div className="your_profile_item">
-                        <div className="your_profile_title">Your nickname</div>
-                        <input type="text" className="your_profile_nickname" />
+                        <div className="your_profile_title">Your Phone Number</div>
+                        <input type="text" className="your_profile_nickname" value={phone} onChange={(e) => setPhone(e.target.value)} />
                     </div>
                     <div className="your_profile_item">
                         <div className="your_profile_title">Your email</div>
-                        <input type="email" className="your_profile_email" />
+                        <input type="email" className="your_profile_email" value={email} onChange={(e) => setEmail(e.target.value)} />
                     </div>
                     <div className="your_profile_item">
                         <div className="your_profile_title">Change password</div>
-                        <input type="password" className="your_profile_password" />
+                        <input type="password" className="your_profile_password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
                 </div>
 

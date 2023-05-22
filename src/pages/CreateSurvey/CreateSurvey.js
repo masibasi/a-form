@@ -67,14 +67,14 @@ function CreateSurvey() {
     const { userToken, isLogin, userData } = useContext(AuthenticationContext); // User Token, isLogin
 
     const CheckLogin = () => {
-        if (isLogin == false) {
+        if (!localStorage.getItem("isLoggedIn")) {
             alert("로그인이 필요한 서비스 입니다.");
             navigate(-1);
         }
     };
     useEffect(() => {
         CheckLogin();
-    }, [isLogin]);
+    }, []);
 
     // survey state
     const [title, setTitle] = useState("");

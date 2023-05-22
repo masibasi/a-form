@@ -66,15 +66,11 @@ export const GetUserData = async (userToken) => {
     return result;
 };
 
-/*
- * 아이디 중복확인 API
- *
- * @variable userId
- *
- * @return ok
- */
-//  @CrossOrigin
-//  @GetMapping(path = "/idcheck/{userId}")
+export const getIdCheck = async (userId) => {
+    console.log("id 중복체크");
+    const res = await axios.get(`${USER_API_URL}/api/user/idcheck/${userId}`);
+    return res;
+};
 
 /*
  * 회원탈퇴 API
