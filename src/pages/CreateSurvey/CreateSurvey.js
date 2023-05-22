@@ -1,6 +1,6 @@
 import React, { useState, useRef, useContext, useEffect, useCallback } from "react";
 import { Form, Spinner } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import QuestionForm from "../../components/forms/QuestionForm";
 import AddingOption from "../../components/forms/AddingOption";
 import Button from "react-bootstrap/Button";
@@ -36,6 +36,7 @@ const mockData = {
                     content: "아니오",
                 },
             ],
+            isRequired: false,
         },
         {
             title: "A-Form을 어떻게 알게 되었습니까",
@@ -54,6 +55,7 @@ const mockData = {
                     content: "Instagram을 통해서",
                 },
             ],
+            isRequired: false,
         },
     ],
     description: "string",
@@ -61,15 +63,37 @@ const mockData = {
 function CreateSurvey() {
     // Navigation
     const navigate = useNavigate();
+    const location = useLocation();
+
     // Context
-    const { CreateSurvey, AIGenerateSurvey } = useContext(SurveyContext); // Survey
-    const { CreatePost } = useContext(PostContext); // Post
     const { userToken, isLogin, userData } = useContext(AuthenticationContext); // User Token, isLogin
+    const { CreateSurvey, AIGenerateSurvey, GetSurveyById } = useContext(SurveyContext); // Survey
+    const { CreatePost } = useContext(PostContext); // Post
 
     const CheckLogin = () => {
         if (!localStorage.getItem("isLoggedIn")) {
             alert("로그인이 필요한 서비스 입니다.");
             navigate(-1);
+            return;
+        }
+        templateLoader();
+    };
+    // onTemplate Load
+    const templateLoader = () => {
+        if (location.state != null) {
+            setSurveyId(location.state.id);
+            GetSurveyById(location.state.id).then((res) => {
+                setTitle(res.data.title);
+                setDescription(res.data.description);
+                setQuestions(
+                    res.data.questions.map((it, index) => {
+                        it.id = index;
+                        return it;
+                    })
+                );
+                nextCardId.current = res.data.questions.length;
+                toast.success("Template Loaded!");
+            });
         }
     };
     useEffect(() => {
@@ -81,7 +105,7 @@ function CreateSurvey() {
     const [description, setDescription] = useState("");
     const [questions, setQuestions] = useState([]); //index, state(어떤 타입의 질문인지)
     const [surveyId, setSurveyId] = useState("");
-    const [postId, setPostId] = useState("");
+    const [postPk, setPostPk] = useState("");
     const nextCardId = useRef(0); // surveyCard 아이디
 
     const toastPromise = (promise) => {
@@ -162,9 +186,12 @@ function CreateSurvey() {
         setSurveyId(newId);
     };
     // Create Post
-    const createPostHandler = async () => {
-        let id = await CreatePost(title, description, surveyId, userData.userPk);
-        setPostId(id);
+    const createPostHandler = async (startDate, endDate) => {
+        await CreatePost(title, description, surveyId, startDate, endDate, userData.userPk).then((res) => {
+            setPostPk(res.postPk);
+        });
+        setConfirmModalShow(false);
+        setLinkModalShow(true);
     };
     // ai state //
     const [aiIsLoading, setAiIsLoading] = useState(false);
@@ -262,7 +289,7 @@ function CreateSurvey() {
         <div className="CreateSurvey Survey">
             <FadeIn className="surveyWrapper" childClassName="childClassName">
                 <ConfirmSurveyModal modalShow={confirmModalShow} handleModalClose={handleConfirmModalClose} onSubmit={createPostHandler} />
-                <LinkModal modalShow={linkModalShow} handleModalClose={handleClose} postId={postId} />
+                <LinkModal modalShow={linkModalShow} handleModalClose={handleClose} postPk={postPk} />
 
                 <div className="text-wrapper">
                     <input

@@ -57,7 +57,7 @@ export const GetUserData = async (userToken) => {
     const result = await axios
         .get(`${USER_API_URL}/api/user/info`, options)
         .then((response) => {
-            console.log(response.data);
+            console.log("getUserData : ", response.data);
             return response.data;
         })
         .catch((err) => {

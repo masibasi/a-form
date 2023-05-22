@@ -5,7 +5,12 @@ import "./SurveyListItem.css";
 export const SurveyListItem = (props) => {
     const navigate = useNavigate();
     return (
-        <div className="SurveyListItem" onClick={() => navigate(`/details/${props.id}`)}>
+        <div
+            className="SurveyListItem"
+            onClick={() => {
+                navigate(`/create`, { state: { id: props.id } });
+            }}
+        >
             <span className="surveyTitle">{props.title}</span>
             <span className="author">작성자 : {props.author}</span>
             <span className="date">{props.date}</span>

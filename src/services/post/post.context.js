@@ -1,7 +1,7 @@
 import React, { createContext } from "react";
-import { CreatePost } from "./post.service";
+import { CreatePost, GetPost } from "./post.service";
 export const PostContext = createContext();
 
 export const PostContextProvider = ({ children }) => {
-    return <PostContext.Provider value={{ CreatePost }}>{children}</PostContext.Provider>;
+    return <PostContext.Provider value={{ CreatePost, GetPost }}>{children}</PostContext.Provider>;
 };
