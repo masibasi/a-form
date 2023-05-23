@@ -57,7 +57,6 @@ const mockData = {
                 },
             ],
             isRequired: false,
-            isRequired: false,
         },
     ],
     description: "string",
@@ -72,16 +71,6 @@ function CreateSurvey() {
     const { CreateSurvey, AIGenerateSurvey, GetSurveyById } = useContext(SurveyContext); // Survey
     const { CreatePost } = useContext(PostContext); // Post
 
-    const CheckLogin = () => {
-        if (!localStorage.getItem("isLoggedIn")) {
-            alert("로그인이 필요한 서비스 입니다.");
-            navigate(-1);
-        }
-    };
-    useEffect(() => {
-        CheckLogin();
-    }, []);
-
     // survey state
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -89,6 +78,36 @@ function CreateSurvey() {
     const [surveyId, setSurveyId] = useState("");
     const [postPk, setPostPk] = useState("");
     const nextCardId = useRef(0); // surveyCard 아이디
+
+    const CheckLogin = () => {
+        if (!localStorage.getItem("isLoggedIn")) {
+            alert("로그인이 필요한 서비스 입니다.");
+            navigate(-1);
+        }
+        templateLoader();
+    };
+
+    // onTemplate Load
+    const templateLoader = () => {
+        if (location.state != null) {
+            setSurveyId(location.state.id);
+            GetSurveyById(location.state.id).then((res) => {
+                setTitle(res.data.title);
+                setDescription(res.data.description);
+                setQuestions(
+                    res.data.questions.map((it, index) => {
+                        it.id = index;
+                        return it;
+                    })
+                );
+                nextCardId.current = res.data.questions.length;
+                toast.success("Template Loaded!");
+            });
+        }
+    };
+    useEffect(() => {
+        CheckLogin();
+    }, []);
 
     const toastPromise = (promise) => {
         toast.promise(promise, {

@@ -12,6 +12,13 @@ import "react-clock/dist/Clock.css";
 export const ConfirmSurveyModal = ({ modalShow, handleModalClose, onSubmit }) => {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
+    const [category, setCategory] = useState("");
+
+    const postValidation = () => {
+        if (category == "") {
+            return;
+        }
+    };
 
     useEffect(() => {
         console.log(startDate);
@@ -22,7 +29,16 @@ export const ConfirmSurveyModal = ({ modalShow, handleModalClose, onSubmit }) =>
                 <Modal.Title>Publish this Survey?</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <div>Select Category</div>
+                <div>
+                    Category : Create new or Select from list
+                    <select onChange={(e) => setCategory(e.target.value)}>
+                        <option value="1">1</option>
+                        <option value="1">1</option>
+                        <option value="1">1</option>
+                        <option value="1">1</option>
+                    </select>
+                </div>
+                <input value={category} onChange={(e) => setCategory(e.target.value)} />
                 <div>Select start date</div>
                 <DateTimePicker onChange={setStartDate} value={startDate} disableClock={true} minDate={new Date()} locale="ko" />
                 <div>Select end date</div>

@@ -2,6 +2,25 @@ import axios from "axios";
 
 const POST_API_URL = process.env.REACT_APP_POST_API_URL;
 
+/* Category */
+
+export const CreateCategory = async (categoryType, postPk) => {
+    const res = axios
+        .post(`${POST_API_URL}/api/postCategory/create`)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+};
+
+export const GetPostCategory = async (postPk) => {
+    const res = axios
+        .post(`${POST_API_URL}/api/postCategory/get/${postPk}`)
+        .then((res) => {
+            console.log(res);
+            return res.data;
+        })
+        .catch((err) => console.log(err));
+    return res;
+};
 /* Post */
 
 export const CreatePost = async (postTitle, postDesc, postSurvey, startDate, endDate, userPk) => {
