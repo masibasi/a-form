@@ -2,6 +2,8 @@ import axios from "axios";
 
 const POST_API_URL = process.env.REACT_APP_POST_API_URL;
 
+/* Post */
+
 export const CreatePost = async (postTitle, postDesc, postSurvey, startDate, endDate, userPk) => {
     // send newSurvey to database
     const options = { headers: { accept: "application/json", "Content-Type": "application/json" } };
@@ -38,4 +40,39 @@ export const GetPost = async (postPk) => {
             console.log(err);
         });
     return res;
+};
+
+/* Comment */
+
+export const PostComment = async (commentAuthor, commentContent, postPk) => {
+    const newComment = {
+        commentAuthor: commentAuthor,
+        commentContent: commentContent,
+        commentPost: postPk,
+    };
+    console.log("new comment : ", newComment);
+    const res = await axios
+        .post(`${POST_API_URL}/api/comment/create`, newComment)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    return res;
+};
+
+export const GetComments = async (postPk, size, page) => {
+    const res = await axios
+        .get(`${POST_API_URL}/api/comment/get/comments/${postPk}/${size}/${page}`)
+        .then((res) => {
+            console.log(res);
+            return res;
+        })
+        .catch((err) => console.log(err));
+
+    return res;
+};
+
+export const DeleteComment = async (commentPk) => {
+    await axios
+        .delete(`${POST_API_URL}/api/comment/delete/${commentPk}`)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
 };

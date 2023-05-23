@@ -12,11 +12,20 @@
 .Comment .commentLeft {
     display: flex;
 }
+.Comment .commentRight {
+    display: flex;
+    align-items: center;
+}
+.Comment .dateTimeWrapper {
+    text-align: right;
+    margin-right: 20px;
+}
 .Comment .nickname {
     margin-right: 32px;
     font-weight: 600;
 }
-.Comment .content {
+.Comment .likes {
+    margin-right: 20px;
 }
 .commentMoreBtn {
     background-color: transparent;

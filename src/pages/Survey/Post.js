@@ -17,14 +17,15 @@ export const Post = () => {
     // Context
     const { GetSurveyById, DeleteSurvey } = useContext(SurveyContext);
     const { userData, userToken, isLogin } = useContext(AuthenticationContext);
-    const { GetPost } = useContext(PostContext);
+    const { GetPost, PostComment, GetComments } = useContext(PostContext);
 
     // Post state
     const [postData, setPostData] = useState("");
-
     const [loaded, setLoaded] = useState(false);
     const [isAuthor, setIsAuthor] = useState(false);
+
     const [comment, setComment] = useState("");
+    const [commentsData, setCommentsData] = useState([]);
 
     // Navigate
     const navigate = useNavigate();
@@ -33,30 +34,27 @@ export const Post = () => {
     // Stats
     const [open, setOpen] = useState(false);
 
-    const [mockComment, setMockComment] = useState([
-        { author: "작성자", content: "wow! this survey is awesome", id: 0 },
-        { author: "작성자", content: "wow! this survey is awesome", id: 1 },
-        { author: "작성자", content: "wow! this survey is awesome", id: 2 },
-        { author: "작성자", content: "wow! this survey is awesome", id: 3 },
-    ]);
-
     // On Load
     useEffect(() => {
         setIsAuthor(false);
         getPostData();
-        checkIsAuthor();
+        getCommentData();
     }, []);
 
     const getPostData = async () => {
         await GetPost(postPk).then((res) => {
             setPostData(res);
-
             setLoaded(true);
         });
     };
+    const getCommentData = async () => {
+        const size = 10;
+        const page = 0;
+        await GetComments(postPk, size, page).then((res) => setCommentsData(res.data));
+    };
 
     // Check is Author
-    const checkIsAuthor = () => {
+    useEffect(() => {
         if (isLogin) {
             console.log("id match : ", userData.userPk, postData.author);
             if (userData.userPk === postData.author) {
@@ -65,7 +63,7 @@ export const Post = () => {
                 setIsAuthor(false);
             }
         }
-    };
+    }, [userData]);
 
     // Modal
     const [modalShow, setModalShow] = useState(false);
@@ -85,20 +83,37 @@ export const Post = () => {
     };
 
     const addComment = () => {
-        const newComment = { author: "작성자", content: comment };
-        setMockComment([...mockComment, newComment]);
+        if (comment == "") {
+            alert("내용을 입력해주세요");
+            return;
+        }
+        PostComment(userData.userPk, comment, postPk).then(() => {
+            getCommentData(postPk, 10, 0);
+        });
         setComment("");
     };
 
-    const CommentInput = () => {
-        return;
-    };
     const CommentBox = React.memo(() => {
         return (
             <div className="commentBox">
-                {mockComment.map((it) => {
-                    return <Comment author={it.author} content={it.content} key={it.id} />;
-                })}
+                <h3>댓글</h3>
+                {commentsData
+                    ? commentsData.map((it) => {
+                          return (
+                              <Comment
+                                  commentAuthor={it.commentAuthor}
+                                  commentContent={it.commentContent}
+                                  key={it.commentPk}
+                                  commentPk={it.commentPk}
+                                  createdDate={it.createdDate}
+                                  modifiedDate={it.modifiedDate}
+                                  commentLike={it.commentLike}
+                                  setCommentsData={setCommentsData}
+                                  commentsData={commentsData}
+                              />
+                          );
+                      })
+                    : null}
             </div>
         );
     });
