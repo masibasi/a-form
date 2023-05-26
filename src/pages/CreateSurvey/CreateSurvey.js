@@ -69,7 +69,7 @@ function CreateSurvey() {
     // Context
     const { userToken, isLogin, userData } = useContext(AuthenticationContext); // User Token, isLogin
     const { CreateSurvey, AIGenerateSurvey, GetSurveyById } = useContext(SurveyContext); // Survey
-    const { CreatePost } = useContext(PostContext); // Post
+    const { CreatePost, CreateCategory } = useContext(PostContext); // Post
 
     // survey state
     const [title, setTitle] = useState("");
@@ -187,10 +187,12 @@ function CreateSurvey() {
         setSurveyId(newId);
     };
     // Create Post
-    const createPostHandler = async (startDate, endDate) => {
+    const createPostHandler = async (startDate, endDate, category) => {
         await CreatePost(title, description, surveyId, startDate, endDate, userData.userPk).then((res) => {
             setPostPk(res.postPk);
+            CreateCategory(category, res.postPk);
         });
+
         setConfirmModalShow(false);
         setLinkModalShow(true);
     };

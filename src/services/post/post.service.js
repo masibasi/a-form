@@ -5,10 +5,15 @@ const POST_API_URL = process.env.REACT_APP_POST_API_URL;
 /* Category */
 
 export const CreateCategory = async (categoryType, postPk) => {
+    const body = {
+        categoryType: categoryType,
+        postPk: postPk,
+    };
     const res = axios
-        .post(`${POST_API_URL}/api/postCategory/create`)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
+        .post(`${POST_API_URL}/api/postCategory/create`, body)
+        .then((res) => console.log("CreateCategoryRes : ", res))
+        .catch((err) => console.log("CreateCategoryErr : ", err));
+    return res;
 };
 
 export const GetPostCategory = async (postPk) => {
@@ -52,7 +57,7 @@ export const GetPost = async (postPk) => {
     const res = await axios
         .get(`${POST_API_URL}/api/post/getPost/${postPk}`)
         .then((response) => {
-            console.log(response.data);
+            console.log("Post data get : ", response.data);
             return response.data;
         })
         .catch((err) => {
@@ -72,7 +77,7 @@ export const PostComment = async (commentAuthor, commentContent, postPk) => {
     console.log("new comment : ", newComment);
     const res = await axios
         .post(`${POST_API_URL}/api/comment/create`, newComment)
-        .then((res) => console.log(res))
+        .then((res) => console.log("댓글 생성 결과 : ", res))
         .catch((err) => console.log(err));
     return res;
 };
@@ -81,7 +86,7 @@ export const GetComments = async (postPk, size, page) => {
     const res = await axios
         .get(`${POST_API_URL}/api/comment/get/comments/${postPk}/${size}/${page}`)
         .then((res) => {
-            console.log(res);
+            console.log("댓글 data :", res);
             return res;
         })
         .catch((err) => console.log(err));
@@ -94,4 +99,19 @@ export const DeleteComment = async (commentPk) => {
         .delete(`${POST_API_URL}/api/comment/delete/${commentPk}`)
         .then((res) => console.log(res))
         .catch((err) => console.log(err));
+};
+
+export const GetCommentCnt = async (postPk) => {
+    const res = await axios
+        .get(`${POST_API_URL}/api/comment/commentCnt/${postPk}`)
+        .then((res) => {
+            console.log("댓글 총 수 : ", res);
+            return res;
+        })
+        .catch((err) => console.log(err));
+    return res;
+};
+
+export const PostCommentLike = async () => {
+    await axios.post();
 };

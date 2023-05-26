@@ -17,7 +17,7 @@ export const Post = () => {
     // Context
     const { GetSurveyById, DeleteSurvey } = useContext(SurveyContext);
     const { userData, userToken, isLogin } = useContext(AuthenticationContext);
-    const { GetPost, PostComment, GetComments } = useContext(PostContext);
+    const { GetPost, PostComment, GetComments, GetCommentCnt } = useContext(PostContext);
 
     // Post state
     const [postData, setPostData] = useState("");
@@ -25,6 +25,7 @@ export const Post = () => {
     const [isAuthor, setIsAuthor] = useState(false);
 
     const [comment, setComment] = useState("");
+    const [commentCnt, setCommentCnt] = useState(-1);
     const [commentsData, setCommentsData] = useState([]);
 
     // Navigate
@@ -36,7 +37,6 @@ export const Post = () => {
 
     // On Load
     useEffect(() => {
-        setIsAuthor(false);
         getPostData();
         getCommentData();
     }, []);
@@ -51,19 +51,19 @@ export const Post = () => {
         const size = 10;
         const page = 0;
         await GetComments(postPk, size, page).then((res) => setCommentsData(res.data));
+        await GetCommentCnt(postPk).then((res) => setCommentCnt(res.data));
     };
 
     // Check is Author
     useEffect(() => {
         if (isLogin) {
-            console.log("id match : ", userData.userPk, postData.author);
-            if (userData.userPk === postData.author) {
+            console.log("id match : ", userData.userPk, postData.postAuthor);
+            if (userData.userPk == postData.author) {
+                console.log("daifjsjfis");
                 setIsAuthor(true);
-            } else {
-                setIsAuthor(false);
             }
         }
-    }, [userData]);
+    }, [userData, postData]);
 
     // Modal
     const [modalShow, setModalShow] = useState(false);
@@ -96,7 +96,11 @@ export const Post = () => {
     const CommentBox = React.memo(() => {
         return (
             <div className="commentBox">
-                <h3>댓글</h3>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                    <h3>댓글</h3>
+                    <h4 style={{ marginLeft: "8px" }}> {commentCnt}개</h4>
+                </div>
+
                 {commentsData
                     ? commentsData.map((it) => {
                           return (
@@ -110,6 +114,7 @@ export const Post = () => {
                                   commentLike={it.commentLike}
                                   setCommentsData={setCommentsData}
                                   commentsData={commentsData}
+                                  getCommentData={getCommentData}
                               />
                           );
                       })
@@ -120,7 +125,7 @@ export const Post = () => {
     return (
         <>
             {loaded ? (
-                <div className="SurveyDetail Survey">
+                <div className="Post Survey">
                     <DeleteSurveyModal modalShow={modalShow} modalClose={modalCloseHandler} onDelete={DeleteSurveyHandler} />
                     <FadeIn className="surveyWrapper" childClassName="childClassName">
                         <div className="contentWrapper">
@@ -179,7 +184,7 @@ export const Post = () => {
                     </FadeIn>
                 </div>
             ) : (
-                <div className="SurveyDetail Survey"></div>
+                <div className="Post Survey"></div>
             )}
         </>
     );

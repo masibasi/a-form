@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home/Home";
@@ -8,7 +8,7 @@ import About from "./pages/About/About";
 import RegisterForm from "./pages/RegisterForm/RegisterForm";
 import { CreateAvsB } from "./pages/CreateAvsB/CreateAvsB";
 import { Community } from "./pages/Community/Community";
-import { Post } from "./pages/Survey/Post";
+import { Post } from "./pages/Post/Post";
 import LoginForm from "./pages/LoginForm/LoginForm";
 import Mypage from "./pages/Mypage/Mypage";
 import Mypage_setting from "./pages/Mypage/Mypage_setting";

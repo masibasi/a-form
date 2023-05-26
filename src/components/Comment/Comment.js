@@ -19,13 +19,9 @@ export const Comment = (props) => {
     const onEdit = () => {
         setShow(false);
     };
-    const onDelete = () => {
-        DeleteComment(props.commentPk);
-        props.setCommentsData(
-            props.commentsData.filter((it) => {
-                return it.commentPk == props.commentPk ? null : it;
-            })
-        );
+    const onDelete = async () => {
+        await DeleteComment(props.commentPk);
+        await props.getCommentData();
         setShow(false);
     };
     const popover = (

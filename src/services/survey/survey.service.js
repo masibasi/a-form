@@ -46,7 +46,7 @@ export const DeleteSurvey = async (surveyid, userToken) => {
 };
 export const GetSurveyData = async (page, offset, status, sort) => {
     const result = await axios.get(`${SURVEY_API_URL}/api/surveys?page=${page}&offset=${offset}&progressStatus=${status}&sort=${sort}`);
-    // console.log(result.data);
+    console.log(result.data);
     return result;
 };
 
