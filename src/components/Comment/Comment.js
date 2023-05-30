@@ -7,7 +7,7 @@ import { PostContext } from "../../services/post/post.context";
 import { AuthenticationContext } from "../../services/authentication/authentication.context";
 
 export const Comment = (props) => {
-    const { DeleteComment } = useContext(PostContext);
+    const { DeleteComment, PostCommentLike } = useContext(PostContext);
     const { userData } = useContext(AuthenticationContext);
     const checkAuthor = () => {
         if (props.commentAuthor == userData.userPk) return true;
@@ -24,6 +24,14 @@ export const Comment = (props) => {
         await props.getCommentData();
         setShow(false);
     };
+
+    const onLikeClick = async () => {
+        setLiked(true);
+        await PostCommentLike(userData.userPk, props.commentPk);
+        await props.getCommentData();
+        alert("좋아요 되었습니다");
+    };
+
     const popover = (
         <Popover>
             <Popover.Body className="commentPopover">
@@ -59,8 +67,8 @@ export const Comment = (props) => {
                         {props.createdDate[0]}. {props.createdDate[1]}. {props.createdDate[2]}. {props.createdDate[3]} : {props.createdDate[4]}
                     </div>
                 </div>
-                <div className="likes">좋아요 : 0개</div>
-                <div onClick={() => setLiked(!liked)}>{liked ? <AiFillHeart size={24} color="red" /> : <AiOutlineHeart size={24} />}</div>
+                <div className="likes">좋아요 : {props.commentLike}개</div>
+                <div onClick={onLikeClick}>{liked ? <AiFillHeart size={24} color="red" /> : <AiOutlineHeart size={24} />}</div>
 
                 <OverlayTrigger trigger="click" placement="right" overlay={popover} delay={1} show={show}>
                     <button className="commentMoreBtn" onClick={() => setShow(!show)}>

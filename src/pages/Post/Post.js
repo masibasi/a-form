@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./Post.css";
-import { Button, Card, Collapse } from "react-bootstrap";
+import { Badge, Button, Card, Collapse } from "react-bootstrap";
 import { Comment } from "../../components/Comment/Comment";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -17,7 +17,7 @@ export const Post = () => {
     // Context
     const { GetSurveyById, DeleteSurvey } = useContext(SurveyContext);
     const { userData, userToken, isLogin } = useContext(AuthenticationContext);
-    const { GetPost, PostComment, GetComments, GetCommentCnt } = useContext(PostContext);
+    const { GetPost, GetPostCategory, PostComment, GetComments, GetCommentCnt } = useContext(PostContext);
 
     // Post state
     const [postData, setPostData] = useState("");
@@ -27,6 +27,7 @@ export const Post = () => {
     const [comment, setComment] = useState("");
     const [commentCnt, setCommentCnt] = useState(-1);
     const [commentsData, setCommentsData] = useState([]);
+    const [category, setCategory] = useState([]);
 
     // Navigate
     const navigate = useNavigate();
@@ -46,6 +47,9 @@ export const Post = () => {
             setPostData(res);
             setLoaded(true);
         });
+        await GetPostCategory(postPk).then((res) => {
+            setCategory(res);
+        });
     };
     const getCommentData = async () => {
         const size = 10;
@@ -56,7 +60,7 @@ export const Post = () => {
 
     // Check is Author
     useEffect(() => {
-        if (isLogin) {
+        if (userData != undefined && isLogin) {
             console.log("id match : ", userData.userPk, postData.postAuthor);
             if (userData.userPk == postData.author) {
                 console.log("daifjsjfis");
@@ -131,6 +135,11 @@ export const Post = () => {
                         <div className="contentWrapper">
                             <div className="topWrapper">
                                 <div className="descWrapper">
+                                    {category.map((it) => (
+                                        <Badge className="categoryBadge" bg="secondary" key={it.postCategoryPk}>
+                                            {it.postCategoryCategory.categoryType}
+                                        </Badge>
+                                    ))}
                                     <div className="title">{postData.postTitle}</div>
                                     <div className="desc">{postData.postDesc}</div>
                                 </div>

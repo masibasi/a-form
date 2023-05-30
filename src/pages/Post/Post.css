@@ -28,6 +28,11 @@
     width: auto;
     font-weight: 500;
 }
+.Post .categoryBadge {
+    font-size: 1em;
+
+    font-weight: 500;
+}
 .Post .desc {
     border: none;
     font-size: 1.5em;
