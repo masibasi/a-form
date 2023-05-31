@@ -112,9 +112,28 @@
 .Mypage_survey {
   display: flex;
   width: 55%;
-  justify-content: center;
   flex-direction: column;
   margin-left: 7%;
+}
+
+.mypage_selection_button {
+  color: #ffffff;
+  background-color: #f44336;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition-duration: 0.4s;
+}
+
+.mypage_selection_button:hover {
+  background-color: #555555;
+  color: white;
 }
 
 .my_template {
@@ -122,6 +141,7 @@
   /* align-items: center; */
   justify-content: center;
   flex-direction: column;
+  width: 100%;
 }
 
 .I_post {
@@ -129,6 +149,7 @@
   /* align-items: center; */
   justify-content: center;
   flex-direction: column;
+  width: 100%;
 }
 
 .I_answer {
@@ -136,6 +157,7 @@
   /* align-items: center; */
   justify-content: center;
   flex-direction: column;
+  width: 100%;
 }
 
 .I_write {
@@ -205,6 +227,41 @@
   cursor: pointer;
   font-weight: bold;
   margin-left: 2%;
+}
+
+/* ------ 템플릿 / 내가 올린 설문 / 내가 응답한 설문 페이지 이동 버튼 */
+.page-button-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.page-button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition-duration: 0.4s;
+  transition: visibility 0.02s linear;
+}
+
+.page-button:hover {
+  background-color: #45a049;
+}
+
+.page-button.invisible {
+  visibility: hidden; /* 버튼을 숨김. */
+}
+
+.page-number {
+  flex-grow: 1;
+  text-align: center;
 }
 
 /*------------- Mypage_setting ------------------*/

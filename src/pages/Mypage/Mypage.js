@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Route, Routes } from "react-router-dom";
 import "./Mypage.css";
 import profileimg from "../../assets/images/profile_sample1.png";
 import edit_icon from "../../assets/images/edit_icon 1.png";
@@ -7,9 +7,20 @@ import { AuthenticationContext } from "../../services/authentication/authenticat
 import FadeIn from "../../animation/FadeIn";
 import { SurveyList } from "../../components/SurveyList/SurveyList";
 import { SurveyContext } from "../../services/survey/survey.context";
+import { GetPostedSurveys, GetAnsweredSurveysTotal } from "../../services/survey/survey.service";
+import { GetUserData } from "../../services/authentication/authentication.service";
+import MyTemplatePage from "./MyTemplatePage";
+import MyPostedSurveysPage from "./MyPostedSurveysPage";
+import MyAnsweredSurveysPage from "./MyAnsweredSurveysPage";
 
 export default function Mypage() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    //디폴트 값을 나의 설문 템플릿으로 설정
+    navigate("/mypage/template");
+  }, []);
+
   const handleSettingClick = () => {
     navigate("/mypage_setting");
   };
@@ -26,6 +37,40 @@ export default function Mypage() {
     CheckLogin();
   }, []);
 
+  // 유저 데이터 가져오기
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await GetUserData(userToken);
+      setUserData(result);
+    };
+    fetchData();
+  }, []);
+
+  //작성 설문수 가져오기
+  const [postedSurveys, setPostedSurveys] = useState(null);
+
+  useEffect(() => {
+    const fetchPostedSurveys = async () => {
+      const result = await GetPostedSurveys(1, 10, userToken); // 여기에서 page와 offset 값을 제공
+      setPostedSurveys(result);
+    };
+
+    fetchPostedSurveys();
+  }, []);
+
+  //답변 설문수 받아오기
+  const [answeredSurveys, setAnsweredSurveys] = useState([]);
+  useEffect(() => {
+    const fetchAnsweredSurveys = async () => {
+      const result = await GetAnsweredSurveysTotal(1, 10, userToken); // 여기에서 page와 offset 값을 제공
+      setAnsweredSurveys(result);
+    };
+
+    fetchAnsweredSurveys();
+  }, [userToken]);
+
   return (
     <FadeIn className="Mypage">
       <div className="main">
@@ -36,7 +81,7 @@ export default function Mypage() {
             </div>
 
             <div className="nameline">
-              <div className="profile_name">Minsik Choi</div>
+              <div className="profile_name">{userData?.name}</div>
               <div className="edit">
                 <button className="edit_button" onClick={handleSettingClick}>
                   <img src={edit_icon} alt="" />
@@ -46,41 +91,38 @@ export default function Mypage() {
 
             <div className="line"></div>
 
-            <div className="profile_email">minsikchoi@gachon.ac.kr</div>
+            <div className="profile_email">{userData?.email}</div>
 
             <div className="profile_post">
               <div className="post">작성 설문수</div>
-              <div className="post_num">21</div>
+              <div className="post_num">{postedSurveys?.total}</div>
             </div>
 
             <div className="profile_response">
               <div className="response">답변 설문수</div>
-              <div className="response_num">45</div>
+              <div className="response_num">{answeredSurveys.total}</div>
             </div>
           </div>
         </div>
 
         <div className="Mypage_survey">
-          <div className="my_template">
-            <div className="I_write">나의 설문 템플릿</div>
-            <div className="I_write_list">
-              <SurveyList page={1} offset={10} progressStatus="all" content="" sort="desc" />
-            </div>
-          </div>
+          <nav style={{ marginBottom: "20px" }}>
+            <button className="mypage_selection_button" onClick={() => navigate("template")}>
+              나의 설문 템플릿
+            </button>
+            <button className="mypage_selection_button" onClick={() => navigate("posted")}>
+              내가 올린 설문
+            </button>
+            <button className="mypage_selection_button" onClick={() => navigate("answered")}>
+              내가 응답한 설문
+            </button>
+          </nav>
 
-          <div className="I_post">
-            <div className="I_writing">내가 올린 설문</div>
-            <div className="I_writing_list">
-              <SurveyList type="post" page={0} offset={10} progressStatus="all" content="" sort="desc" />
-            </div>
-          </div>
-
-          <div className="I_answer">
-            <div className="I_writing">내가 응답한 설문</div>
-            <div className="I_writing_list">
-              <SurveyList type="answered" page={0} offset={10} progressStatus="all" content="" sort="desc" />
-            </div>
-          </div>
+          <Routes>
+            <Route path="template" element={<MyTemplatePage />} />
+            <Route path="posted" element={<MyPostedSurveysPage />} />
+            <Route path="answered" element={<MyAnsweredSurveysPage />} />
+          </Routes>
         </div>
       </div>
     </FadeIn>

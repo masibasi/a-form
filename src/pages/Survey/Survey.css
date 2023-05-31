@@ -1,27 +1,27 @@
 /* CreateSurvey */
 
 .Survey {
-    /* text-align: center; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding-bottom: 3%;
-    min-height: calc(100vh - 103.23px);
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 3%;
+  min-height: calc(100vh - 103.23px);
 }
 
 .surveyWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90%;
-    padding: 5%;
-    /* border: 1px solid rgba(0, 0, 0, 0.2); */
-    border-radius: 50px;
-    min-height: calc(100vh - 113.23px);
-    background-color: white;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  padding: 5%;
+  /* border: 1px solid rgba(0, 0, 0, 0.2); */
+  border-radius: 50px;
+  min-height: calc(100vh - 113.23px);
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 /* .surveyWrapper::after {
     background-image: url("../../assets/images/nj.jpg");
@@ -36,101 +36,101 @@
 } */
 
 .Survey .text-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
-.surveyTitle {
-    border: none;
-    font-size: 3.5em;
-    font-weight: 800;
-    margin-bottom: 12px;
-    width: auto;
-    font-weight: 500;
-    text-align: center;
+.Survey .surveyTitle {
+  border: none;
+  font-size: 3.5em;
+  font-weight: 800;
+  margin-bottom: 12px;
+  width: auto;
+  font-weight: 500;
+  text-align: center;
 }
 .Survey .surveyTitle:focus {
-    outline: none;
-    border-bottom: 1px solid blue;
+  outline: none;
+  border-bottom: 1px solid blue;
 }
 .Survey .surveyDesc {
-    border: none;
-    font-size: 1em;
-    font-weight: 800;
-    margin-bottom: 12px;
-    width: 80%;
-    font-weight: 400;
-    text-align: center;
+  border: none;
+  font-size: 1em;
+  font-weight: 800;
+  margin-bottom: 12px;
+  width: 80%;
+  font-weight: 400;
+  text-align: center;
 }
 .Survey .surveyDesc:focus {
-    outline: none;
-    border-bottom: 1px solid blue;
+  outline: none;
+  border-bottom: 1px solid blue;
 }
 .ButtonWrapper {
-    margin-top: 2%;
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
+  margin-top: 2%;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
 .ButtonWrapper .SurveyBtnWrapper {
-    margin-left: 12px;
+  margin-left: 12px;
 }
 .ButtonWrapper .SurveyBtnWrapper .submit-btn {
-    margin-left: 12px;
+  margin-left: 12px;
 }
 .ButtonWrapper .SurveyBtnWrapper .delete-btn {
-    margin-left: 12px;
+  margin-left: 12px;
 }
 .ButtonWrapper .SurveyBtnWrapper .icon {
-    margin-right: 8px;
+  margin-right: 8px;
 }
 .icon-svg {
-    margin-right: 8px;
-    margin-bottom: 5px;
+  margin-right: 8px;
+  margin-bottom: 5px;
 }
 .Survey .Form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 .draggableFormWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 /* ShortForm */
 .shortform-input {
-    min-height: 200px;
-    resize: none;
+  min-height: 200px;
+  resize: none;
 }
 
 .form-selection-btn-wrapper {
 }
 .deleteSelection-btn {
-    margin-left: 8px;
+  margin-left: 8px;
 }
 
 /* SendFormModal */
 .sendFormModal {
 }
 .formLinkInput {
-    width: 80%;
+  width: 80%;
 }
 .modal-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .modal-header {
-    width: 100%;
+  width: 100%;
 }
 .modal-footer {
-    padding-left: auto;
+  padding-left: auto;
 }

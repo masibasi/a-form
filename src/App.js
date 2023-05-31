@@ -12,6 +12,10 @@ import { Post } from "./pages/Post/Post";
 import LoginForm from "./pages/LoginForm/LoginForm";
 import Mypage from "./pages/Mypage/Mypage";
 import Mypage_setting from "./pages/Mypage/Mypage_setting";
+import MyTemplatePage from "./pages/Mypage/MyTemplatePage";
+import MyPostedSurveysPage from "./pages/Mypage/MyPostedSurveysPage";
+import MyAnsweredSurveysPage from "./pages/Mypage/MyAnsweredSurveysPage";
+import AllPostList from "./pages/Community/AllPostList";
 
 import "./App.css";
 import "./hover.css";
@@ -28,43 +32,49 @@ export const FormHandlingContext = React.createContext();
 export const AuthContext = React.createContext();
 
 function App() {
-    return (
-        <AuthenticationContextProvider>
-            <SurveyContextProvider>
-                <PostContextProvider>
-                    <AIContextProvider>
-                        <ToastContainer
-                            className="Toast"
-                            closeButton={false}
-                            position={toast.POSITION.TOP_CENTER}
-                            icon={false}
-                            pauseOnFocusLoss={false}
-                            autoClose={1000}
-                            pauseOnHover={false}
-                            hideProgressBar={true}
-                        />
-                        <BrowserRouter>
-                            <Routes>
-                                <Route path="/" element={<Layout />}>
-                                    <Route index element={<Home />} />
-                                    <Route path="about" element={<About />} />
-                                    <Route path="mypage" element={<Mypage />} />
-                                    <Route path="create" element={<CreateSurvey />} />
-                                    <Route path="survey/:id" element={<Survey />} />
-                                    <Route path="register" element={<RegisterForm />} />
-                                    <Route path="login" element={<LoginForm />} />
-                                    <Route path="community" element={<Community />} />
-                                    <Route path="AvsB" element={<CreateAvsB />} />
-                                    <Route path="mypage_setting" element={<Mypage_setting />} />
-                                    <Route path="post/:postPk" element={<Post />} />
-                                </Route>
-                            </Routes>
-                        </BrowserRouter>
-                    </AIContextProvider>
-                </PostContextProvider>
-            </SurveyContextProvider>
-        </AuthenticationContextProvider>
-    );
+  return (
+    <AuthenticationContextProvider>
+      <SurveyContextProvider>
+        <PostContextProvider>
+          <AIContextProvider>
+            <ToastContainer
+              className="Toast"
+              closeButton={false}
+              position={toast.POSITION.TOP_CENTER}
+              icon={false}
+              pauseOnFocusLoss={false}
+              autoClose={1000}
+              pauseOnHover={false}
+              hideProgressBar={true}
+            />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Layout />}>
+                  <Route index element={<Home />} />
+                  <Route path="about" element={<About />} />
+                  <Route path="mypage" element={<Mypage />}>
+                    <Route index element={<MyTemplatePage />} />
+                    <Route path="template" element={<MyTemplatePage />} />
+                    <Route path="posted" element={<MyPostedSurveysPage />} />
+                    <Route path="answered" element={<MyAnsweredSurveysPage />} />
+                  </Route>
+                  <Route path="create" element={<CreateSurvey />} />
+                  <Route path="survey/:id" element={<Survey />} />
+                  <Route path="register" element={<RegisterForm />} />
+                  <Route path="login" element={<LoginForm />} />
+                  <Route path="community" element={<Community />} />
+                  <Route path="community/allpostlist" element={<AllPostList />} />
+                  <Route path="AvsB" element={<CreateAvsB />} />
+                  <Route path="mypage_setting" element={<Mypage_setting />} />
+                  <Route path="post/:postPk" element={<Post />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          </AIContextProvider>
+        </PostContextProvider>
+      </SurveyContextProvider>
+    </AuthenticationContextProvider>
+  );
 }
 
 export default App;
