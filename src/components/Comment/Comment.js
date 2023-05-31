@@ -29,7 +29,6 @@ export const Comment = (props) => {
         setLiked(true);
         await PostCommentLike(userData.userPk, props.commentPk);
         await props.getCommentData();
-        alert("좋아요 되었습니다");
     };
 
     const popover = (

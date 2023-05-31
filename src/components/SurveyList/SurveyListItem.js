@@ -39,11 +39,11 @@ export const SurveyListItem = (props) => {
 };
 
 export const HotCategory = (props) => {
-  return (
-    <div className="SurveyListItem">
-      <span className="surveyTitle">{props.category}</span>
-    </div>
-  );
+    return (
+        <div className="SurveyListItem">
+            <span className="surveyTitle">{props.category == "" ? "빈칸" : props.category}</span>
+        </div>
+    );
 };
 
 export const HotAvsBSurvey = (props) => {

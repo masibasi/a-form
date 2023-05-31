@@ -2,3 +2,9 @@
     align-items: center;
     justify-content: center;
 }
+
+.textButton {
+    background-color: transparent;
+    color: rgb(37, 110, 247);
+    border: 0;
+}

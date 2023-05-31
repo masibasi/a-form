@@ -1,27 +1,57 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Collapse, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import Calendar from "react-calendar";
+
 import "react-datepicker/dist/react-datepicker.css";
 import "./modal.css";
-import ReactDatePicker from "react-datepicker";
+
 import DateTimePicker from "react-datetime-picker";
 import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
 import { PostContext } from "../../services/post/post.context";
 export const ConfirmSurveyModal = ({ modalShow, handleModalClose, onSubmit }) => {
-    const { CreateCategory } = useContext(PostContext);
+    const { CreateCategory, GetAllCategory } = useContext(PostContext);
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     const [category, setCategory] = useState("");
+    const [categoryList, setCategoryList] = useState([]);
+    const [isTypeNew, setIsTypeNew] = useState(true);
+
+    const getData = () => {
+        GetAllCategory().then((res) => setCategoryList(res));
+    };
+    useEffect(() => {
+        getData();
+    }, []);
 
     const postValidation = () => {
         if (category == "") {
+            alert("카테고리를 설정해 주세요");
             return;
+        } else if (startDate.getTime() === endDate.getTime()) {
+            alert("기한을 설정해 주세요");
+            return;
+        } else {
+            onSubmit(startDate.toISOString(), endDate.toISOString(), category);
         }
     };
 
+    const onStartDateChange = (e) => {
+        if (e.getTime() > endDate.getTime()) {
+            setStartDate(e);
+            setEndDate(e);
+        } else {
+            setStartDate(e);
+        }
+    };
+    const onEndDateChange = (e) => {
+        if (startDate.getTime() > e.getTime()) {
+            alert("종료일이 시작일보다 늦을 수 없습니다!");
+        } else {
+            setEndDate(e);
+        }
+    };
     useEffect(() => {
         console.log(startDate);
     }, [startDate]);
@@ -31,26 +61,43 @@ export const ConfirmSurveyModal = ({ modalShow, handleModalClose, onSubmit }) =>
                 <Modal.Title>Publish this Survey?</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <div>
-                    Category : Create new or Select from list
-                    <select onChange={(e) => setCategory(e.target.value)}>
-                        <option value="1">여기서는</option>
-                        <option value="1">나중에</option>
-                        <option value="1">카테고리</option>
-                        <option value="1">리스트 받아올것임</option>
-                    </select>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                    Category :
+                    <div>
+                        <button className="textButton" onClick={() => setIsTypeNew(true)}>
+                            Create new
+                        </button>
+                        <button className="textButton" onClick={() => setIsTypeNew(false)}>
+                            Select from list
+                        </button>
+                    </div>
                 </div>
-                <input value={category} onChange={(e) => setCategory(e.target.value)} />
+                {isTypeNew ? (
+                    <input style={{ width: "100%", marginTop: "4px", marginBottom: "4px" }} value={category} onChange={(e) => setCategory(e.target.value)} />
+                ) : (
+                    <select
+                        onChange={(e) => {
+                            setCategory(e.target.value);
+                        }}
+                    >
+                        {categoryList.map((it) => (
+                            <option value={it.categoryType} key={it.categoryPk}>
+                                {it.categoryType}
+                            </option>
+                        ))}
+                    </select>
+                )}
+
                 <div>Select start date</div>
-                <DateTimePicker onChange={setStartDate} value={startDate} disableClock={true} minDate={new Date()} locale="ko" />
+                <DateTimePicker onChange={onStartDateChange} value={startDate} disableClock={true} minDate={new Date()} locale="ko" />
                 <div>Select end date</div>
-                <DateTimePicker onChange={setEndDate} value={endDate} disableClock={true} minDate={new Date()} locale="ko" />
+                <DateTimePicker onChange={onEndDateChange} value={endDate} disableClock={true} minDate={new Date()} locale="ko" />
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleModalClose}>
                     No, Keep editing
                 </Button>
-                <Button variant="primary" onClick={() => onSubmit(startDate.toISOString(), endDate.toISOString(), category)}>
+                <Button variant="primary" onClick={postValidation}>
                     Yes
                 </Button>
             </Modal.Footer>

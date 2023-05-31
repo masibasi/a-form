@@ -26,6 +26,18 @@ export const GetPostCategory = async (postPk) => {
         .catch((err) => console.log(err));
     return res;
 };
+
+export const GetAllCategory = async () => {
+    const res = axios
+        .get(`${POST_API_URL}/api/category/getAll`)
+        .then((res) => {
+            console.log("categories : ", res.data);
+            return res.data;
+        })
+        .catch((err) => console.log(err));
+    return res;
+};
+
 /* Post */
 
 export const CreatePost = async (postTitle, postDesc, postSurvey, startDate, endDate, userPk) => {
@@ -66,6 +78,12 @@ export const GetPost = async (postPk) => {
     return res;
 };
 
+export const UpdateViews = async (postPk) => {
+    const res = await axios
+        .post(`${POST_API_URL}/api/post/updateViews/${postPk}`)
+        .then((res) => console.log(res))
+        .catch((e) => console.log(e));
+};
 /* Comment */
 
 export const PostComment = async (commentAuthor, commentContent, postPk) => {

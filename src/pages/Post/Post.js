@@ -17,7 +17,7 @@ export const Post = () => {
     // Context
     const { GetSurveyById, DeleteSurvey } = useContext(SurveyContext);
     const { userData, userToken, isLogin } = useContext(AuthenticationContext);
-    const { GetPost, GetPostCategory, PostComment, GetComments, GetCommentCnt } = useContext(PostContext);
+    const { GetPost, GetPostCategory, PostComment, GetComments, GetCommentCnt, UpdateViews } = useContext(PostContext);
 
     // Post state
     const [postData, setPostData] = useState("");
@@ -40,6 +40,7 @@ export const Post = () => {
     useEffect(() => {
         getPostData();
         getCommentData();
+        UpdateViews(postPk);
     }, []);
 
     const getPostData = async () => {
