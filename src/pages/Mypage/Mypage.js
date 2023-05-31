@@ -64,21 +64,21 @@ export default function Mypage() {
           <div className="my_template">
             <div className="I_write">나의 설문 템플릿</div>
             <div className="I_write_list">
-              <SurveyList page={1} offset={5} progressStatus="all" content="" sort="desc" />
+              <SurveyList page={1} offset={10} progressStatus="all" content="" sort="desc" />
             </div>
           </div>
 
           <div className="I_post">
             <div className="I_writing">내가 올린 설문</div>
             <div className="I_writing_list">
-              <SurveyList type="post" page={0} offset={5} progressStatus="all" content="" sort="desc" />
+              <SurveyList type="post" page={0} offset={10} progressStatus="all" content="" sort="desc" />
             </div>
           </div>
 
           <div className="I_answer">
             <div className="I_writing">내가 응답한 설문</div>
             <div className="I_writing_list">
-              <SurveyList type="answered" page={0} offset={5} progressStatus="all" content="" sort="desc" />
+              <SurveyList type="answered" page={0} offset={10} progressStatus="all" content="" sort="desc" />
             </div>
           </div>
         </div>

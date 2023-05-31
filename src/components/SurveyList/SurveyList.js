@@ -52,11 +52,19 @@ export const SurveyList = ({ type, page, offset, status, sort }) => {
         <>
           {formData.map((it) =>
             type === "post" ? (
-              <SurveyListItem key={it.postPk} title={it.postTitle} id={it.postPk} author={it.postAuthor} />
+              <SurveyListItem
+                key={it.postPk}
+                title={it.postTitle}
+                id={it.postPk}
+                author={it.postAuthor}
+                type={type}
+                postStartDate={it.postStartDate}
+                postDueDate={it.postDueDate}
+              />
             ) : type === "answered" ? (
-              <SurveyListItem key={it._id} title={it.title} id={it._id} author={it.author} />
+              <SurveyListItem key={it._id} title={it.title} id={it._id} author={it.author} type={type} />
             ) : (
-              <SurveyListItem key={it._id} title={it.title} id={it._id} author={it.author} />
+              <SurveyListItem key={it._id} title={it.title} id={it._id} author={it.author} type={type} />
             )
           )}
         </>
