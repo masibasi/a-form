@@ -42,7 +42,7 @@
     align-items: center;
     width: 100%;
 }
-.Survey .surveyTitle {
+.surveyTitle {
     border: none;
     font-size: 3.5em;
     font-weight: 800;
@@ -60,7 +60,7 @@
     font-size: 1em;
     font-weight: 800;
     margin-bottom: 12px;
-    width: auto;
+    width: 80%;
     font-weight: 400;
     text-align: center;
 }
@@ -86,7 +86,7 @@
 .ButtonWrapper .SurveyBtnWrapper .icon {
     margin-right: 8px;
 }
-.ButtonWrapper .SurveyBtnWrapper .icon-svg {
+.icon-svg {
     margin-right: 8px;
     margin-bottom: 5px;
 }

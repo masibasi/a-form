@@ -1,57 +1,59 @@
 /* QuestionForm */
 .QuestionForm {
-  margin-top: 4% !important;
-  margin-bottom: 0% !important;
-  width: 85% !important;
-  background-color: white;
-  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 4px 4px 0px; */
-  border-radius: 25px !important;
-  /* border: 1px solid rgba(0, 0, 0, 0.1); */
+    margin-top: 4% !important;
+    margin-bottom: 0% !important;
+    width: 85% !important;
+    background-color: white;
+    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 4px 4px 0px; */
+    border-radius: 25px !important;
+    /* border: 1px solid rgba(0, 0, 0, 0.1); */
 }
 .QuesionFormCard {
-  width: 100% !important;
-  height: 100% !important;
-  border: 0 !important;
-  margin-bottom: 2rem !important;
-  margin-top: 1rem;
-  box-shadow: 0 !important;
-  border-radius: 25px !important;
-  padding-right: 4rem !important;
-  padding-left: 2rem !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: 0 !important;
+    margin-bottom: 2rem !important;
+    margin-top: 1rem;
+    box-shadow: 0 !important;
+    border-radius: 25px !important;
+    padding-right: 4rem !important;
+    padding-left: 2rem !important;
 }
 
 .QuestionForm .card {
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 0 1px rgba(0, 0, 0, 0.1);
-  padding: 2.5rem;
-  /* margin: 1rem 1.5rem; */
-  width: 50; /* 카드의 너비를 변경 */
-  max-width: 1000px; /* 원하는 최대 너비 설정 */
-  position: relative;
-  padding-bottom: 5%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 0 1px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    /* margin: 1rem 1.5rem; */
+    width: 50; /* 카드의 너비를 변경 */
+    max-width: 1000px; /* 원하는 최대 너비 설정 */
+    position: relative;
+    padding-bottom: 5%;
 }
 .QuestionForm .top-wrapper {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .QuestionForm .delete-btn {
-  width: 40px;
-  height: 40px;
+    width: 40px;
+    height: 40px;
 }
 .QuestionForm .formtitle {
-  border: none;
-  font-size: 1.3em;
-  font-weight: 800;
-  margin-bottom: 12px;
-  min-width: 300px;
-  width: 100%;
-  font-weight: 500;
+    border: none;
+    font-size: 1.3em;
+    font-weight: 800;
+    min-width: 200px;
+    width: 94%;
+    font-weight: 500;
+    margin-bottom: 25px;
 }
 .QuestionForm .card-title {
-  width: 100%;
+    width: 100%;
+    margin: 0 !important;
 }
 .QuestionForm .formtitle:focus {
-  outline: none;
-  border-bottom: 1px solid blue;
+    outline: none;
+    border-bottom: 1px solid blue;
 }

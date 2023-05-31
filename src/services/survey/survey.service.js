@@ -71,22 +71,6 @@ export const PostSurveyAnswer = async (surveyAnswer, surveyId, userToken) => {
     return result;
 };
 
-export const AIGenerateSurvey = async (msg, userToken) => {
-    const options = { headers: { accept: "application/json", "Content-Type": "application/json", Authorization: `Bearer ${userToken}` } };
-    const body = {
-        msg: msg,
-    };
-    const result = await axios
-        .post(`${AI_API_URL}/chatbot`, body, options)
-        .then((response) => {
-            console.log(response.data);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-    return result;
-};
-
 export const GetAnsweredSurveys = async (page, offset, userToken) => {
     console.log(page, offset, userToken);
     const options = { headers: { accept: "application/json", "Content-Type": "application/json", Authorization: `Bearer ${userToken}` } };

@@ -21,6 +21,7 @@ import { SurveyContextProvider } from "./services/survey/survey.context";
 import { AuthenticationContextProvider } from "./services/authentication/authentication.context";
 import { ToastContainer, toast } from "react-toastify";
 import { PostContextProvider } from "./services/post/post.context";
+import { AIContextProvider } from "./services/ai/ai.context";
 
 export const FormHandlingContext = React.createContext();
 
@@ -31,33 +32,35 @@ function App() {
         <AuthenticationContextProvider>
             <SurveyContextProvider>
                 <PostContextProvider>
-                    <ToastContainer
-                        className="Toast"
-                        closeButton={false}
-                        position={toast.POSITION.TOP_CENTER}
-                        icon={false}
-                        pauseOnFocusLoss={false}
-                        autoClose={1000}
-                        pauseOnHover={false}
-                        hideProgressBar={true}
-                    />
-                    <BrowserRouter>
-                        <Routes>
-                            <Route path="/" element={<Layout />}>
-                                <Route index element={<Home />} />
-                                <Route path="about" element={<About />} />
-                                <Route path="mypage" element={<Mypage />} />
-                                <Route path="create" element={<CreateSurvey />} />
-                                <Route path="survey/:id" element={<Survey />} />
-                                <Route path="register" element={<RegisterForm />} />
-                                <Route path="login" element={<LoginForm />} />
-                                <Route path="community" element={<Community />} />
-                                <Route path="AvsB" element={<CreateAvsB />} />
-                                <Route path="mypage_setting" element={<Mypage_setting />} />
-                                <Route path="post/:postPk" element={<Post />} />
-                            </Route>
-                        </Routes>
-                    </BrowserRouter>
+                    <AIContextProvider>
+                        <ToastContainer
+                            className="Toast"
+                            closeButton={false}
+                            position={toast.POSITION.TOP_CENTER}
+                            icon={false}
+                            pauseOnFocusLoss={false}
+                            autoClose={1000}
+                            pauseOnHover={false}
+                            hideProgressBar={true}
+                        />
+                        <BrowserRouter>
+                            <Routes>
+                                <Route path="/" element={<Layout />}>
+                                    <Route index element={<Home />} />
+                                    <Route path="about" element={<About />} />
+                                    <Route path="mypage" element={<Mypage />} />
+                                    <Route path="create" element={<CreateSurvey />} />
+                                    <Route path="survey/:id" element={<Survey />} />
+                                    <Route path="register" element={<RegisterForm />} />
+                                    <Route path="login" element={<LoginForm />} />
+                                    <Route path="community" element={<Community />} />
+                                    <Route path="AvsB" element={<CreateAvsB />} />
+                                    <Route path="mypage_setting" element={<Mypage_setting />} />
+                                    <Route path="post/:postPk" element={<Post />} />
+                                </Route>
+                            </Routes>
+                        </BrowserRouter>
+                    </AIContextProvider>
                 </PostContextProvider>
             </SurveyContextProvider>
         </AuthenticationContextProvider>
