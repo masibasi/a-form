@@ -28,21 +28,23 @@ export default function MyAnsweredSurveysPage() {
       <div className="main">
         <div className="I_answer">
           <div className="I_writing">내가 응답한 설문</div>
-          <div className="I_writing_list">
-            <SurveyList type="answered" page={currentPage} offset={5} progressStatus="all" content="" sort="desc" />
-          </div>
-          <div className="page-button-container">
-            {currentPage > 0 ? (
-              <button className="page-button" onClick={() => setCurrentPage((old) => Math.max(old - 1, 0))}>
-                Previous Page
+          <div className="surveyListWrapper">
+            <div className="I_writing_list">
+              <SurveyList type="answered" page={currentPage} offset={5} progressStatus="all" content="" sort="desc" />
+            </div>
+            <div className="page-button-container">
+              {currentPage > 0 ? (
+                <button className="page-button" onClick={() => setCurrentPage((old) => Math.max(old - 1, 0))}>
+                  Previous Page
+                </button>
+              ) : (
+                <button className="page-button invisible">Previous Page</button> /* 페이지가 0일 때는 버튼을 숨김 */
+              )}
+              <span className="page-number">{currentPage + 1}</span>
+              <button className="page-button" onClick={() => setCurrentPage((old) => old + 1)}>
+                Next Page
               </button>
-            ) : (
-              <button className="page-button invisible">Previous Page</button> /* 페이지가 0일 때는 버튼을 숨김 */
-            )}
-            <span className="page-number">{currentPage + 1}</span>
-            <button className="page-button" onClick={() => setCurrentPage((old) => old + 1)}>
-              Next Page
-            </button>
+            </div>
           </div>
         </div>
       </div>

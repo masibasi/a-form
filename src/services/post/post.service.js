@@ -168,3 +168,16 @@ export const GetAllPostSurveys = async (itemNum, pageIndex) => {
     .catch((err) => console.log(err));
   return result;
 };
+
+export const GetUserPostsCnt = async (userPk) => {
+  // 한 유저가 올린 포스트 수
+  const options = { headers: { accept: "application/json", "Content-Type": "application/json" } };
+  const result = await axios
+    .get(`${POST_API_URL}/api/post/getUserPostsCnt/${userPk}`, options)
+    .then((res) => {
+      console.log("get post cnt", res);
+      return res.data;
+    })
+    .catch((err) => console.log(err));
+  return result;
+};

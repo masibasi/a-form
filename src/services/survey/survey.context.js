@@ -1,7 +1,16 @@
 import React, { createContext } from "react";
 
 import { CreateSurvey } from "./survey.service";
-import { GetSurveyData, GetSurveyById, PostSurveyAnswer, AIGenerateSurvey, DeleteSurvey, GetAnsweredSurveys, GetPostedSurveys } from "./survey.service";
+import {
+  GetSurveyData,
+  GetSurveyById,
+  PostSurveyAnswer,
+  AIGenerateSurvey,
+  DeleteSurvey,
+  GetAnsweredSurveys,
+  GetPostedSurveys,
+  GetPopularSurveys,
+} from "./survey.service";
 
 export const SurveyContext = createContext();
 
@@ -16,6 +25,7 @@ export const SurveyContextProvider = ({ children }) => {
         PostSurveyAnswer, // 서베이 응답을 제출하는 함수
         GetAnsweredSurveys, //응답한 survey를 요청하는 함수
         GetPostedSurveys, // 템플릿 받아오는 함수
+        GetPopularSurveys, //인기설문 받아오는 함수
       }}
     >
       {children}

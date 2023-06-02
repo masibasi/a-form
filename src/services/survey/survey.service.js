@@ -114,3 +114,25 @@ export const GetPostedSurveys = async (page, offset, userToken) => {
     .catch((err) => console.log(err));
   return result;
 };
+
+export const GetPopularSurveys = async (date) => {
+  // 커뮤니티 Hot 설문에서 사용됨
+  const options = {
+    headers: {
+      accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  };
+
+  const formattedDate = new Date(date).toISOString();
+
+  const result = await axios
+    .get(`${SURVEY_API_URL}/api/surveys/popular?date=${formattedDate}`, options)
+    .then((res) => {
+      console.log("getPopular", res);
+      return res.data;
+    })
+    .catch((err) => console.log(err));
+
+  return result;
+};

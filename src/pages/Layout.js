@@ -38,7 +38,7 @@ export default function Layout() {
             </Nav.Link>
             {isLogin ? (
               <Nav>
-                <Nav.Link onClick={() => navigate("/mypage")}>마이페이지</Nav.Link>
+                <Nav.Link onClick={() => navigate("/mypage/template")}>마이페이지</Nav.Link>
                 <Nav.Link
                   onClick={() => {
                     if (window.confirm("로그아웃하시겠습니까?")) {

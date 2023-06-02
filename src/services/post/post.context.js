@@ -13,6 +13,7 @@ import {
   GetAllCategory,
   UpdateViews,
   GetAllPostSurveys,
+  GetUserPostsCnt,
 } from "./post.service";
 export const PostContext = createContext();
 
@@ -33,6 +34,7 @@ export const PostContextProvider = ({ children }) => {
         GetAllCategory,
         UpdateViews, // 게시글 조회수 올려주는
         GetAllPostSurveys, // 모든 게시물
+        GetUserPostsCnt, // 유저가 올린 게시물 수 확인
       }}
     >
       {children}

@@ -28,21 +28,23 @@ export default function MyTemplatePage() {
       <div className="main">
         <div className="my_template">
           <div className="I_write">나의 설문 템플릿</div>
-          <div className="I_write_list">
-            <SurveyList type="template" page={currentPage} offset={5} progressStatus="all" content="" sort="desc" />
-          </div>
-          <div className="page-button-container">
-            {currentPage > 1 ? (
-              <button className="page-button" onClick={() => setCurrentPage((old) => Math.max(old - 1, 1))}>
-                Previous Page
+          <div className="surveyListWrapper">
+            <div className="I_write_list">
+              <SurveyList type="template" page={currentPage} offset={5} progressStatus="all" content="" sort="desc" />
+            </div>
+            <div className="page-button-container">
+              {currentPage > 1 ? (
+                <button className="page-button" onClick={() => setCurrentPage((old) => Math.max(old - 1, 1))}>
+                  Previous Page
+                </button>
+              ) : (
+                <button className="page-button invisible">Previous Page</button> /* 페이지가 1일 때는 버튼을 숨김 */
+              )}
+              <span className="page-number">{currentPage}</span>
+              <button className="page-button" onClick={() => setCurrentPage((old) => old + 1)}>
+                Next Page
               </button>
-            ) : (
-              <button className="page-button invisible">Previous Page</button> /* 페이지가 1일 때는 버튼을 숨깁 */
-            )}
-            <span className="page-number">{currentPage}</span>
-            <button className="page-button" onClick={() => setCurrentPage((old) => old + 1)}>
-              Next Page
-            </button>
+            </div>
           </div>
         </div>
       </div>

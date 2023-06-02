@@ -8,9 +8,9 @@ export const SurveyListItem = (props) => {
   // console.log(props);
 
   const handleClick = () => {
-    if (props.type === "answered") {
+    if (props.type === "answered" || props.type === "popular") {
       navigate(`/survey/${props.id}`, { state: { id: props.id } });
-    } else if (props.type === "post") {
+    } else if (props.type === "post" || props.type === "allpost") {
       navigate(`/post/${props.id}`);
       console.log(props);
     } else {
@@ -39,11 +39,11 @@ export const SurveyListItem = (props) => {
 };
 
 export const HotCategory = (props) => {
-    return (
-        <div className="SurveyListItem">
-            <span className="surveyTitle">{props.category == "" ? "빈칸" : props.category}</span>
-        </div>
-    );
+  return (
+    <div className="SurveyListItem">
+      <span className="surveyTitle">{props.category == "" ? "빈칸" : props.category}</span>
+    </div>
+  );
 };
 
 export const HotAvsBSurvey = (props) => {

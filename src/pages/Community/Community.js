@@ -13,7 +13,7 @@ export const Community = () => {
     navigate("/community/allpostlist");
   };
 
-  const handleMoreClick = () => {
+  const handleHotMoreClick = () => {
     navigate("/allhotlist");
   };
 
@@ -30,11 +30,11 @@ export const Community = () => {
         <div className="hotSurveyWrapper hvr-float">
           <div className="title2Wrapper">
             <h5>Hot 설문</h5>
-            <p onClick={handleMoreClick} style={{ cursor: "pointer" }}>
+            <p onClick={handleHotMoreClick} style={{ cursor: "pointer" }}>
               더보기
             </p>
           </div>
-          <SurveyList page={1} offset={5} progressStatus="all" content="" sort="desc" />
+          <SurveyList type="popular" progressStatus="all" content="" sort="desc" />
         </div>
         <div className="hotCategoryWrapper hvr-float">
           <div className="title2Wrapper">
@@ -60,7 +60,7 @@ export const Community = () => {
         </p>
       </div>
       <div className="surveyListWrapper hvr-float">
-        <SurveyList page={1} offset={5} progressStatus="all" content="" sort="desc" />
+        <SurveyList type="allpost" offset={5} page={0} progressStatus="all" content="" sort="desc" />
       </div>
     </FadeIn>
   );

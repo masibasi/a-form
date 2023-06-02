@@ -7,7 +7,7 @@ import { AuthenticationContext } from "../../services/authentication/authenticat
 import { PostContext } from "../../services/post/post.context";
 import { GetSurveyData } from "../../services/survey/survey.service";
 
-export const SurveyList = ({ type, page, offset, status, sort }) => {
+export const SurveyList = ({ type, page, offset, status, sort, date }) => {
   const [formData, setFormData] = useState();
   const [showList, setShowList] = useState(false);
   const { GetAnsweredSurveys } = useContext(SurveyContext);
@@ -15,6 +15,7 @@ export const SurveyList = ({ type, page, offset, status, sort }) => {
   const { userData, userToken } = useContext(AuthenticationContext);
   const { GetAllPostSurveys } = useContext(PostContext);
   const { GetPostedSurveys } = useContext(SurveyContext);
+  const { GetPopularSurveys } = useContext(SurveyContext);
 
   const getFormData = async () => {
     // console.log(page, offset, status, sort);
@@ -43,6 +44,14 @@ export const SurveyList = ({ type, page, offset, status, sort }) => {
       result = await GetAllPostSurveys(offset, page);
       console.log(result);
       console.log("allpost");
+      setFormData(result);
+    } else if (type === "popular") {
+      // 인기 설문
+      const now = new Date(); //현재 시간 받기
+      const date = now.toISOString(); // 시간 형식 맞추기
+      result = await GetPopularSurveys(date);
+      console.log(result);
+      console.log("popular");
       setFormData(result);
     } else {
       result = await GetSurveyData(page, offset, userToken);
@@ -77,7 +86,7 @@ export const SurveyList = ({ type, page, offset, status, sort }) => {
                 postStartDate={it.postStartDate}
                 postDueDate={it.postDueDate}
               />
-            ) : type === "answered" ? (
+            ) : type === "answered" || type === "popular" ? (
               <SurveyListItem key={it._id} title={it.title} id={it._id} author={it.author} type={type} />
             ) : (
               <SurveyListItem key={it._id} title={it.title} id={it._id} author={it.author} type={type} />

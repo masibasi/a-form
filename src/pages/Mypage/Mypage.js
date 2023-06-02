@@ -12,14 +12,11 @@ import { GetUserData } from "../../services/authentication/authentication.servic
 import MyTemplatePage from "./MyTemplatePage";
 import MyPostedSurveysPage from "./MyPostedSurveysPage";
 import MyAnsweredSurveysPage from "./MyAnsweredSurveysPage";
+import { GetUserPostsCnt } from "../../services/post/post.service";
+import { ButtonGroup, Button } from "react-bootstrap";
 
 export default function Mypage() {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    //디폴트 값을 나의 설문 템플릿으로 설정
-    navigate("/mypage/template");
-  }, []);
 
   const handleSettingClick = () => {
     navigate("/mypage_setting");
@@ -49,16 +46,18 @@ export default function Mypage() {
   }, []);
 
   //작성 설문수 가져오기
-  const [postedSurveys, setPostedSurveys] = useState(null);
+  const [userPostsCount, setUserPostsCount] = useState(0);
 
   useEffect(() => {
-    const fetchPostedSurveys = async () => {
-      const result = await GetPostedSurveys(1, 10, userToken); // 여기에서 page와 offset 값을 제공
-      setPostedSurveys(result);
+    const fetchUserPostsCount = async () => {
+      if (userData) {
+        const result = await GetUserPostsCnt(userData.userPk);
+        setUserPostsCount(result);
+      }
     };
 
-    fetchPostedSurveys();
-  }, []);
+    fetchUserPostsCount();
+  }, [userData]);
 
   //답변 설문수 받아오기
   const [answeredSurveys, setAnsweredSurveys] = useState([]);
@@ -95,27 +94,33 @@ export default function Mypage() {
 
             <div className="profile_post">
               <div className="post">작성 설문수</div>
-              <div className="post_num">{postedSurveys?.total}</div>
+              <div className="post_num" onClick={() => navigate("posted")} style={{ cursor: "pointer" }}>
+                {userPostsCount}
+              </div>
             </div>
 
             <div className="profile_response">
               <div className="response">답변 설문수</div>
-              <div className="response_num">{answeredSurveys.total}</div>
+              <div className="response_num" onClick={() => navigate("answered")} style={{ cursor: "pointer" }}>
+                {answeredSurveys ? answeredSurveys.total : 0}
+              </div>
             </div>
           </div>
         </div>
 
         <div className="Mypage_survey">
           <nav style={{ marginBottom: "20px" }}>
-            <button className="mypage_selection_button" onClick={() => navigate("template")}>
-              나의 설문 템플릿
-            </button>
-            <button className="mypage_selection_button" onClick={() => navigate("posted")}>
-              내가 올린 설문
-            </button>
-            <button className="mypage_selection_button" onClick={() => navigate("answered")}>
-              내가 응답한 설문
-            </button>
+            <ButtonGroup>
+              <Button variant="outline-primary" className="" onClick={() => navigate("template")}>
+                나의 설문 템플릿
+              </Button>
+              <Button variant="outline-primary" className="" onClick={() => navigate("posted")}>
+                내가 올린 설문
+              </Button>
+              <Button variant="outline-primary" className="" onClick={() => navigate("answered")}>
+                내가 응답한 설문
+              </Button>
+            </ButtonGroup>
           </nav>
 
           <Routes>
