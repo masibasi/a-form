@@ -1,0 +1,36 @@
+.statistics_center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.statistics_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+}
+
+.statistics_h1 {
+  /* margin-left: 10%; */
+  font-size: 2.5rem;
+}
+
+.surveyListWrapper {
+  width: 100%;
+  margin-top: 2%;
+  padding-top: 4%;
+  padding-bottom: 2%;
+  padding-right: 3%;
+  padding-left: 3%;
+  border-radius: 25px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-bottom: 2%;
+}
+
+.stat {
+  margin-left: auto;
+  margin-right: 2%;
+  font-size: 1.5rem;
+}

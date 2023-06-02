@@ -26,6 +26,7 @@ import { AuthenticationContextProvider } from "./services/authentication/authent
 import { ToastContainer, toast } from "react-toastify";
 import { PostContextProvider } from "./services/post/post.context";
 import { AIContextProvider } from "./services/ai/ai.context";
+import Statistics from "./pages/Post/Statistics/Statistics";
 
 export const FormHandlingContext = React.createContext();
 
@@ -67,6 +68,7 @@ function App() {
                   <Route path="AvsB" element={<CreateAvsB />} />
                   <Route path="mypage_setting" element={<Mypage_setting />} />
                   <Route path="post/:postPk" element={<Post />} />
+                  <Route path="post/:postPk/statistics" element={<Statistics />} />
                 </Route>
               </Routes>
             </BrowserRouter>

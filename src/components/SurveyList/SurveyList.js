@@ -48,7 +48,9 @@ export const SurveyList = ({ type, page, offset, status, sort, date }) => {
     } else if (type === "popular") {
       // 인기 설문
       const now = new Date(); //현재 시간 받기
+      console.log(now);
       const date = now.toISOString(); // 시간 형식 맞추기
+      console.log(date);
       result = await GetPopularSurveys(date);
       console.log(result);
       console.log("popular");
