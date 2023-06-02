@@ -40,6 +40,11 @@ function CreateSurvey() {
     const [postPk, setPostPk] = useState("");
     const nextCardId = useRef(0); // surveyCard 아이디
 
+    // Modal state
+    const [linkModalShow, setLinkModalShow] = useState(false);
+    const [confirmModalShow, setConfirmModalShow] = useState(false);
+    const [AIModalShow, setAIModalShow] = useState(true);
+
     const CheckLogin = () => {
         if (!localStorage.getItem("isLoggedIn")) {
             alert("로그인이 필요한 서비스 입니다.");
@@ -48,9 +53,18 @@ function CreateSurvey() {
         templateLoader();
     };
 
+    // textarea state
+    const textarea1 = useRef();
+    const textarea2 = useRef();
+    const handleResizeHeight = (textarea) => {
+        textarea.current.style.height = 0; //height 초기화
+        textarea.current.style.height = textarea.current.scrollHeight + "px";
+    };
+
     // onTemplate Load
     const templateLoader = () => {
         if (location.state != null) {
+            setAIModalShow(false);
             setSurveyId(location.state.id);
             GetSurveyById(location.state.id).then((res) => {
                 setTitle(res.data.title);
@@ -108,11 +122,11 @@ function CreateSurvey() {
             if (q.title == "") {
                 checkQTitle = false;
             }
-            if (q.selections.length === 0) {
+            if (q.type !== "SHORTFORM" && q.selections.length === 0) {
                 checkQSelections = false;
             }
             q.selections.forEach((selection) => {
-                if ((q.type == "RADIO" || "CHECKBOX") && selection.content == "") {
+                if ((q.type === "RADIO" || q.type === "CHECKBOX") && selection.content == "") {
                     checkQContent = false;
                 }
             });
@@ -140,6 +154,7 @@ function CreateSurvey() {
             }, 3000);
         }
     };
+
     // Submit
     const handleSubmit = async () => {
         const type = "NORMAL";
@@ -147,15 +162,17 @@ function CreateSurvey() {
         let newId = await CreateSurvey(type, title, description, questions, userToken);
         setSurveyId(newId);
     };
+
     // Create Post
     const createPostHandler = async (startDate, endDate, category) => {
-        await CreatePost(title, description, surveyId, startDate, endDate, userData.userPk).then((res) => {
-            setPostPk(res.postPk);
-            CreateCategory(category, res.postPk);
-        });
-
-        setConfirmModalShow(false);
-        setLinkModalShow(true);
+        await CreatePost(title, description, surveyId, startDate, endDate, userData.userPk)
+            .then((res) => {
+                setPostPk(res.postPk);
+                CreateCategory(category, res.postPk);
+                setConfirmModalShow(false);
+                setLinkModalShow(true);
+            })
+            .catch((err) => console.log(err));
     };
 
     // AI //
@@ -165,8 +182,12 @@ function CreateSurvey() {
             setAiIsLoading(true);
             console.log(
                 GetAIGenerate(title).then((res) => {
-                    const data = res.split("```");
+                    let data = res.split("```");
                     console.log(data);
+                    if (data[1].indexOf("json")) {
+                        data[1] = data[1].replace("json", "");
+                        console.log(data[1]);
+                    }
                     const dataJSON = JSON.parse(data[1]);
                     console.log(dataJSON);
                     setTitle(dataJSON.title);
@@ -181,10 +202,6 @@ function CreateSurvey() {
     };
 
     /* Modal */
-    // Modal state
-    const [linkModalShow, setLinkModalShow] = useState(false);
-    const [confirmModalShow, setConfirmModalShow] = useState(false);
-    const [AIModalShow, setAIModalShow] = useState(true);
 
     // Modal Function
     const handleClose = () => {
@@ -268,21 +285,25 @@ function CreateSurvey() {
                 <div className="text-wrapper">
                     <textarea
                         className="surveyTitle"
+                        ref={textarea1}
                         type="text"
                         value={title}
                         placeholder="Create Form"
                         onChange={(e) => {
                             setTitle(e.target.value);
+                            handleResizeHeight(textarea1);
                         }}
                     />
 
                     <textarea
                         className="surveyDesc"
+                        ref={textarea2}
                         type="text"
                         value={description}
                         placeholder="Form Description"
                         onChange={(e) => {
                             setDescription(e.target.value);
+                            handleResizeHeight(textarea2);
                         }}
                     />
                 </div>

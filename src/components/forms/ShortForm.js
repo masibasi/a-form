@@ -3,10 +3,6 @@ import Form from "react-bootstrap/Form";
 
 //주관식
 function ShortForm(props) {
-    if (props.q.selections.length === 0) {
-        props.q.selections.push({ type: "LETTER", content: "" });
-    }
-
     const textRef = React.useRef();
     const [answer, setAnswer] = useState("");
 
@@ -24,7 +20,7 @@ function ShortForm(props) {
 
     return (
         <Form.Group>
-            <Form.Control className="shortform-input" as="textarea" rows={4} value={props.q.selections[0].content} onChange={onChange} ref={textRef} />
+            <Form.Control className="shortform-input" as="textarea" rows={4} disabled={true} onChange={onChange} ref={textRef} />
         </Form.Group>
     );
 }

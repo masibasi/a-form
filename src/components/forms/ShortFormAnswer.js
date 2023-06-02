@@ -3,6 +3,9 @@ import Form from "react-bootstrap/Form";
 
 //주관식
 function ShortFormAnswer(props) {
+    if (props.q.selections.length === 0) {
+        props.q.selections.push({ type: "LETTER", content: "" });
+    }
     const [answer, setAnswer] = useState(props.q.selections[0].content);
 
     const onChange = (e) => {

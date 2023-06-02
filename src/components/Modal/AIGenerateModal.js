@@ -9,7 +9,7 @@ export const AIGenerateModal = ({ show, setShow, aiIsLoading, AIGenerateHandler 
     const handleClose = () => setShow(false);
     const textarea = useRef();
     const handleResizeHeight = () => {
-        textarea.current.style.height = "auto"; //height 초기화
+        textarea.current.style.height = 0; //height 초기화
         textarea.current.style.height = textarea.current.scrollHeight + "px";
     };
     return (

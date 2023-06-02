@@ -40,7 +40,7 @@
     font-size: 1em;
     font-weight: 800;
     width: 50%;
-    height: 40px;
+    height: 28px;
     font-weight: 400;
     text-align: center;
     margin-bottom: 4px;
@@ -53,7 +53,6 @@
     display: flex;
     width: 100%;
     justify-content: space-around;
-    margin-bottom: 12px;
 }
 .CreateAvsB .ABImage {
     width: 360px;
