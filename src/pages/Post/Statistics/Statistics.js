@@ -14,6 +14,7 @@ export const Statistics = () => {
   const { GetPost } = useContext(PostContext);
   const { GetStats, GetSurveyById } = useContext(SurveyContext);
   const [statistics, setStatistics] = useState(null);
+  const [stats, setStats] = useState(null);
   const [postId, setPostId] = useState("");
 
   const [surveyData, setSurveyData] = useState(null);
@@ -23,12 +24,9 @@ export const Statistics = () => {
     console.log("post : ", post);
     setPostTitle(post.postTitle);
     setPostId(post.postSurvey);
-    console.log("post.postSurvey : ", post.postSurvey);
 
     const survey = await GetSurveyById(post.postSurvey);
-    console.log("survey : ", survey); // 이 부분을 수정해봅니다.
     setSurveyData(survey.data);
-    console.log("setSurveyData: ", surveyData);
   };
 
   useEffect(() => {
@@ -41,7 +39,9 @@ export const Statistics = () => {
 
   const fetchData = async () => {
     const result = await GetStats(postId);
+    result.statistics.sort((a, b) => (a.index > b.index ? 1 : -1));
     setStatistics(result);
+
     console.log("stat: ", result);
   };
 

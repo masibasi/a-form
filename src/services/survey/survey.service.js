@@ -52,7 +52,7 @@ export const GetSurveyData = async (page, offset, status, sort) => {
 
 export const GetSurveyById = async (id) => {
   const result = await axios.get(`${SURVEY_API_URL}/api/surveys/${id}`);
-  console.log("get survey by id:", result.data);
+  // console.log("get survey by id:", result.data);
   return result;
 };
 
@@ -121,27 +121,28 @@ export const GetPostedSurveys = async (page, offset, userToken) => {
   return result;
 };
 
-export const GetPopularSurveys = async (date) => {
-  // 커뮤니티 Hot 설문에서 사용됨
-  const options = {
-    headers: {
-      accept: "application/json",
-      "Content-Type": "application/json",
-    },
-  };
+// export const GetPopularSurveys = async (date) => {
+//   // 커뮤니티 Hot 설문에서 사용됨
+//   const options = {
+//     headers: {
+//       accept: "application/json",
+//       "Content-Type": "application/json",
+//     },
+//   };
 
-  const formattedDate = new Date(date).toISOString();
+//   const formattedDate = new Date(date).toISOString();
 
-  const result = await axios
-    .get(`${SURVEY_API_URL}/api/surveys/popular?date=${formattedDate}`, options)
-    .then((res) => {
-      console.log("getPopular", res);
-      return res.data;
-    })
-    .catch((err) => console.log(err));
+//   const result = await axios
+//     .get(`${SURVEY_API_URL}/api/surveys/popular?date=${formattedDate}`, options)
+//     .then((res) => {
+//       console.log("getPopular", res);
+//       return res.data;
+//     })
+//     .catch((err) => console.log(err));
 
-  return result;
-};
+//   return result;
+// };
+
 /* AvsB */
 
 export const CreateAvsBSurvey = async (formData) => {

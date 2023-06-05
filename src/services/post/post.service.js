@@ -69,7 +69,7 @@ export const GetPost = async (postPk) => {
   const res = await axios
     .get(`${POST_API_URL}/api/post/getPost/${postPk}`)
     .then((response) => {
-      console.log("Post data get : ", response.data);
+      // console.log("Post data get : ", response.data);
       return response.data;
     })
     .catch((err) => {
@@ -176,6 +176,19 @@ export const GetUserPostsCnt = async (userPk) => {
     .get(`${POST_API_URL}/api/post/getUserPostsCnt/${userPk}`, options)
     .then((res) => {
       console.log("get post cnt", res);
+      return res.data;
+    })
+    .catch((err) => console.log(err));
+  return result;
+};
+
+export const GetPopularPost = async (date) => {
+  // 인기 설문
+  const options = { headers: { accept: "application/json", "Content-Type": "application/json" } };
+  const result = await axios
+    .get(`${POST_API_URL}/api/post/getPopularPost`, options)
+    .then((res) => {
+      console.log("get popular", res);
       return res.data;
     })
     .catch((err) => console.log(err));
