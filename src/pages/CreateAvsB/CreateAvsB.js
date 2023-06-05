@@ -1,9 +1,9 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./CreateAvsB.css";
 import { Button } from "react-bootstrap";
 import FadeIn from "../../animation/FadeIn";
 import { SurveyContext } from "../../services/survey/survey.context";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ConfirmSurveyModal, LinkModal } from "../../components/Modal/ConfirmSurveyModal";
 import { PostContext } from "../../services/post/post.context";
@@ -22,8 +22,12 @@ export const CreateAvsB = () => {
     const [postPk, setPostPk] = useState("");
     const [saveIsLoading, setSaveIsLoading] = useState(false);
 
+    // Navigation
+    const navigate = useNavigate();
+    const location = useLocation();
+
     //Context
-    const { CreateAvsBSurvey, PostFiles } = useContext(SurveyContext);
+    const { CreateAvsBSurvey, PostFiles, GetSurveyById } = useContext(SurveyContext);
     const { CreatePost, CreateCategory } = useContext(PostContext);
     const { userData } = useContext(AuthenticationContext);
 
@@ -35,7 +39,34 @@ export const CreateAvsB = () => {
         navigate("/", { replace: true });
     };
 
-    const navigate = useNavigate();
+    useEffect(() => {
+        CheckLogin();
+    }, []);
+
+    const CheckLogin = () => {
+        if (!localStorage.getItem("isLoggedIn")) {
+            alert("로그인이 필요한 서비스 입니다.");
+            navigate(-1);
+        }
+
+        templateLoader();
+    };
+
+    // onTemplate Load
+    const templateLoader = () => {
+        if (location.state != null) {
+            setSurveyId(location.state.id);
+            GetSurveyById(location.state.id).then((res) => {
+                setFormTitle(res.data.title);
+                setFormDesc(res.data.description);
+                setAPreview(res.data.questions[0].imageUrl);
+                setBPreview(res.data.questions[1].imageUrl);
+                setADesc(res.data.questions[0].description);
+                setBDesc(res.data.questions[1].description);
+                toast.success("Template Loaded!");
+            });
+        }
+    };
 
     const checkFormComplete = () => {
         if (formTitle === "" || formDesc === "" || ADesc === "" || BDesc === "") {

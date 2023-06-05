@@ -23,7 +23,7 @@ export default function Home() {
                                 <Dropdown.Item eventKey="1" onClick={() => navigation("/create")}>
                                     Normal Survey
                                 </Dropdown.Item>
-                                <Dropdown.Item eventKey="1" onClick={() => navigation("/AvsB")}>
+                                <Dropdown.Item eventKey="1" onClick={() => navigation("/createAvsB")}>
                                     AvsB
                                 </Dropdown.Item>
                             </DropdownButton>
