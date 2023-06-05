@@ -48,7 +48,7 @@ export const SurveyList = ({ type, page, offset, status, sort, date }) => {
                 result.map(async (post) => {
                     const postData = await GetPost(post.postPk);
                     const surveyId = postData.postSurvey;
-                    // console.log("surveyId: ", surveyId);
+                    console.log("surveyId: ", surveyId);
                     const surveyData = await GetSurveyById(surveyId);
                     // console.log("surveyData: ", surveyData);
                     const surveyAuthor = surveyData.data.author;
@@ -59,7 +59,7 @@ export const SurveyList = ({ type, page, offset, status, sort, date }) => {
                         postAuthor: surveyAuthor, // postAuthor 값을 실제 Author의 이름으로 변경
                     };
                 })
-            );
+            ).catch((err) => console.log(err));
 
             setFormData(modifiedData);
             // setFormData(result);

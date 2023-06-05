@@ -2,21 +2,21 @@ import React, { useState, useEffect, useContext } from "react";
 import { ResponsivePie } from "@nivo/pie";
 import { SurveyContext } from "../../../services/survey/survey.context";
 
-export const StatListItem = ({ stats, questionNumber, surveyId, questionTitle, selections }) => {
+export const StatListItem = ({ stats, index, questionNumber, surveyId, questionTitle, selections, surveyData }) => {
     const { GetSurveyById } = useContext(SurveyContext);
-    const [surveyData, setSurveyData] = useState(null);
+    const [statsData, setStatsData] = useState(null);
 
     useEffect(() => {
-        // console.log("4444 selections : ", selections);
-        // console.log("4444 stats: ", stats);
-        if (stats.type === "SHORTFORM") {
+        console.log("4444 selections : ", selections);
+        console.log("4444 stats: ", stats);
+        if (surveyData.questions[index].type === "SHORTFORM") {
             return;
         } else {
             let data = stats.values.map((value) => ({
                 id: selections[value.answer].content,
                 value: value.count,
             }));
-            setSurveyData(data);
+            setStatsData(data);
         }
     }, [selections, stats]);
 
@@ -43,9 +43,9 @@ export const StatListItem = ({ stats, questionNumber, surveyId, questionTitle, s
                     </ul>
                 </div>
                 <div className="pieChart" style={{ height: "300px" }}>
-                    {surveyData === null ? null : (
+                    {statsData === null ? null : (
                         <ResponsivePie
-                            data={surveyData}
+                            data={statsData}
                             margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
                             innerRadius={0.5}
                             padAngle={0.7}
