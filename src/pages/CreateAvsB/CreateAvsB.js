@@ -48,7 +48,6 @@ export const CreateAvsB = () => {
             alert("로그인이 필요한 서비스 입니다.");
             navigate(-1);
         }
-
         templateLoader();
     };
 
@@ -118,7 +117,12 @@ export const CreateAvsB = () => {
             };
             console.log("newPost : ", newPost);
             setSaveIsLoading(true);
-            await toastPromise(CreateAvsBSurvey(newPost));
+            await toastPromise(
+                CreateAvsBSurvey(newPost).then((res) => {
+                    setSurveyId(res);
+                    console.log("createsur", res);
+                })
+            );
         }
     };
 
@@ -134,7 +138,8 @@ export const CreateAvsB = () => {
     };
 
     const createPostHandler = async (startDate, endDate, category) => {
-        await CreatePost(formTitle, formDesc, surveyId, startDate, endDate, userData.userPk)
+        console.log("Userpk : ", userData.userPk);
+        await CreatePost(formTitle, formDesc, surveyId, startDate, endDate, userData.userPk, userData.userId)
             .then((res) => {
                 setPostPk(res.postPk);
                 CreateCategory(category, res.postPk);

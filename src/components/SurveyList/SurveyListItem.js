@@ -2,6 +2,7 @@ import React from "react";
 import AB from "../../assets/images/AB.png";
 import { useNavigate } from "react-router-dom";
 import "./SurveyListItem.css";
+import { Badge } from "react-bootstrap";
 
 export const SurveyListItem = (props) => {
     const navigate = useNavigate();
@@ -22,6 +23,11 @@ export const SurveyListItem = (props) => {
 
     return (
         <div className="SurveyListItem" onClick={handleClick}>
+            <div className="badgeWrapper">
+                <Badge className="categoryBadge" bg={props.surveyType === "AB" ? "info" : "primary"} key={1234}>
+                    {props.surveyType === "AB" ? "AB" : props.surveyType === "NORMAL" ? "Normal" : null}
+                </Badge>
+            </div>
             <span className="surveyTitle">{props.title}</span>
             <span className="author">작성자 : {props.author}</span>
             {props.type === "post" && (
