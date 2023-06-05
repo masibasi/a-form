@@ -6,21 +6,34 @@ import { GetStats } from "../../../services/survey/survey.service";
 import StatList from "./StatList";
 import { SurveyContext } from "../../../services/survey/survey.context";
 import StatListItem from "./StatListItem";
+// import { GetSurveyById } from "../../../services/survey/survey.service";
 
 export const Statistics = () => {
   const { postPk } = useParams();
   const [postTitle, setPostTitle] = useState("");
   const { GetPost } = useContext(PostContext);
-  const { GetStats } = useContext(SurveyContext);
+  const { GetStats, GetSurveyById } = useContext(SurveyContext);
   const [statistics, setStatistics] = useState(null);
   const [postId, setPostId] = useState("");
+
+  const [surveyData, setSurveyData] = useState(null);
 
   const fetchPostData = async () => {
     const post = await GetPost(postPk);
     console.log("post : ", post);
     setPostTitle(post.postTitle);
     setPostId(post.postSurvey);
+    console.log("post.postSurvey : ", post.postSurvey);
+
+    const survey = await GetSurveyById(post.postSurvey);
+    console.log("survey : ", survey); // 이 부분을 수정해봅니다.
+    setSurveyData(survey.data);
+    console.log("setSurveyData: ", surveyData);
   };
+
+  useEffect(() => {
+    console.log("surveyData : ", surveyData);
+  }, [surveyData]);
 
   useEffect(() => {
     fetchPostData();
@@ -28,8 +41,8 @@ export const Statistics = () => {
 
   const fetchData = async () => {
     const result = await GetStats(postId);
-    console.log("postId", postId);
     setStatistics(result);
+    console.log("stat: ", result);
   };
 
   useEffect(() => {
@@ -43,7 +56,7 @@ export const Statistics = () => {
           <div className="statistics_h1">{postTitle}</div>
           <div className="stat">통계</div>
           <div className="surveyListWrapper">
-            <StatList statistics={statistics} />
+            <StatList statistics={statistics} postId={postId} surveyData={surveyData} />
           </div>
         </div>
       </div>

@@ -46,14 +46,20 @@ export const DeleteSurvey = async (surveyid, userToken) => {
 };
 export const GetSurveyData = async (page, offset, status, sort) => {
   const result = await axios.get(`${SURVEY_API_URL}/api/surveys?page=${page}&offset=${offset}&progressStatus=${status}&sort=${sort}`);
-  console.log(result.data);
+  console.log("result: ", result.data);
   return result;
 };
 
 export const GetSurveyById = async (id) => {
   const result = await axios.get(`${SURVEY_API_URL}/api/surveys/${id}`);
-  console.log(result.data);
+  console.log("get survey by id:", result.data);
   return result;
+};
+
+export const GetSurveyById2 = async (id) => {
+  const result = await axios.get(`${SURVEY_API_URL}/api/surveys/${id}`);
+  console.log("get survey by id:", result.data);
+  return result.data;
 };
 
 export const PostSurveyAnswer = async (surveyAnswer, surveyId, userToken) => {
@@ -175,7 +181,7 @@ export const GetStats = async (id) => {
   const result = await axios
     .get(`${SURVEY_API_URL}/api/surveys/${id}/statistics`, options)
     .then((res) => {
-      console.log("getStats", res);
+      console.log("getStats in service", res);
       return res.data;
     })
     .catch((err) => console.log(err));

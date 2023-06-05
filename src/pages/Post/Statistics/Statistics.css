@@ -14,7 +14,8 @@
 
 .statistics_h1 {
   /* margin-left: 10%; */
-  font-size: 2.5rem;
+  font-size: 2.4rem;
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
 }
 
 .surveyListWrapper {
@@ -33,4 +34,22 @@
   margin-left: auto;
   margin-right: 2%;
   font-size: 1.5rem;
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
+}
+
+.StatListItem {
+  margin-bottom: 5%; /* 각 문항 사이의 간격을 조정할 수 있는 마진 값 */
+}
+
+@import url("https://static.toss.im/tps/main.css");
+@import url("https://static.toss.im/tps/others.css");
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+.selections {
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
+  font-size: 1.1rem;
+}
+
+.Statistics h3 {
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
 }
