@@ -139,7 +139,7 @@ export const CreateAvsB = () => {
 
     const createPostHandler = async (startDate, endDate, category) => {
         console.log("Userpk : ", userData.userPk);
-        await CreatePost(formTitle, formDesc, surveyId, startDate, endDate, userData.userPk, userData.userId)
+        await CreatePost(formTitle, formDesc, surveyId, startDate, endDate, userData.userPk, userData.userId, "AB")
             .then((res) => {
                 setPostPk(res.postPk);
                 CreateCategory(category, res.postPk);

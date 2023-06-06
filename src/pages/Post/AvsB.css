@@ -40,9 +40,25 @@
     box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
     border: 0;
 }
+.AvsB .checked {
+    transition: all 0.5s ease-out;
+    width: 80%;
+    border-radius: 60px;
+    box-shadow: rgba(18, 46, 255, 0.956) 0px 7px 29px 0px;
+    border: 0;
+}
 .AvsB .VS {
-    font-size: 2em;
+    font-size: 3em;
     text-align: center;
     display: flex;
     align-items: center;
+}
+.AvsB .Statistics {
+    margin-top: 40px;
+}
+.AvsB .buttonWrapper {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
