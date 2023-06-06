@@ -19,6 +19,8 @@ import AllPostList from "./pages/Community/AllPostList";
 
 import "./App.css";
 import "./hover.css";
+import "animate.css";
+import "./animation/animations.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { SurveyContextProvider } from "./services/survey/survey.context";

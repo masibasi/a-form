@@ -1,0 +1,48 @@
+.AvsB {
+    margin-top: 10%;
+    margin-bottom: 12%;
+}
+.AvsB .AvsBSelections {
+    display: flex;
+    width: 100%;
+}
+.AvsB .Selection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.AvsB .ABTitle {
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+.AvsB .ABContent {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.AvsB .imgWrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.AvsB .ABImage {
+    width: 80%;
+    padding: 4%;
+    border-radius: 60px;
+    box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+    border: 0;
+}
+.AvsB .VS {
+    font-size: 2em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
