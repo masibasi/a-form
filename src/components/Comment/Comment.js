@@ -8,7 +8,7 @@ import { AuthenticationContext } from "../../services/authentication/authenticat
 
 export const Comment = (props) => {
     const { DeleteComment, PostCommentLike } = useContext(PostContext);
-    const { userData } = useContext(AuthenticationContext);
+    const { isLogin, userData } = useContext(AuthenticationContext);
     const checkAuthor = () => {
         if (props.commentAuthor == userData.userPk) return true;
         return false;
@@ -34,7 +34,7 @@ export const Comment = (props) => {
     const popover = (
         <Popover>
             <Popover.Body className="commentPopover">
-                {checkAuthor() ? (
+                {isLogin && checkAuthor() ? (
                     <>
                         <button className="commentMoreBtn" onClick={onEdit}>
                             수정

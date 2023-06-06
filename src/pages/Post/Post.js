@@ -201,7 +201,7 @@ export const Post = () => {
                                 </Button>
                             </div>
                         ) : (
-                            <AvsB data={surveyData} />
+                            <AvsB data={surveyData} refresh={getSurveyData} />
                         )}
 
                         <Collapse in={open}>

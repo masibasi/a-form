@@ -56,6 +56,9 @@
 .AvsB .Statistics {
     margin-top: 40px;
 }
+.AvsB .stats {
+    margin-top: 15px;
+}
 .AvsB .buttonWrapper {
     margin-top: 40px;
     width: 100%;
