@@ -29,6 +29,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { PostContextProvider } from "./services/post/post.context";
 import { AIContextProvider } from "./services/ai/ai.context";
 import Statistics from "./pages/Post/Statistics/Statistics";
+import { Search } from "./pages/Search/Search";
 
 export const FormHandlingContext = React.createContext();
 
@@ -66,6 +67,7 @@ function App() {
                                     <Route path="register" element={<RegisterForm />} />
                                     <Route path="login" element={<LoginForm />} />
                                     <Route path="community" element={<Community />} />
+                                    <Route path="search/:keyword" element={<Search />} />
                                     <Route path="community/allpostlist" element={<AllPostList />} />
                                     <Route path="createAvsB" element={<CreateAvsB />} />
                                     <Route path="mypage_setting" element={<Mypage_setting />} />
