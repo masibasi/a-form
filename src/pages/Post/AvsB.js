@@ -1,8 +1,20 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./AvsB.css";
 import { Button, ProgressBar } from "react-bootstrap";
+import { SurveyContext } from "../../services/survey/survey.context";
+import { AuthenticationContext } from "../../services/authentication/authentication.context";
 export const AvsB = ({ data }) => {
     const [checked, setChecked] = useState(null);
+    const { PostSurveyAnswer } = useContext(SurveyContext);
+    const { userToken } = useContext(AuthenticationContext);
+    const submitAnswer = () => {
+        const surveyAnswer = {
+            answers: checked,
+        };
+        const surveyId = data._id;
+        console.log(surveyAnswer, surveyId, userToken);
+        PostSurveyAnswer(surveyAnswer, surveyId, userToken);
+    };
     return (
         <div className="AvsB">
             <div className="AvsBSelections">
@@ -27,7 +39,7 @@ export const AvsB = ({ data }) => {
                 </ProgressBar>
             </div>
             <div className="buttonWrapper">
-                <Button variant={checked === null ? "primary" : "outline-primary"} disabled={checked === null ? true : false}>
+                <Button variant={checked === null ? "primary" : "outline-primary"} disabled={checked === null ? true : false} onClick={checked === null ? null : submitAnswer}>
                     {checked === null ? "한 쪽을 선택해주세요!" : "투표하기"}
                 </Button>
             </div>

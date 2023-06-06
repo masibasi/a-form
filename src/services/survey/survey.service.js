@@ -74,6 +74,9 @@ export const PostSurveyAnswer = async (surveyAnswer, surveyId, userToken) => {
         })
         .catch((err) => {
             console.log(err);
+            if (err.response.status === 400) {
+                alert("투표는 한번만 가능합니다!");
+            }
         });
     return result;
 };
