@@ -22,7 +22,9 @@ export const AvsB = ({ data, refresh }) => {
 
     const onLoad = async () => {
         const result = await GetStats(data._id);
-
+        result.statistics.sort((a, b) => {
+            return a.type < b.type ? -1 : a.type > b.type ? 1 : 0;
+        });
         setStats(result.statistics);
     };
 
