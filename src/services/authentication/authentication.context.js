@@ -18,12 +18,6 @@ export const AuthenticationContextProvider = ({ children }) => {
             localStorage.setItem("userData", JSON.stringify(res));
         });
     };
-    // useEffect(() => {
-    //     // userToken이 업데이트 되면 그 값을 가지고 유저의 데이터를 받아온다
-    //     if (userToken != undefined) {
-    //         initilaizeUserData();
-    //     }
-    // }, [userToken]);
 
     const onLogin = async (userId, userPassword) => {
         let loginRes = await loginHandler(userId, userPassword);

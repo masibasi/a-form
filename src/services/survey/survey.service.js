@@ -70,10 +70,17 @@ export const PostSurveyAnswer = async (surveyAnswer, surveyId, userToken) => {
     const result = await axios
         .post(`${SURVEY_API_URL}/api/surveys/${surveyId}/answers`, surveyAnswer, options)
         .then((response) => {
-            console.log(response.data);
+            console.log("post answer : ", response.data);
+            alert("투표 완료!");
         })
         .catch((err) => {
             console.log(err);
+            if (err.response.status === 400) {
+                alert("투표는 한번만 가능합니다!");
+            }
+            if (err.response.status === 401) {
+                alert("로그인을 해주세요!");
+            }
         });
     return result;
 };

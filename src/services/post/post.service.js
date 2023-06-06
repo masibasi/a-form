@@ -40,7 +40,7 @@ export const GetAllCategory = async () => {
 
 /* Post */
 
-export const CreatePost = async (postTitle, postDesc, postSurvey, startDate, endDate, userPk, authorId) => {
+export const CreatePost = async (postTitle, postDesc, postSurvey, startDate, endDate, userPk, authorId, postSurveyType) => {
     // send newSurvey to database
     const options = { headers: { accept: "application/json", "Content-Type": "application/json" } };
     const newPost = {
@@ -51,6 +51,7 @@ export const CreatePost = async (postTitle, postDesc, postSurvey, startDate, end
         authorId: authorId,
         postStartDate: startDate,
         postDueDate: endDate,
+        postSurveyType: postSurveyType,
     };
     console.log("newPost : ", newPost);
 
@@ -122,6 +123,28 @@ export const GetUserPostsCnt = async (userPk) => {
         .get(`${POST_API_URL}/api/post/getUserPostsCnt/${userPk}`, options)
         .then((res) => {
             console.log("get post cnt", res);
+            return res.data;
+        })
+        .catch((err) => console.log(err));
+    return result;
+};
+
+export const GetABPosts = async () => {
+    const result = await axios
+        .get(`${POST_API_URL}/api/post/getABposts`)
+        .then((res) => {
+            console.log("GetABPosts", res);
+            return res.data;
+        })
+        .catch((err) => console.log(err));
+    return result;
+};
+
+export const GetNORMALPosts = async () => {
+    const result = await axios
+        .get(`${POST_API_URL}/api/post/getNORMALposts`)
+        .then((res) => {
+            console.log("GetNORMALPosts", res);
             return res.data;
         })
         .catch((err) => console.log(err));

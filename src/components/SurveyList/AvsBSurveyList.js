@@ -1,45 +1,42 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AvsBSurveyListItem } from "./AvsBSurveyListItem";
 import "./AvsBSurveyList.css";
+import { PostContext } from "../../services/post/post.context";
 
 export const AvsBSurveyList = ({ page, offset, status, sort }) => {
-  const [formData, setFormData] = useState([]);
-  const [showList, setShowList] = useState(false);
-  const { GetSurveyData } = useContext(SurveyContext);
+    const [formData, setFormData] = useState(null);
+    const [showList, setShowList] = useState(false);
+    const { GetABPosts, GetNORMALPosts } = useContext(PostContext);
 
-  const getFormData = async () => {
-    console.log(page, offset, status, sort);
+    const getFormData = async () => {
+        setFormData(await GetABPosts());
+    };
 
-    const result = await GetSurveyData(page, offset, status, sort);
-    console.log(result);
-    setFormData(result.data.data);
-    setShowList(true);
-  };
+    useEffect(() => {
+        getFormData();
+    }, []);
 
-  useEffect(() => {
-    getFormData();
-  }, []);
-
-  return (
-    <div className="AvsBSurveyList">
-      {showList ? (
-        <>
-          {formData.map((it) => (
-            <AvsBSurveyListItem key={it._id} title={it.title} id={it._id} author={it.author} />
-          ))}
-        </>
-      ) : (
-        <div>{String(typeof formData)}</div>
-      )}
-    </div>
-  );
+    return (
+        <div className="AvsBSurveyList">
+            {formData === null ? null : (
+                <>
+                    {formData
+                        .reverse()
+                        .slice(0, 3)
+                        .map((it) => (
+                            <AvsBSurveyListItem key={it.postPk} title={it.postTitle} id={it.postPk} author={it.postAuthorId} />
+                        ))}
+                </>
+            )}
+        </div>
+    );
 };
 
 AvsBSurveyList.defaultProps = {
-  page: 1,
-  offset: 10,
-  progressStatus: "all",
-  content: "",
-  sort: "desc",
+    page: 1,
+    offset: 10,
+    progressStatus: "all",
+    content: "",
+    sort: "desc",
 };

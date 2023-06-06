@@ -165,7 +165,7 @@ function CreateSurvey() {
 
     // Create Post
     const createPostHandler = async (startDate, endDate, category) => {
-        await CreatePost(title, description, surveyId, startDate, endDate, userData.userPk, userData.userId)
+        await CreatePost(title, description, surveyId, startDate, endDate, userData.userPk, userData.userId, "NORMAL")
             .then((res) => {
                 setPostPk(res.postPk);
                 CreateCategory(category, res.postPk);

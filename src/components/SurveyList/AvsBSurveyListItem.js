@@ -1,25 +1,37 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AvsBSurveyListItem.css";
+import { PostContext } from "../../services/post/post.context";
+import { SurveyContext } from "../../services/survey/survey.context";
 
-export const AvsBSurveyListItem = ({ title, desc, id, imgFileA, imgFileB, A, B }) => {
-  const navigate = useNavigate();
-  return (
-    <div className="AvsBSurveyListItem" onClick={() => navigate(`/details/${id}`)}>
-      <div className="surveyTitle">{title}</div>
-      {/* <p className="fromdesc">{desc}</p> */}
+export const AvsBSurveyListItem = ({ title, id }) => {
+    const navigate = useNavigate();
+    const { GetPost } = useContext(PostContext);
+    const { GetSurveyById } = useContext(SurveyContext);
+    const [surveyData, setSurveyData] = useState(null);
 
-      <div className="A">
-        <img className="surveyImgA" src={imgFileA} alt="" />
-        <p className="ATitle">{A}</p>
-        {/* <p className="ADesc">{A}</p> */}
-      </div>
+    const onLoad = async () => {
+        const postData = await GetPost(id);
+        setSurveyData(await GetSurveyById(postData.postSurvey));
+    };
+    useEffect(() => {
+        onLoad();
+    }, []);
 
-      <div className="B">
-        <img className="surveyImgB" src={imgFileB} alt="" />
-        <p className="BTitle">{A}</p>
-        {/* <div className="BDesc"></div> */}
-      </div>
-    </div>
-  );
+    useEffect(() => {
+        console.log("asdfasfdsadfasdf : ", surveyData);
+    }, [surveyData]);
+    return (
+        <>
+            {surveyData === null ? null : (
+                <div className="AvsBSurveyListItem hvr-glow" onClick={() => navigate(`/details/${id}`)}>
+                    <div className="ImgWrapper">
+                        <img className="surveyImgA" src={surveyData.data.questions[0].imageUrl} alt="" />
+                        <img className="surveyImgB" src={surveyData.data.questions[1].imageUrl} alt="" />
+                    </div>
+                    <div className="surveyTitle">{title}</div>
+                </div>
+            )}
+        </>
+    );
 };

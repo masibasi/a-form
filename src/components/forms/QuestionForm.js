@@ -41,7 +41,14 @@ function QuestionForm(props) {
 
     return (
         <FadeIn className="QuestionForm hvr-float" style={{ maxWidth: "1024px" }} childClassName="childClassName">
-            <Card className="QuesionFormCard" style={props.q.isRequired ? { boxShadow: " rgba(28, 88, 66, 0.6) 0px 4px 4px 0px" } : { boxShadow: "rgba(100, 100, 111, 0.2) 0px 4px 4px 0px" }}>
+            <Card
+                className="QuesionFormCard"
+                style={
+                    props.q.isRequired
+                        ? { boxShadow: "rgba(18, 46, 255, 0.956) 0px 4px 18px 0px", transition: " all 0.5s ease-out" }
+                        : { boxShadow: "rgba(100, 100, 111, 0.2) 0px 4px 4px 0px", transition: " all 0.5s ease-out" }
+                }
+            >
                 <Card.Body>
                     <div className="top-wrapper">
                         <Card.Title>
