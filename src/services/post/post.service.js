@@ -40,7 +40,7 @@ export const GetAllCategory = async () => {
 
 /* Post */
 
-export const CreatePost = async (postTitle, postDesc, postSurvey, startDate, endDate, userPk, authorId) => {
+export const CreatePost = async (postTitle, postDesc, postSurvey, startDate, endDate, userPk, authorId, postSurveyType) => {
     // send newSurvey to database
     const options = { headers: { accept: "application/json", "Content-Type": "application/json" } };
     const newPost = {
@@ -51,6 +51,7 @@ export const CreatePost = async (postTitle, postDesc, postSurvey, startDate, end
         authorId: authorId,
         postStartDate: startDate,
         postDueDate: endDate,
+        postSurveyType: postSurveyType,
     };
     console.log("newPost : ", newPost);
 
