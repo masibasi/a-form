@@ -10,6 +10,7 @@ import { SurveyContext } from "../../services/survey/survey.context";
 import { AuthenticationContext } from "../../services/authentication/authentication.context";
 import FadeIn from "../../animation/FadeIn";
 import { PostContext } from "../../services/post/post.context";
+import { AvsB } from "./AvsB";
 
 export const Post = () => {
     // Context
@@ -143,52 +144,65 @@ export const Post = () => {
                 <div className="Post Survey">
                     <DeleteSurveyModal modalShow={modalShow} modalClose={modalCloseHandler} onDelete={DeleteSurveyHandler} />
                     <FadeIn className="surveyWrapper" childClassName="childClassName">
-                        <div className="contentWrapper">
-                            <div className="topWrapper">
-                                <div className="descWrapper">
-                                    <Badge className="categoryBadge" bg={surveyData.type === "AB" ? "info" : "primary"} key={1234}>
-                                        {surveyData.type === "AB" ? "AB" : surveyData.type === "NORMAL" ? "NORAML" : null}
-                                    </Badge>
+                        <div className="topWrapper">
+                            <div className="badgeWrapper">
+                                <Badge className="categoryBadge" bg={surveyData.type === "AB" ? "info" : "primary"} key={1234}>
+                                    {surveyData.type === "AB" ? "AB" : surveyData.type === "NORMAL" ? "NORAML" : null}
+                                </Badge>
 
-                                    {category.map((it) => (
-                                        <Badge className="categoryBadge" bg="secondary" key={it.postCategoryPk}>
-                                            {it.postCategoryCategory.categoryType}
-                                        </Badge>
-                                    ))}
-                                    <div className="title">{postData.postTitle}</div>
-                                    <div className="desc">{postData.postDesc}</div>
+                                {category.map((it) => (
+                                    <Badge className="categoryBadge" bg="secondary" key={it.postCategoryPk}>
+                                        {it.postCategoryCategory.categoryType}
+                                    </Badge>
+                                ))}
+                            </div>
+                            <div className="buttonWrapper">
+                                {isAuthor ? (
+                                    <Button variant="outline-danger deleteSurveyBtn" onClick={modalShowHandler}>
+                                        Delete Survey
+                                    </Button>
+                                ) : null}
+                                {surveyData.type === "NORMAL" ? (
+                                    <Button variant="primary" onClick={() => navigate(`/survey/${postData.postSurvey}`)}>
+                                        Enter Survey
+                                    </Button>
+                                ) : null}
+                            </div>
+                        </div>
+                        <div className="contentWrapper">
+                            <div className="titleWrapper">
+                                <div className="title">{postData.postTitle}</div>
+                                <div className="desc">{postData.postDesc}</div>
+                            </div>
+
+                            <div className="postDescription">
+                                <div className="author">
+                                    <b>작성자 :</b> {postData.postAuthorId}
                                 </div>
-                                <div className="buttonWrapper">
-                                    {isAuthor ? (
-                                        <Button variant="outline-danger deleteSurveyBtn" onClick={modalShowHandler}>
-                                            Delete Survey
-                                        </Button>
-                                    ) : null}
-                                    {surveyData.type === "NORMAL" ? (
-                                        <Button variant="primary" onClick={() => navigate(`/survey/${postData.postSurvey}`)}>
-                                            Enter Survey
-                                        </Button>
-                                    ) : null}
+                                <div className="postViews">
+                                    <b>조회수 :</b> {postData.postViews}
+                                </div>
+                                <div className="postStartDate">
+                                    <b>설문 시작 시간 : </b>
+                                    {postData.postStartDate[0]}년 {postData.postStartDate[1]}월 {postData.postStartDate[2]}일 {postData.postStartDate[3]}시 {postData.postStartDate[4]}분
+                                </div>
+                                <div className="postDueDate">
+                                    <b>설문 마감 기한 : </b>
+                                    {postData.postDueDate[0]}년 {postData.postDueDate[1]}월 {postData.postDueDate[2]}일 {postData.postDueDate[3]}시 {postData.postDueDate[4]}분
                                 </div>
                             </div>
-                            <div className="postViews">
-                                <b>조회수 :</b> {postData.postViews}
-                            </div>
-                            <div className="postStartDate">
-                                <b>설문 시작 시간 : </b>
-                                {postData.postStartDate[0]}년 {postData.postStartDate[1]}월 {postData.postStartDate[2]}일 {postData.postStartDate[3]}시 {postData.postStartDate[4]}분
-                            </div>
-                            <div className="postDueDate">
-                                <b>설문 마감 기한 : </b>
-                                {postData.postDueDate[0]}년 {postData.postDueDate[1]}월 {postData.postDueDate[2]}일 {postData.postDueDate[3]}시 {postData.postDueDate[4]}분
-                            </div>
+                        </div>
+
+                        {surveyData === "" ? null : surveyData.type === "NORMAL" ? (
                             <div className="statistics">
                                 <h3>통계</h3>
                                 <Button variant="" onClick={() => navigate(`/post/${postPk}/statistics`)}>
                                     click
                                 </Button>
                             </div>
-                        </div>
+                        ) : (
+                            <AvsB data={surveyData} />
+                        )}
 
                         <Collapse in={open}>
                             <div id="example-collapse-text">

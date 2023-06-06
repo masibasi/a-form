@@ -14,11 +14,13 @@
 }
 .Post .contentWrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
 }
-.Post .descWrapper {
-    width: 70%;
+.Post .titleWrapper {
+    width: 50%;
 }
 .Post .title {
     border: none;
@@ -93,6 +95,7 @@
 }
 .Post .postStartDate,
 .postDueDate,
-.postViews {
+.postViews,
+.author {
     text-align: right;
 }
