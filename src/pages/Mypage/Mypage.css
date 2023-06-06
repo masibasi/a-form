@@ -1,3 +1,9 @@
+.Mypage .btnGroupWrapper {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+}
+
 .main {
     display: flex;
     justify-content: center;
@@ -10,14 +16,15 @@
     width: 17rem;
     height: 36rem;
 
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
-
-    margin-top: 3%;
-
-    flex: 1;
+    /* margin-right: auto; */
+    margin-top: 2%;
+    padding-top: 4%;
+    padding-bottom: 2%;
+    padding-right: 3%;
+    padding-left: 3%;
+    border-radius: 80px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-bottom: 2%;
 }
 
 .profile_box .profile_img {
@@ -281,15 +288,30 @@
 /*------------- Mypage_setting ------------------*/
 .Mypage_setting {
     display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+.Mypage_setting .settingWrapper {
+    display: flex;
     flex-direction: row;
-    height: 100vh;
+    margin-top: 2%;
+    padding-top: 4%;
+    padding-bottom: 2%;
+    padding-right: 3%;
+    padding-left: 3%;
+    border-radius: 80px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-bottom: 2%;
 }
 
-.setting_container1 {
+.Mypage_setting .setting_container1 {
     display: flex;
     align-items: center;
     flex: 3;
     flex-direction: column;
+    margin-right: 80px;
 }
 
 .setting_container1 .profile_picture {
@@ -323,30 +345,9 @@
     display: none;
 }
 
-/*----------------------------------*/
-/* .change_photo_button {
-  background-color: #0077cc;
-  color: #ffffff;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 5px;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  margin-top: 0.5rem;
-  margin-top: 5%;
-}
-
-.change_photo_button:hover {
-    background-color: #005fa3;
-}
-
-.change_photo_button_input {
-  display: none;
-} */
-
 /* ---------setting의 오른쪽 ----------*/
 
-.setting_container2 {
+.Mypage_setting .setting_container2 {
     display: flex;
     flex-direction: column;
     width: 60%;
@@ -354,58 +355,54 @@
     flex: 7;
 }
 
-.setting_buttons {
+.Mypage_setting .setting_buttons {
     display: flex;
     justify-content: space-between;
-    width: 50%;
-    margin: 0 auto;
-    justify-content: flex-end;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 40px;
 }
 
-.back_button,
+.Mypage_setting .back_button,
 .save_changes_button {
-    display: inline-block;
     font-weight: bold;
     font-size: 1.1rem;
-    padding: 0.7rem 1.5rem;
-    text-decoration: none;
     border-radius: 15px;
     transition: all 0.3s;
-    cursor: pointer;
 }
 
 /* Back Button Style */
-.back_button {
+.Mypage_setting .back_button {
     background-color: #3c8dbc;
-    border: 2px solid #3c8dbc;
     color: #ffffff;
+    border: 2px solid #3c8dbc;
 }
 
-.back_button:hover {
+.Mypage_setting .back_button:hover {
     background-color: #ffffff;
     color: #3c8dbc;
 }
 
 /* Save Changes Button Style */
-.save_changes_button {
+.Mypage_setting .save_changes_button {
     background-color: #d7ddff;
     border: 2px solid #d7ddff;
     color: #4d4d4d;
-    margin-left: 5%;
 }
 
-.save_changes_button:hover {
+.Mypage_setting .save_changes_button:hover {
     background-color: #ffffff;
     color: #4d4d4d;
 }
 
-.your_profile {
+.Mypage_setting .your_profile {
     display: flex;
     flex-direction: column;
     padding: 1rem;
 }
 
-.your_profile_item {
+.Mypage_setting .your_profile_item {
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
