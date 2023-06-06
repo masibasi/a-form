@@ -16,6 +16,9 @@
     align-items: center;
     justify-content: center;
 }
+.CreateAvsB .SurveyBtnWrapper {
+    margin-left: auto;
+}
 .CreateAvsB .text-wrapper {
     display: flex;
     flex-direction: column;

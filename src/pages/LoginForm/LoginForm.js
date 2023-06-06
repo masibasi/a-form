@@ -31,7 +31,7 @@ export default function Login() {
         }
     };
     const register = (e) => {
-        navigate("/api/register");
+        navigate("/register");
     };
 
     return (

@@ -30,8 +30,8 @@
 }
 .Post .categoryBadge {
     font-size: 1em;
-
     font-weight: 500;
+    margin-right: 12px;
 }
 .Post .desc {
     border: none;
