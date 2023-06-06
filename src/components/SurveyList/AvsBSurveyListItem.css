@@ -1,27 +1,35 @@
 .AvsBSurveyListItem {
-  display: flex;
-  cursor: pointer;
-  justify-content: space-between;
-
-  box-shadow: 0px 2px rgba(0, 0, 0, 0.1);
-  margin-bottom: 16px;
-  padding-bottom: 4px;
-  width: 100%;
-  transition: box-shadow 0.5s;
+    display: flex;
+    cursor: pointer;
+    justify-content: space-between;
+    box-shadow: 0px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+    padding-bottom: 4px;
+    width: 30%;
+    transition: box-shadow 0.5s;
+    padding: 2%;
+    border-radius: 5%;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .AvsBSurveyListItem .surveyTitle {
-  width: 50%;
+    width: 100%;
+    margin-top: 12px;
+    text-align: center;
 }
 
 .AvsBSurveyListItem .surveyImgA {
-  width: 2rem;
-  height: 3rem;
-  border-radius: 10%;
+    width: 40%;
+    border-radius: 10%;
 }
 
-.AvsBSurveyListItem .surveyImgA {
-  width: 2rem;
-  height: 3rem;
-  border-radius: 10%;
+.AvsBSurveyListItem .surveyImgB {
+    width: 40%;
+    border-radius: 10%;
+}
+
+.AvsBSurveyListItem .ImgWrapper {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
 }

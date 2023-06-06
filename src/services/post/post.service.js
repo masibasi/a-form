@@ -129,6 +129,28 @@ export const GetUserPostsCnt = async (userPk) => {
     return result;
 };
 
+export const GetABPosts = async () => {
+    const result = await axios
+        .get(`${POST_API_URL}/api/post/getABposts`)
+        .then((res) => {
+            console.log("GetABPosts", res);
+            return res.data;
+        })
+        .catch((err) => console.log(err));
+    return result;
+};
+
+export const GetNORMALPosts = async () => {
+    const result = await axios
+        .get(`${POST_API_URL}/api/post/getNORMALposts`)
+        .then((res) => {
+            console.log("GetNORMALPosts", res);
+            return res.data;
+        })
+        .catch((err) => console.log(err));
+    return result;
+};
+
 /* Comment */
 
 export const PostComment = async (commentAuthor, commentContent, postPk) => {
