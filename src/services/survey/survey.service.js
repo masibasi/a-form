@@ -8,6 +8,7 @@ export const CreateSurvey = (type, title, description, questions, userToken) => 
     const q = questions;
     q.map((it) => {
         delete it["id"];
+        return it;
     });
     const newSurvey = {
         type: type,

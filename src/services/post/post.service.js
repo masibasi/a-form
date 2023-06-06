@@ -84,6 +84,7 @@ export const UpdateViews = async (postPk) => {
         .post(`${POST_API_URL}/api/post/updateViews/${postPk}`)
         .then((res) => console.log(res))
         .catch((e) => console.log(e));
+    return res;
 };
 
 export const GetPostSurveys = async (userPk, itemNum, pageIndex) => {

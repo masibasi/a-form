@@ -1,11 +1,10 @@
-import React, { useState, createContext, useEffect } from "react";
+import React, { useState, createContext } from "react";
 import { loginHandler } from "./authentication.service";
 import { registerHandler, GetUserData, getIdCheck } from "./authentication.service";
 
 export const AuthenticationContext = createContext();
 
 export const AuthenticationContextProvider = ({ children }) => {
-    const [isLoading, setIsLoading] = useState(false);
     const [userToken, setUserToken] = useState(localStorage.getItem("userToken"));
     const [isLogin, setIsLogin] = useState(localStorage.getItem("isLoggedIn"));
     const [regComplete, setRegComplete] = useState(false);
@@ -30,10 +29,10 @@ export const AuthenticationContextProvider = ({ children }) => {
         let loginRes = await loginHandler(userId, userPassword);
         console.log(loginRes);
 
-        if (loginRes.data == "아이디가 존재하지 않습니다.") {
+        if (loginRes.data === "아이디가 존재하지 않습니다.") {
             alert("아이디가 존재하지 않습니다.");
             return;
-        } else if (loginRes.data == "비밀번호가 일치하지 않습니다.") {
+        } else if (loginRes.data === "비밀번호가 일치하지 않습니다.") {
             alert("비밀번호가 일치하지 않습니다.");
             return;
         } else {
