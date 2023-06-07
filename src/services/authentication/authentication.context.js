@@ -5,17 +5,16 @@ import { registerHandler, GetUserData, getIdCheck } from "./authentication.servi
 export const AuthenticationContext = createContext();
 
 export const AuthenticationContextProvider = ({ children }) => {
-    const [userToken, setUserToken] = useState(localStorage.getItem("userToken"));
-    const [isLogin, setIsLogin] = useState(localStorage.getItem("isLoggedIn"));
+    const [userToken, setUserToken] = useState(sessionStorage.getItem("userToken"));
+    const [isLogin, setIsLogin] = useState(sessionStorage.getItem("isLoggedIn"));
     const [regComplete, setRegComplete] = useState(false);
-    const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("userData")));
+    const [userData, setUserData] = useState(null);
 
     //Get user Data.
     const initilaizeUserData = async (userToken) => {
         console.log("initialize userData");
         await GetUserData(userToken).then((res) => {
             setUserData(res);
-            localStorage.setItem("userData", JSON.stringify(res));
         });
     };
 
@@ -30,10 +29,10 @@ export const AuthenticationContextProvider = ({ children }) => {
             alert("비밀번호가 일치하지 않습니다.");
             return;
         } else {
-            localStorage.setItem("userToken", loginRes.data);
+            sessionStorage.setItem("userToken", loginRes.data);
             setUserToken(loginRes.data);
             initilaizeUserData(loginRes.data);
-            localStorage.setItem("isLoggedIn", true);
+            sessionStorage.setItem("isLoggedIn", true);
             setIsLogin(true);
             alert("로그인 되었습니다!");
         }
@@ -43,9 +42,9 @@ export const AuthenticationContextProvider = ({ children }) => {
         setUserToken("");
         setIsLogin(false);
         alert("로그아웃 되었습니다!");
-        localStorage.removeItem("isLoggedIn");
-        localStorage.removeItem("userToken");
-        localStorage.removeItem("userData");
+        sessionStorage.removeItem("isLoggedIn");
+        sessionStorage.removeItem("userToken");
+
         window.location.reload();
     };
 

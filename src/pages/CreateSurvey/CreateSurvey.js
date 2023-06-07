@@ -46,7 +46,7 @@ function CreateSurvey() {
     const [AIModalShow, setAIModalShow] = useState(true);
 
     const CheckLogin = () => {
-        if (!localStorage.getItem("isLoggedIn")) {
+        if (!sessionStorage.getItem("isLoggedIn")) {
             alert("로그인이 필요한 서비스 입니다.");
             navigate(-1);
         }

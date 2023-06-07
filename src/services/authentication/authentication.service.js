@@ -11,7 +11,7 @@ export const loginHandler = (userId, userPassword) => {
     let loginResult = axios
         .post(`${USER_API_URL}/api/user/login`, loginData, { "Content-Type": "application/json" })
         .then((res) => {
-            localStorage.setItem("isLoggedIn", true);
+            sessionStorage.setItem("isLoggedIn", true);
             return res;
         })
         .catch((err) => {

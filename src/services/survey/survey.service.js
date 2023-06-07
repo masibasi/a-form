@@ -136,7 +136,7 @@ export const CreateAvsBSurvey = async (formData) => {
         method: "post",
         url: `${SURVEY_API_URL}/api/surveys`,
         data: formData,
-        headers: { Authorization: `Bearer ${localStorage.getItem("userToken")}` },
+        headers: { Authorization: `Bearer ${sessionStorage.getItem("userToken")}` },
     })
         .then((res) => {
             console.log("create avsb survey res : ", res);
