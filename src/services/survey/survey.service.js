@@ -45,8 +45,8 @@ export const DeleteSurvey = async (surveyid, userToken) => {
         });
     return result;
 };
-export const GetSurveyData = async (page, offset, status, sort) => {
-    const result = await axios.get(`${SURVEY_API_URL}/api/surveys?page=${page}&offset=${offset}&progressStatus=${status}&sort=${sort}`);
+export const GetSurveyData = async (page, offset, content, sort) => {
+    const result = await axios.get(`${SURVEY_API_URL}/api/surveys?page=${page}&offset=${offset}&content=${content}&sort=${sort}`);
     console.log("result: ", result.data);
     return result;
 };
@@ -136,7 +136,7 @@ export const CreateAvsBSurvey = async (formData) => {
         method: "post",
         url: `${SURVEY_API_URL}/api/surveys`,
         data: formData,
-        headers: { Authorization: `Bearer ${localStorage.getItem("userToken")}` },
+        headers: { Authorization: `Bearer ${sessionStorage.getItem("userToken")}` },
     })
         .then((res) => {
             console.log("create avsb survey res : ", res);

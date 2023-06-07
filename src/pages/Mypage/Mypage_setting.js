@@ -19,7 +19,7 @@ export default function Mypage_setting() {
     const [password, setPassword] = useState("");
 
     useEffect(() => {
-        if (!localStorage.getItem("isLoggedIn")) navigate("/");
+        if (!sessionStorage.getItem("isLoggedIn")) navigate("/");
         console.log(userData);
     }, []);
 

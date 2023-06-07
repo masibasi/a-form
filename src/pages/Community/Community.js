@@ -6,10 +6,26 @@ import FadeIn from "../../animation/FadeIn";
 import { CategoryList } from "../../components/CategoryList";
 import { useNavigate } from "react-router-dom";
 import { AvsBSurveyList } from "../../components/SurveyList/AvsBSurveyList";
+import { Button, Form } from "react-bootstrap";
+import React, { useEffect, useRef, useState } from "react";
 
+const SeachBar = React.memo(({ searchKeyword, setSearchKeyword }) => {
+    return (
+        <div className="d-flex searchWrapper ">
+            <Form.Control type="search" placeholder="Search" className="me-2 searchBar" aria-label="Search" value={searchKeyword.current} onChange={(e) => setSearchKeyword(e)} />
+            <Button variant="outline-success">Search</Button>
+        </div>
+    );
+});
 export const Community = () => {
     const navigate = useNavigate();
+    const searchKeyword = useRef(null);
 
+    const setSearchKeyword = (e) => {
+        console.log(JSON.stringify(e.target.value));
+        const value = e.target.value;
+        searchKeyword.current = value;
+    };
     const handleAllMoreClick = () => {
         navigate("/community/allpostlist");
     };
@@ -20,6 +36,7 @@ export const Community = () => {
 
     return (
         <FadeIn className="Community" childClassName="childClassName">
+            {/* <SeachBar searchKeyword={searchKeyword} setSearchKeyword={setSearchKeyword} /> */}
             <div className="titleWrapper">
                 <h2 className="pageTitle">Community</h2>
             </div>

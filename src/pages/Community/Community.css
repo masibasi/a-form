@@ -1,110 +1,117 @@
 /* Community */
 .Community {
-  /* margin-top: 2%; */
-  padding-left: 4%;
-  padding-right: 4%;
-  width: 100%;
-  margin-bottom: 4%;
+    /* margin-top: 2%; */
+    padding-left: 4%;
+    padding-right: 4%;
+    width: 100%;
+    margin-bottom: 4%;
+}
+.Community .searchWrapper {
+    position: absolute;
+    top: 5%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
 }
 .Community .pageTitle {
-  margin: 0;
-  margin-right: 16px;
-  width: 100%;
-  text-align: center;
-  font-size: 3em;
-  /* text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue; */
+    margin: 0;
+    margin-right: 16px;
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    /* text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue; */
 }
 .Community .title {
-  margin: 0;
-  margin-right: 16px;
-  text-align: center;
+    margin: 0;
+    margin-right: 16px;
+    text-align: center;
 }
 .Community .titleWrapper {
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  /* justify-content: center; */
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
 
-  width: 100%;
+    width: 100%;
 }
 .Community .all {
-  justify-content: center;
+    justify-content: center;
 }
 .Community .title2Wrapper {
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  width: 100%;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    width: 100%;
 }
 .Community .AvsBWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 
-  padding-top: 2%;
-  padding-bottom: 2%;
-  margin-bottom: 28px;
-  width: 100%;
-  border-radius: 25px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-bottom: 28px;
+    width: 100%;
+    border-radius: 25px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .Community .AvsBTitle {
-  margin-top: 16px;
-  text-align: center;
-  width: 100%;
+    margin-top: 16px;
+    text-align: center;
+    width: 100%;
 }
 .Community .bottomWrapper {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  margin-bottom: 28px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 28px;
 }
 .Community .hotSurveyWrapper {
-  width: 63%;
-  padding-top: 2%;
-  padding-bottom: 2%;
-  padding-right: 2%;
-  padding-left: 2%;
-  border-radius: 25px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width: 63%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-right: 2%;
+    padding-left: 2%;
+    border-radius: 25px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .Community .hotCategoryWrapper {
-  padding-top: 2%;
-  padding-bottom: 2%;
-  padding-right: 2%;
-  padding-left: 2%;
-  border-radius: 25px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  width: 33%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-right: 2%;
+    padding-left: 2%;
+    border-radius: 25px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width: 33%;
 }
 .Community .surveyListWrapper {
-  width: 63%;
-  /* margin-right: auto; */
-  padding-top: 2%;
-  padding-bottom: 2%;
-  padding-right: 2%;
-  padding-left: 2%;
-  border-radius: 25px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width: 63%;
+    /* margin-right: auto; */
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-right: 2%;
+    padding-left: 2%;
+    border-radius: 25px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 /* ------------ AllPostList --------------*/
 .AllPostList {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .AllPostList .surveyListWrapper {
-  width: 70%;
-  /* margin-right: auto; */
-  margin-top: 2%;
-  padding-top: 4%;
-  padding-bottom: 2%;
-  padding-right: 2%;
-  padding-left: 2%;
-  border-radius: 25px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  margin-bottom: 2%;
+    width: 70%;
+    /* margin-right: auto; */
+    margin-top: 2%;
+    padding-top: 4%;
+    padding-bottom: 2%;
+    padding-right: 2%;
+    padding-left: 2%;
+    border-radius: 25px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-bottom: 2%;
 }

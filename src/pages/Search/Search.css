@@ -1,0 +1,39 @@
+.Search {
+    padding-left: 4%;
+    padding-right: 4%;
+    width: 100%;
+    margin-bottom: 4%;
+}
+.Search .searchWrapper {
+    position: absolute;
+    top: 5%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+}
+.Search .pageTitle {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 26px;
+}
+.Search .titleWrapper {
+    width: 100%;
+}
+.Search .title {
+    margin: 0;
+    text-align: center;
+}
+.Search .body {
+    width: 100%;
+}
+.Search .surveyListWrapper {
+    width: 63%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-right: 2%;
+    padding-left: 2%;
+    border-radius: 25px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}

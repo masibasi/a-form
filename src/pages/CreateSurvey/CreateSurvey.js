@@ -46,7 +46,7 @@ function CreateSurvey() {
     const [AIModalShow, setAIModalShow] = useState(true);
 
     const CheckLogin = () => {
-        if (!localStorage.getItem("isLoggedIn")) {
+        if (!sessionStorage.getItem("isLoggedIn")) {
             alert("로그인이 필요한 서비스 입니다.");
             navigate(-1);
         }
@@ -188,11 +188,17 @@ function CreateSurvey() {
                         data[1] = data[1].replace("json", "");
                         console.log(data[1]);
                     }
+
                     const dataJSON = JSON.parse(data[1]);
+                    if (dataJSON.questions[0].id === 1) {
+                        dataJSON.questions.map((it) => (it.id = it.id - 1));
+                    }
+
                     console.log(dataJSON);
                     setTitle(dataJSON.title);
                     setQuestions(dataJSON.questions);
                     setDescription(dataJSON.description);
+                    nextCardId.current = dataJSON.questions.length - 1;
                     setAiIsLoading(false);
                     setAIModalShow(false);
                     Firework();
@@ -212,7 +218,10 @@ function CreateSurvey() {
         setConfirmModalShow(false);
     };
 
-    // TODO : X 표시를 누르면 해당 문제의 정보가 삭제된다.
+    /* Questions */
+    useEffect(() => {
+        console.log(questions);
+    }, [questions]);
     const delQuestion = useCallback((index) => {
         questions.splice(index, 1);
         nextCardId.current -= 1;
