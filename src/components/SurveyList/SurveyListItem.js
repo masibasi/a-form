@@ -9,7 +9,9 @@ export const SurveyListItem = (props) => {
     // console.log(props);
 
     const handleClick = () => {
-        if (props.surveyType == "AB") {
+        if (props.surveyType === "AB" && props.type === "post") {
+            navigate(`/post/${props.id}`, { state: { id: props.id } });
+        } else if (props.surveyType === "AB") {
             navigate(`/createAvsB/`, { state: { id: props.id } });
         } else if (props.type === "answered" || props.type === "popular") {
             navigate(`/survey/${props.id}`, { state: { id: props.id } });
