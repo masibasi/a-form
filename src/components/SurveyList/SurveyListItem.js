@@ -23,25 +23,40 @@ export const SurveyListItem = (props) => {
 
     return (
         <div className="SurveyListItem" onClick={handleClick}>
-            <div className="badgeWrapper">
-                <Badge className="categoryBadge" bg={props.surveyType === "AB" ? "info" : "primary"} key={1234}>
-                    {props.surveyType === "AB" ? "AB" : props.surveyType === "NORMAL" ? "Normal" : null}
-                </Badge>
+            <div className="itemLeftWrapper">
+                <div className="badgeWrapper">
+                    <Badge className="categoryBadge" bg={props.surveyType === "AB" ? "info" : "primary"} key={1234}>
+                        {props.surveyType === "AB" ? "AvsB" : props.surveyType === "NORMAL" ? "Normal" : null}
+                    </Badge>
+                </div>
+                <span className="surveyTitle">{props.title}</span>
             </div>
-            <span className="surveyTitle">{props.title}</span>
-            <span className="author">작성자 : {props.author}</span>
-            {props.type === "post" && (
-                <>
-                    <span className="postStartDate">
-                        <div className="startdate">시작날짜</div>
-                        {props.postStartDate[0]}년 {props.postStartDate[1]}월 {props.postStartDate[2]}일 {props.postStartDate[3]}시 {props.postStartDate[4]}분
-                    </span>
-                    <span className="postDueDate">
-                        <div className="duedate">마감날짜</div>
-                        {props.postDueDate[0]}년 {props.postDueDate[1]}월 {props.postDueDate[2]}일 {props.postDueDate[3]}시 {props.postDueDate[4]}분
-                    </span>
-                </>
-            )}
+            <div className="itemRightWrapper">
+                {props.type === "post" ? <span className="author">작성자 : {props.author}</span> : <span className="author">작성자 : {props.author}</span>}
+
+                {props.type === "post" && (
+                    <div className="dateWrapper">
+                        <span className="postStartDate">
+                            <div className="startdate">시작날짜</div>
+                            <div>
+                                {props.postStartDate[0]}년 {props.postStartDate[1]}월 {props.postStartDate[2]}일
+                            </div>
+                            <div>
+                                {props.postStartDate[3]}시 {props.postStartDate[4]}분
+                            </div>
+                        </span>
+                        <span className="postDueDate">
+                            <div className="duedate">마감날짜</div>
+                            <div>
+                                {props.postDueDate[0]}년 {props.postDueDate[1]}월 {props.postDueDate[2]}일
+                            </div>
+                            <div>
+                                {props.postDueDate[3]}시 {props.postDueDate[4]}분
+                            </div>
+                        </span>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
@@ -54,23 +69,10 @@ export const HotCategory = (props) => {
     );
 };
 
-export const HotAvsBSurvey = (props) => {
-    return (
-        <div className="HotAvsBSurvey  hvr-glow">
-            <img src={props.img} alt="" />
-            <span className="AvsBTitle">{props.title}</span>
-        </div>
-    );
-};
-
 SurveyListItem.defaultProps = {
     title: "제목",
     author: "작성자",
 };
 HotCategory.defaultProps = {
     category: "분야 예시 1",
-};
-HotAvsBSurvey.defaultProps = {
-    img: AB,
-    title: "설문1",
 };

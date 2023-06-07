@@ -24,7 +24,7 @@ export const AvsBSurveyListItem = ({ title, id }) => {
     return (
         <>
             {surveyData === null ? null : (
-                <div className="AvsBSurveyListItem hvr-glow" onClick={() => navigate(`/details/${id}`)}>
+                <div className="AvsBSurveyListItem hvr-glow" onClick={() => navigate(`/post/${id}`)}>
                     <div className="ImgWrapper">
                         <img className="surveyImgA" src={surveyData.data.questions[0].imageUrl} alt="" />
                         <img className="surveyImgB" src={surveyData.data.questions[1].imageUrl} alt="" />

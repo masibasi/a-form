@@ -40,7 +40,7 @@ export const Search = () => {
                                   key={it.postPk}
                                   title={it.postTitle}
                                   id={it.postPk}
-                                  author={it.postAuthor}
+                                  author={it.postAuthorId}
                                   surveyType={it.type}
                                   postStartDate={it.postStartDate}
                                   postDueDate={it.postDueDate}

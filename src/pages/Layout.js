@@ -17,13 +17,14 @@ export default function Layout() {
 
     // 현재 경로가 '/community'인 경우에만 검색창을 표시하도록 함
     const showSearchBar = location.pathname === "/community" || location.pathname.slice(0, 7) === "/search";
-    const searchKeyword = useRef(null);
+    const [searchKeyword, setSearchKeyword] = useState("");
 
-    const setSearchKeyword = (e) => {
-        console.log(JSON.stringify(e.target.value));
-        const value = e.target.value;
-        searchKeyword.current = value;
-    };
+    // const searchKeyword = useRef(null);
+    // const setSearchKeyword = (e) => {
+    //     console.log(JSON.stringify(e.target.value));
+    //     const value = e.target.value;
+    //     searchKeyword.current = value;
+    // };
     return (
         <div className="Layout">
             <Navbar className="Navbar" bg="white">
@@ -34,8 +35,15 @@ export default function Layout() {
 
                     {showSearchBar && (
                         <div className="d-flex searchWrapper ">
-                            <Form.Control type="search" placeholder="Search" className="me-2 searchBar" aria-label="Search" value={searchKeyword.current} onChange={(e) => setSearchKeyword(e)} />
-                            <Button variant="outline-success" onClick={() => navigate(`/search/${searchKeyword.current}`)}>
+                            <Form.Control
+                                type="search"
+                                placeholder="Search"
+                                className="me-2 searchBar"
+                                aria-label="Search"
+                                value={searchKeyword.current}
+                                onChange={(e) => setSearchKeyword(e.target.value)}
+                            />
+                            <Button variant="outline-success" onClick={() => navigate(`/search/${searchKeyword}`)}>
                                 Search
                             </Button>
                         </div>

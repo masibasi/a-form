@@ -126,9 +126,9 @@ export const SurveyList = ({ type, page, offset, status, sort, date }) => {
                                 key={it.postPk}
                                 title={it.postTitle}
                                 id={it.postPk}
-                                author={it.postAuthor}
+                                author={it.postAuthorId}
                                 type={type}
-                                surveyType={it.type}
+                                surveyType={it.postSurveyType}
                                 postStartDate={it.postStartDate}
                                 postDueDate={it.postDueDate}
                             />
