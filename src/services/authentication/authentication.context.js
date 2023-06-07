@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import { loginHandler } from "./authentication.service";
 import { registerHandler, GetUserData, getIdCheck } from "./authentication.service";
 
@@ -10,6 +10,9 @@ export const AuthenticationContextProvider = ({ children }) => {
     const [regComplete, setRegComplete] = useState(false);
     const [userData, setUserData] = useState(null);
 
+    useEffect(() => {
+        initilaizeUserData(userToken);
+    }, []);
     //Get user Data.
     const initilaizeUserData = async (userToken) => {
         console.log("initialize userData");
@@ -66,6 +69,7 @@ export const AuthenticationContextProvider = ({ children }) => {
                 regComplete, // 회원가입 완료 상태를 알려주는 변수
                 userData, // 유저 데이타
                 getIdCheck, //id 중복검사
+                initilaizeUserData,
             }}
         >
             {children}
