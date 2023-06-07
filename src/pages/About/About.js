@@ -103,7 +103,7 @@ export default function About() {
   return (
     <div className="About">
       <div className="page1">
-        <video src={aform_media} width="100%" height="auto" style={{ objectFit: "contain" }} autoPlay loop />
+        <video data-testid="video" src={aform_media} width="100%" height="auto" style={{ objectFit: "contain" }} autoPlay loop />
       </div>{" "}
       <div className="page2" {...fadeInPage2}>
         <div className="container1">

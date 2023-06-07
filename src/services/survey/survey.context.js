@@ -12,6 +12,7 @@ import {
   PostFiles,
   // GetPopularSurveys,
   GetStats,
+  GetMyAnswer,
 } from "./survey.service";
 
 export const SurveyContext = createContext();
@@ -28,9 +29,10 @@ export const SurveyContextProvider = ({ children }) => {
         GetAnsweredSurveys, //응답한 survey를 요청하는 함수
         GetPostedSurveys, // 템플릿 받아오는 함수
         // GetPopularSurveys, //인기설문 받아오는 함수
-        CreateAvsBSurvey,
-        PostFiles,
+        CreateAvsBSurvey, // AvsB 설문을 만드는 함수
+        PostFiles, // 파일을 올리는 함수
         GetStats, // 통계 받아오는 함수
+        GetMyAnswer, // 내가 답한것 가져오는 함수
       }}
     >
       {children}
