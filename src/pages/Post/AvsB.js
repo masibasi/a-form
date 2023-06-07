@@ -14,7 +14,7 @@ export const AvsB = ({ data, refresh }) => {
         };
         const surveyId = data._id;
         console.log(surveyAnswer, surveyId, userToken);
-        console.log(await PostSurveyAnswer(surveyAnswer, surveyId, userToken));
+        await PostSurveyAnswer(surveyAnswer, surveyId, userToken);
         const result = await GetStats(surveyId).then();
         setStats(result.statistics);
         refresh();
