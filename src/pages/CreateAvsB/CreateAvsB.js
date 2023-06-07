@@ -119,7 +119,7 @@ export const CreateAvsB = () => {
             setSaveIsLoading(true);
             await toastPromise(
                 CreateAvsBSurvey(newPost).then((res) => {
-                    setSurveyId(res);
+                    setSurveyId(res.data);
                     console.log("createsur", res);
                 })
             );
