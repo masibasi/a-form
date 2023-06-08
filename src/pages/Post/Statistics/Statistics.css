@@ -1,57 +1,109 @@
-.statistics_center {
-  justify-content: center;
-  align-items: center;
-  display: flex;
+.Statistics .statistics_center {
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
-.statistics_wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 70%;
+.Statistics .statistics_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
 }
 
-.statistics_h1 {
-  /* margin-left: 10%; */
-  font-size: 2.4rem;
-  font-family: "Spoqa Han Sans Neo", "sans-serif";
+.Statistics .statistics_h1 {
+    /* margin-left: 10%; */
+    font-size: 2.4rem;
+    font-family: "Spoqa Han Sans Neo", "sans-serif";
 }
 
-.surveyListWrapper {
-  width: 100%;
-  margin-top: 2%;
-  padding-top: 4%;
-  padding-bottom: 2%;
-  padding-right: 3%;
-  padding-left: 3%;
-  border-radius: 25px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  margin-bottom: 2%;
+.Statistics .surveyListWrapper {
+    width: 100%;
+    margin-top: 2%;
+    padding-top: 4%;
+    padding-bottom: 2%;
+    padding-right: 3%;
+    padding-left: 3%;
+    border-radius: 25px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-bottom: 2%;
+}
+.Statistics .AIAnalysisWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.stat {
-  margin-left: auto;
-  margin-right: 2%;
-  font-size: 1.5rem;
-  font-family: "Spoqa Han Sans Neo", "sans-serif";
+.Statistics .stat {
+    margin-left: auto;
+    margin-right: 2%;
+    font-size: 1.5rem;
+    font-family: "Spoqa Han Sans Neo", "sans-serif";
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: end;
+}
+.Statistics .buttonWrapper {
+    margin-bottom: 20px;
+    width: 100%;
+    justify-content: flex-end;
+    display: flex;
+}
+.Statistics .icon {
+    margin-right: 8px;
+}
+.Statistics .spinner {
+    margin-top: 50px;
 }
 
-.StatListItem {
-  margin-bottom: 5%; /* 각 문항 사이의 간격을 조정할 수 있는 마진 값 */
-  font-family: "Spoqa Han Sans Neo", "sans-serif";
-  font-size: 1.1rem;
+.Statistics .StatListItem {
+    margin-bottom: 5%; /* 각 문항 사이의 간격을 조정할 수 있는 마진 값 */
+    font-family: "Spoqa Han Sans Neo", "sans-serif";
+    font-size: 1.1rem;
+}
+.Statistics .AIResWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 500px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 60px;
+}
+.Statistics h1 {
+    font-family: "Spoqa Han Sans Neo", "sans-serif";
+    margin-bottom: 20px;
+    /* color: rgb(49, 108, 244); */
+}
+.Statistics .AIRes {
+    border: 0px;
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+    border-radius: 20px;
+    font-family: "Spoqa Han Sans Neo", "sans-serif";
+    line-height: 30px;
+    resize: none;
+    font-weight: 500;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2) !important;
+    background-color: rgba(0, 166, 255, 0.015);
 }
 
 @import url("https://static.toss.im/tps/main.css");
 @import url("https://static.toss.im/tps/others.css");
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
-.selections {
-  font-family: "Spoqa Han Sans Neo", "sans-serif";
-  font-size: 1.1rem;
+.Statistics .selections {
+    font-family: "Spoqa Han Sans Neo", "sans-serif";
+    font-size: 1.1rem;
 }
 
-.Statistics h3 {
-  font-family: "Spoqa Han Sans Neo", "sans-serif";
+.Statistics .Statistics h3 {
+    font-family: "Spoqa Han Sans Neo", "sans-serif";
 }

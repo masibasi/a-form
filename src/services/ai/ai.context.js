@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import { GetAIGenerate } from "./ai.service";
+import { GetAIGenerate, GetAiAnalyse } from "./ai.service";
 export const AIContext = createContext();
 
 export const AIContextProvider = ({ children }) => {
@@ -7,6 +7,7 @@ export const AIContextProvider = ({ children }) => {
         <AIContext.Provider
             value={{
                 GetAIGenerate,
+                GetAiAnalyse,
             }}
         >
             {children}
