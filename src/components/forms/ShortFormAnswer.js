@@ -8,6 +8,8 @@ function ShortFormAnswer(props) {
     }
     const [answer, setAnswer] = useState(props.q.selections[0].content);
 
+    const myAnswer = props.myAnswer[props.qIndex];
+
     const onChange = (e) => {
         setAnswer(e.target.value);
         props.answer[0] = e.target.value;
@@ -15,7 +17,7 @@ function ShortFormAnswer(props) {
 
     return (
         <Form.Group>
-            <Form.Control className="shortform-input" as="textarea" rows={4} value={answer} onChange={onChange} />
+            <Form.Control className="shortform-input" as="textarea" rows={4} value={props.forCheck ? myAnswer : answer} onChange={onChange} disabled={props.forCheck} />
         </Form.Group>
     );
 }

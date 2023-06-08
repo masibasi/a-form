@@ -20,7 +20,7 @@ export const SurveyListItem = (props) => {
         } else if (props.type === "answered") {
             const myAnswer = await GetMyAnswer(props.id, userToken);
             console.log("my answer: ", myAnswer);
-            navigate(`/survey/${props.id}`, { state: { id: props.id } });
+            navigate(`/survey/${props.id}`, { state: { forCheck: true, myAnswer: myAnswer } });
         } else if (props.type === "popular") {
             navigate(`/survey/${props.id}`, { state: { id: props.id } });
         } else if (props.type === "post" || props.type === "allpost") {

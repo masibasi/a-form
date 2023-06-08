@@ -86,9 +86,11 @@ function QuestionForm(props) {
                         </div>
                     ) : (
                         <div className="questionType">
-                            {questionType === "RADIO" && <SelectionAnswer type={"RADIO"} q={props.q} qIndex={props.qIndex} answer={props.answer} />}
-                            {questionType === "CHECKBOX" && <SelectionAnswer type={"CHECKBOX"} q={props.q} qIndex={props.qIndex} answer={props.answer} />}
-                            {questionType === "SHORTFORM" && <ShortFormAnswer q={props.q} qIndex={props.qIndex} answer={props.answer} />}
+                            {questionType === "RADIO" && <SelectionAnswer myAnswer={props.myAnswer} forCheck={props.forCheck} type={"RADIO"} q={props.q} qIndex={props.qIndex} answer={props.answer} />}
+                            {questionType === "CHECKBOX" && (
+                                <SelectionAnswer forCheck={props.forCheck} myAnswer={props.myAnswer} type={"CHECKBOX"} q={props.q} qIndex={props.qIndex} answer={props.answer} />
+                            )}
+                            {questionType === "SHORTFORM" && <ShortFormAnswer forCheck={props.forCheck} myAnswer={props.myAnswer} q={props.q} qIndex={props.qIndex} answer={props.answer} />}
                         </div>
                     )}
                 </Card.Body>
