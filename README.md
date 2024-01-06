@@ -1,15 +1,30 @@
 # A-Form
 
-<https://aform.acceler.kr>
 
 A online form for everyone.<br>
 Developed by Acceler Team.
 
 
 
-Screenshots : 
-<img width="1407" alt="image" src="https://user-images.githubusercontent.com/60805546/226337196-d9d72e43-fa6b-4375-a94d-2363f6571656.png">
-<img width="1394" alt="image" src="https://user-images.githubusercontent.com/60805546/226337235-f235c95d-3640-473d-9571-cfce47952e8e.png">
+### ⭐️ **프로젝트 개요**
+
+A-Form은 가천대학교 카카오엔터프라이즈 SW 아카데미에서 진행한 설문조사 플랫폼 웹사이트입니다.
+
+**Amazing Form Automatical Form By team ACCELER!** 라는 캐치프레이즈를 가진 이 서비스는 
+AI 기반 자동 설문 조사 생성 기능, 설문 조사 결과의 자동화된 요약, 설문 조사 제작자와 응답자 간의 참여와 피드백을 촉진하는 커뮤니티 기능을 제공하여 기존 문제를 해결합니다.
+
+**MSA** 기반 **클라우드** 시스템 아키텍쳐를 구상하고 구현하여  https://server.acceler.kr/ 에서 확인이 가능합니다.
+### 👬 **팀 구성**
+
+- 개발자 5 : Front-end(2), Back-end(2), PM(1)
+- 협업툴 : Git, Figma, Notion
+
+### 🎥 시연 영상
+
+https://youtu.be/6K8LaMvuNQc
+### 📑 시스템 구상도
+![image](https://github.com/masibasi/a-form/assets/60805546/8d0b6622-eb02-4f16-8e0a-6eeae7917403)
+
 
 ## Getting Started with Create React App
 
